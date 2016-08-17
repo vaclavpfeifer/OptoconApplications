@@ -16,6 +16,8 @@ QTtestapp1::QTtestapp1(QWidget *parent) : QMainWindow(parent)
 QTtestapp1::~QTtestapp1()
 {
 
+	// Dummy
+
 }
 
 void QTtestapp1::on_quitButton_clicked()
