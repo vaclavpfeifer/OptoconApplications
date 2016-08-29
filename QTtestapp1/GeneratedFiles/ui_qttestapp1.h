@@ -88,6 +88,11 @@ public:
         statusBar = new QStatusBar(QTtestapp1Class);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         QTtestapp1Class->setStatusBar(statusBar);
+        QWidget::setTabOrder(btn_1, btn_RemoveText);
+        QWidget::setTabOrder(btn_RemoveText, textEdit);
+        QWidget::setTabOrder(textEdit, comboBox);
+        QWidget::setTabOrder(comboBox, btn_2);
+        QWidget::setTabOrder(btn_2, quitButton);
 
         menuBar->addAction(menuFile->menuAction());
         menuBar->addAction(menuAbout->menuAction());

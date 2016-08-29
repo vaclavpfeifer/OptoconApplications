@@ -59,6 +59,15 @@
     <ClCompile Include="GeneratedFiles\Release\moc_mymodel.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="optoconbasicvm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_optoconbasicvm.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_optoconbasicvm.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="qttestapp1.h">
@@ -76,12 +85,21 @@
     <CustomBuild Include="secondView.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="Optocon_Base_View.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="optoconbasicvm.hpp">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_qttestapp1.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_secondView.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_Optocon_Base_View.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>

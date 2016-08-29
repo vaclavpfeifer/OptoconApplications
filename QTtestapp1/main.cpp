@@ -1,4 +1,5 @@
 #include "qttestapp1.h"
+#include "optoconbasicvm.hpp"
 #include <QtWidgets/QApplication>
 
 int main(int argc, char *argv[])
@@ -8,7 +9,11 @@ int main(int argc, char *argv[])
 	QApplication a(argc, argv);
 	//QGuiApplication a(argc, argv); // Without widgets
 
-	QTtestapp1 w;
+	/*QTtestapp1 w;
+	w.show();*/
+
+
+	OptoconBasicVM w;
 	w.show();
 
 

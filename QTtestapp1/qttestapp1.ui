@@ -132,6 +132,14 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <tabstops>
+  <tabstop>btn_1</tabstop>
+  <tabstop>btn_RemoveText</tabstop>
+  <tabstop>textEdit</tabstop>
+  <tabstop>comboBox</tabstop>
+  <tabstop>btn_2</tabstop>
+  <tabstop>quitButton</tabstop>
+ </tabstops>
  <resources>
   <include location="qttestapp1.qrc"/>
  </resources>
