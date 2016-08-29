@@ -73,9 +73,15 @@
     <CustomBuild Include="mymodel.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="secondView.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_qttestapp1.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_secondView.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>

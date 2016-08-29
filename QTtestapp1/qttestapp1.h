@@ -3,6 +3,9 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_qttestapp1.h"
+#include "ui_secondView.h"
+
+// TODO: Create second initial UI class and define in makefile which should be compiled/linked
 
 class QTtestapp1 : public QMainWindow
 {
@@ -33,7 +36,8 @@ private slots:
 	// TODO: Where to get list of default slots/signals?
 
 private:
-	Ui::QTtestapp1Class ui;
+	// Ui::QTtestapp1Class ui;
+	Ui::MainWindow ui;
 };
 
 #endif // QTTESTAPP1_H
