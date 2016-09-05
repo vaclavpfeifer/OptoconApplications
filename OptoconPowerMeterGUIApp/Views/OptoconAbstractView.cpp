@@ -1,7 +1,9 @@
-﻿#include "optoconbasicvm.hpp"
+﻿// #include "OptoconAbstractView.hpp"
 #include "qtexteditcustom.hpp"
+#include "setlimitwindow.h"
+#include "Views/OptoconBasicDevelopmentView.h"
 
-OptoconBasicVM::OptoconBasicVM(QWidget * parent) : QMainWindow(parent)
+OptoconAbstractView::OptoconAbstractView(QWidget * parent) : QMainWindow(parent)
 {
 	// Default set-up (using UI)
 	ui.setupUi(this);
@@ -54,19 +56,19 @@ OptoconBasicVM::OptoconBasicVM(QWidget * parent) : QMainWindow(parent)
 	QMetaObject::connectSlotsByName(this);
 }
 
-OptoconBasicVM::OptoconBasicVM(AbstractViewModel* viewModel, int a) 
+OptoconAbstractView::OptoconAbstractView(AbstractViewModel* viewModel, int a) : OptoconAbstractView(nullptr)
 {
-	OptoconBasicVM(nullptr);
+	
 
 }
 
 
-OptoconBasicVM::~OptoconBasicVM() 
+OptoconAbstractView::~OptoconAbstractView()
 {
 	
 }
 
-void OptoconBasicVM::ViewAll()
+void OptoconAbstractView::ViewAll()
 {
 	if (this->ui.btn_selectAll->isChecked())
 	{
@@ -91,27 +93,70 @@ void OptoconBasicVM::ViewAll()
 
 }
 
-void OptoconBasicVM::CheckedA1()
+void OptoconAbstractView::CheckedA1()
 {
 	emit CBStateChanged(ui.checkBox_A1, ui.textEdit_A1);
 }
 
-void OptoconBasicVM::CheckedA2()
+void OptoconAbstractView::CheckedA2()
 {
 	emit CBStateChanged(ui.checkBox_A2, ui.textEdit_A2);
 }
 
-void OptoconBasicVM::CheckedA3()
+void OptoconAbstractView::CheckedA3()
 {
 	emit CBStateChanged(ui.checkBox_A3, ui.textEdit_A3);
 }
 
-void OptoconBasicVM::CheckedA4()
+void OptoconAbstractView::CheckedA4()
 {
 	emit CBStateChanged(ui.checkBox_A4, ui.textEdit_A4);
 }
 
-void OptoconBasicVM::CheckedHandler(QCheckBox* checkedBox, QTextEdit* textEdit)
+void OptoconAbstractView::onWaveLength850Clicked()
+{
+	DisableWaveLengthButtons();
+	ui.PB_850->setChecked(true);
+	//emit WaveLengthChanged(ui.PB_850);
+}
+
+void OptoconAbstractView::onWaveLength1300Clicked()
+{
+	DisableWaveLengthButtons();
+	ui.PB_1300->setChecked(true);
+}
+
+void OptoconAbstractView::onWaveLength1310Clicked()
+{
+	DisableWaveLengthButtons();
+	ui.PB_1310->setChecked(true);
+}
+
+void OptoconAbstractView::onWaveLength1550Clicked()
+{
+	DisableWaveLengthButtons();
+	ui.PB_1550->setChecked(true);
+}
+
+void OptoconAbstractView::onWaveLengthOFFClicked()
+{
+	DisableWaveLengthButtons();
+	ui.PB_OFF->setChecked(true);
+}
+
+void OptoconAbstractView::onReference_dBClicked() const
+{
+	ui.PB_dB->setChecked(true);
+	ui.PB_dBm->setChecked(false);
+}
+
+void OptoconAbstractView::onReference_dBMmClicked() const
+{
+	ui.PB_dB->setChecked(false);
+	ui.PB_dBm->setChecked(true);
+}
+
+void OptoconAbstractView::CheckedHandler(QCheckBox* checkedBox, QTextEdit* textEdit)
 {
 	if (checkedBox->isChecked())
 	{		
@@ -126,17 +171,17 @@ void OptoconBasicVM::CheckedHandler(QCheckBox* checkedBox, QTextEdit* textEdit)
 	}
 }
 
-void OptoconBasicVM::CheckLimit()
+void OptoconAbstractView::CheckLimit()
 {
 	// TODO: orint additional minus marks??
 }
 
-void OptoconBasicVM::onNewLimitSet(QString newLimit) const
+void OptoconAbstractView::onNewLimitSet(QString newLimit) const
 {
 	ui.textEdit_Limit->setText(newLimit);
 }
 
-void OptoconBasicVM::onBtnClick_SetLimit()
+void OptoconAbstractView::onBtnClick_SetLimit()
 {
 	auto limitWindow = new SetLimitWindow(this);
 	limitWindow->setWindowModality(Qt::ApplicationModal);
@@ -147,7 +192,7 @@ void OptoconBasicVM::onBtnClick_SetLimit()
 	wdg->show();*/
 }
 
-void OptoconBasicVM::onRBStatusChanged(bool isChecked)
+void OptoconAbstractView::onRBStatusChanged(bool isChecked)
 {
 	DisableWaveLengthButtons();
 	if (isChecked)
@@ -160,4 +205,12 @@ void OptoconBasicVM::onRBStatusChanged(bool isChecked)
 	}
 
 	// TODO: Here we should emit signal that status has been changed (to disable the previous state)
+}
+
+void OptoconAbstractView::DisableWaveLengthButtons()
+{
+	for each (auto pb in waveLengthButtons)
+	{
+		pb->setChecked(false);
+	}
 }

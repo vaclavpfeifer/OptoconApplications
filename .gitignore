@@ -7,6 +7,11 @@
 *.userosscache
 *.sln.docstates
 
+# Generated Files
+OptoconPowerMeterGUIApp/GeneratedFiles/
+OptoconPowerMeterGUIApp/GeneratedFiles/Debug/
+OptoconPowerMeterGUIApp/GeneratedFiles/Release/
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 

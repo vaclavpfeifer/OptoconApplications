@@ -3,17 +3,18 @@
 # ------------------------------------------------------
 
 TEMPLATE = app
-TARGET = QTtestapp1
-DESTDIR = ../Win32/Release
+TARGET = OptoconPowerMeterGUIApp
+DESTDIR = ../Win32/Debug
 QT += core widgets gui
-CONFIG += release
+CONFIG += debug
 DEFINES += QT_DLL QT_WIDGETS_LIB
 INCLUDEPATH += ./GeneratedFiles \
     . \
-    ./GeneratedFiles/Release
+    ./GeneratedFiles/Debug \
+    ./CustomWidgets
 DEPENDPATH += .
-MOC_DIR += ./GeneratedFiles/release
-OBJECTS_DIR += release
+MOC_DIR += ./GeneratedFiles/debug
+OBJECTS_DIR += debug
 UI_DIR += ./GeneratedFiles
 RCC_DIR += ./GeneratedFiles
-include(QTtestapp1.pri)
+include(OptoconPowerMeterGUIApp.pri)
