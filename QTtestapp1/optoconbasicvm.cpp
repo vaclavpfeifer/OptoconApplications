@@ -1,8 +1,24 @@
 ﻿#include "optoconbasicvm.hpp"
+#include "qtexteditcustom.hpp"
 
 OptoconBasicVM::OptoconBasicVM(QWidget * parent) : QMainWindow(parent)
 {
+	// Default set-up (using UI)
 	ui.setupUi(this);
+
+	// Custom-Widget set-up
+	/*ui.textEdit_A1 = new QTextEditCustom(ui.groupBox_2);
+	ui.textEdit_A1->setObjectName(QStringLiteral("textEdit_A1"));
+	ui.textEdit_A1->setGeometry(QRect(90, 10, 261, 91));
+	ui.textEdit_A1->setReadOnly(true);*/
+
+	// Initialize internal members:
+	waveLengthButtons.push_back(ui.PB_850);
+	waveLengthButtons.push_back(ui.PB_1300);
+	waveLengthButtons.push_back(ui.PB_1310);
+	waveLengthButtons.push_back(ui.PB_1550);
+	waveLengthButtons.push_back(ui.PB_OFF);
+
 
 	// Set up signal/slot connections
 	QObject::connect(ui.btn_selectAll, SIGNAL(clicked()), this, SLOT(ViewAll()));
@@ -12,18 +28,34 @@ OptoconBasicVM::OptoconBasicVM(QWidget * parent) : QMainWindow(parent)
 	QObject::connect(ui.checkBox_A3, SIGNAL(clicked()), this, SLOT(CheckedA3()));
 	QObject::connect(ui.checkBox_A4, SIGNAL(clicked()), this, SLOT(CheckedA4()));
 
+	// TODO: this should be put on as soon as clicked on texedit works!!
+	/*QObject::connect(ui.textEdit_A1, SIGNAL(someSignal()), this, SLOT(CheckedA1()));
+	QObject::connect(ui.textEdit_A2, SIGNAL(clicked()), this, SLOT(CheckedA2()));
+	QObject::connect(ui.textEdit_A3, SIGNAL(clicked()), this, SLOT(CheckedA3()));
+	QObject::connect(ui.textEdit_A4, SIGNAL(clicked()), this, SLOT(CheckedA4()));*/
+
+
 	QObject::connect(this, SIGNAL(CBStateChanged(QCheckBox*, QTextEdit*)), this, SLOT(CheckedHandler(QCheckBox*, QTextEdit*)));
 	
 	QObject::connect(ui.PB_Set, SIGNAL(clicked()), this, SLOT(onBtnClick_SetLimit()));
 
 	QObject::connect(ui.RB_MM, SIGNAL(toggled(bool)), this, SLOT(onRBStatusChanged(bool)));
-	QObject::connect(ui.RB_SM, SIGNAL(toggled(bool)), this, SLOT(onRBStatusChanged(bool)));
+	//QObject::connect(ui.RB_SM, SIGNAL(toggled(bool)), this, SLOT(onRBStatusChanged(bool)));
+	
+	QObject::connect(ui.PB_850, SIGNAL(clicked()), this, SLOT(onWaveLength850Clicked()));
+	QObject::connect(ui.PB_1300, SIGNAL(clicked()), this, SLOT(onWaveLength1300Clicked()));
+	QObject::connect(ui.PB_1310, SIGNAL(clicked()), this, SLOT(onWaveLength1310Clicked()));
+	QObject::connect(ui.PB_1550, SIGNAL(clicked()), this, SLOT(onWaveLength1550Clicked()));
+	QObject::connect(ui.PB_OFF, SIGNAL(clicked()), this, SLOT(onWaveLengthOFFClicked()));
 
+	QObject::connect(ui.PB_dB, SIGNAL(clicked()), this, SLOT(onReference_dBClicked()));
+	QObject::connect(ui.PB_dBm, SIGNAL(clicked()), this, SLOT(onReference_dBMmClicked()));
 
 	QMetaObject::connectSlotsByName(this);
 }
 
-OptoconBasicVM::~OptoconBasicVM() {
+OptoconBasicVM::~OptoconBasicVM() 
+{
 	
 }
 
@@ -77,6 +109,9 @@ void OptoconBasicVM::CheckedHandler(QCheckBox* checkedBox, QTextEdit* textEdit)
 	if (checkedBox->isChecked())
 	{		
 		textEdit->setStyleSheet("QTextEdit { background-color: yellow }");
+
+		// TODO: style sheets are not working for inherited widgets - cutom edits
+		//textEdit->setStyleSheet("QTextEditCustom { background-color: yellow }");
 	}
 	else
 	{		
@@ -107,9 +142,10 @@ void OptoconBasicVM::onBtnClick_SetLimit()
 
 void OptoconBasicVM::onRBStatusChanged(bool isChecked)
 {
-	if (!isChecked)
-	{
-		ui.PB_1300->setChecked(true);
+	DisableWaveLengthButtons();
+	if (isChecked)
+	{		
+		ui.PB_1310->setChecked(true);
 	}
 	else
 	{
@@ -117,8 +153,4 @@ void OptoconBasicVM::onRBStatusChanged(bool isChecked)
 	}
 
 	// TODO: Here we should emit signal that status has been changed (to disable the previous state)
-
-
-
-
 }

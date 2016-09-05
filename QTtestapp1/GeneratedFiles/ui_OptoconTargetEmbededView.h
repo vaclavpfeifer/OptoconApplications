@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'Optocon_Base_View.ui'
+** Form generated from reading UI file 'OptoconTargetEmbededView.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.7.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_OPTOCON_BASE_VIEW_H
-#define UI_OPTOCON_BASE_VIEW_H
+#ifndef UI_OPTOCONTARGETEMBEDEDVIEW_H
+#define UI_OPTOCONTARGETEMBEDEDVIEW_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
@@ -29,16 +29,16 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_MainWindowOptocon
+class Ui_OptoconTargetLinuxView
 {
 public:
     QAction *actionRefresh_Connection;
     QAction *actionExit;
-    QAction *actionSettings;
     QWidget *centralwidget;
-    QPushButton *pushButton;
-    QPlainTextEdit *plainTextEdit;
-    QPushButton *pushButton_2;
+    QWidget *layoutWidget;
+    QHBoxLayout *horizontalLayout;
+    QRadioButton *RB_SM;
+    QRadioButton *RB_MM;
     QGroupBox *groupBox;
     QTextEdit *textEdit_Limit;
     QCheckBox *checkBox_CheckLimit;
@@ -53,65 +53,61 @@ public:
     QTextEdit *textEdit_A4;
     QCheckBox *checkBox_A4;
     QPushButton *btn_selectAll;
-    QPushButton *pushButton_4;
-    QWidget *layoutWidget;
-    QHBoxLayout *horizontalLayout;
-    QRadioButton *RB_SM;
-    QRadioButton *RB_MM;
-    QWidget *layoutWidget1;
+    QPushButton *pushButton;
+    QWidget *layoutWidget_2;
     QHBoxLayout *horizontalLayout_2;
     QPushButton *PB_850;
     QPushButton *PB_1300;
     QPushButton *PB_1310;
     QPushButton *PB_1550;
     QPushButton *PB_OFF;
-    QWidget *widget;
+    QWidget *layoutWidget_3;
     QHBoxLayout *horizontalLayout_3;
     QPushButton *PB_dB;
     QPushButton *PB_dBm;
+    QPlainTextEdit *plainTextEdit;
+    QPushButton *pushButton_2;
+    QPushButton *pushButton_4;
     QMenuBar *menubar;
     QMenu *menuDevice;
     QMenu *menuOptions;
     QStatusBar *statusbar;
 
-    void setupUi(QMainWindow *MainWindowOptocon)
+    void setupUi(QMainWindow *OptoconTargetLinuxView)
     {
-        if (MainWindowOptocon->objectName().isEmpty())
-            MainWindowOptocon->setObjectName(QStringLiteral("MainWindowOptocon"));
-        MainWindowOptocon->resize(969, 822);
-        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(MainWindowOptocon->sizePolicy().hasHeightForWidth());
-        MainWindowOptocon->setSizePolicy(sizePolicy);
-        MainWindowOptocon->setMinimumSize(QSize(969, 822));
-        MainWindowOptocon->setMaximumSize(QSize(969, 822));
-        MainWindowOptocon->setMouseTracking(false);
-        MainWindowOptocon->setTabShape(QTabWidget::Rounded);
-        actionRefresh_Connection = new QAction(MainWindowOptocon);
+        if (OptoconTargetLinuxView->objectName().isEmpty())
+            OptoconTargetLinuxView->setObjectName(QStringLiteral("OptoconTargetLinuxView"));
+        OptoconTargetLinuxView->resize(800, 600);
+        actionRefresh_Connection = new QAction(OptoconTargetLinuxView);
         actionRefresh_Connection->setObjectName(QStringLiteral("actionRefresh_Connection"));
-        actionExit = new QAction(MainWindowOptocon);
+        actionExit = new QAction(OptoconTargetLinuxView);
         actionExit->setObjectName(QStringLiteral("actionExit"));
-        actionSettings = new QAction(MainWindowOptocon);
-        actionSettings->setObjectName(QStringLiteral("actionSettings"));
-        centralwidget = new QWidget(MainWindowOptocon);
+        centralwidget = new QWidget(OptoconTargetLinuxView);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(0, 0, 211, 91));
+        layoutWidget = new QWidget(centralwidget);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(630, 50, 181, 54));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        RB_SM = new QRadioButton(layoutWidget);
+        RB_SM->setObjectName(QStringLiteral("RB_SM"));
         QFont font;
         font.setPointSize(30);
-        pushButton->setFont(font);
-        plainTextEdit = new QPlainTextEdit(centralwidget);
-        plainTextEdit->setObjectName(QStringLiteral("plainTextEdit"));
-        plainTextEdit->setGeometry(QRect(220, 0, 311, 91));
-        pushButton_2 = new QPushButton(centralwidget);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-        pushButton_2->setGeometry(QRect(0, 100, 281, 81));
-        pushButton_2->setFont(font);
+        RB_SM->setFont(font);
+        RB_SM->setChecked(true);
+
+        horizontalLayout->addWidget(RB_SM);
+
+        RB_MM = new QRadioButton(layoutWidget);
+        RB_MM->setObjectName(QStringLiteral("RB_MM"));
+        RB_MM->setFont(font);
+
+        horizontalLayout->addWidget(RB_MM);
+
         groupBox = new QGroupBox(centralwidget);
         groupBox->setObjectName(QStringLiteral("groupBox"));
-        groupBox->setGeometry(QRect(0, 280, 961, 501));
+        groupBox->setGeometry(QRect(50, 320, 961, 501));
         QFont font1;
         font1.setPointSize(12);
         groupBox->setFont(font1);
@@ -179,36 +175,17 @@ public:
         btn_selectAll->setFont(font);
         btn_selectAll->setCheckable(true);
         btn_selectAll->setChecked(false);
-        pushButton_4 = new QPushButton(centralwidget);
-        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
-        pushButton_4->setGeometry(QRect(0, 190, 281, 81));
-        pushButton_4->setFont(font);
-        layoutWidget = new QWidget(centralwidget);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(580, 10, 181, 54));
-        horizontalLayout = new QHBoxLayout(layoutWidget);
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        RB_SM = new QRadioButton(layoutWidget);
-        RB_SM->setObjectName(QStringLiteral("RB_SM"));
-        RB_SM->setFont(font);
-        RB_SM->setChecked(true);
-
-        horizontalLayout->addWidget(RB_SM);
-
-        RB_MM = new QRadioButton(layoutWidget);
-        RB_MM->setObjectName(QStringLiteral("RB_MM"));
-        RB_MM->setFont(font);
-
-        horizontalLayout->addWidget(RB_MM);
-
-        layoutWidget1 = new QWidget(centralwidget);
-        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(290, 110, 471, 58));
-        horizontalLayout_2 = new QHBoxLayout(layoutWidget1);
+        pushButton = new QPushButton(centralwidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(50, 40, 211, 91));
+        pushButton->setFont(font);
+        layoutWidget_2 = new QWidget(centralwidget);
+        layoutWidget_2->setObjectName(QStringLiteral("layoutWidget_2"));
+        layoutWidget_2->setGeometry(QRect(340, 150, 471, 58));
+        horizontalLayout_2 = new QHBoxLayout(layoutWidget_2);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        PB_850 = new QPushButton(layoutWidget1);
+        PB_850 = new QPushButton(layoutWidget_2);
         PB_850->setObjectName(QStringLiteral("PB_850"));
         PB_850->setFont(font);
         PB_850->setCheckable(true);
@@ -217,7 +194,7 @@ public:
 
         horizontalLayout_2->addWidget(PB_850);
 
-        PB_1300 = new QPushButton(layoutWidget1);
+        PB_1300 = new QPushButton(layoutWidget_2);
         PB_1300->setObjectName(QStringLiteral("PB_1300"));
         PB_1300->setFont(font);
         PB_1300->setCheckable(true);
@@ -225,7 +202,7 @@ public:
 
         horizontalLayout_2->addWidget(PB_1300);
 
-        PB_1310 = new QPushButton(layoutWidget1);
+        PB_1310 = new QPushButton(layoutWidget_2);
         PB_1310->setObjectName(QStringLiteral("PB_1310"));
         PB_1310->setFont(font);
         PB_1310->setCheckable(true);
@@ -235,7 +212,7 @@ public:
 
         horizontalLayout_2->addWidget(PB_1310);
 
-        PB_1550 = new QPushButton(layoutWidget1);
+        PB_1550 = new QPushButton(layoutWidget_2);
         PB_1550->setObjectName(QStringLiteral("PB_1550"));
         PB_1550->setFont(font);
         PB_1550->setCheckable(true);
@@ -244,7 +221,7 @@ public:
 
         horizontalLayout_2->addWidget(PB_1550);
 
-        PB_OFF = new QPushButton(layoutWidget1);
+        PB_OFF = new QPushButton(layoutWidget_2);
         PB_OFF->setObjectName(QStringLiteral("PB_OFF"));
         PB_OFF->setFont(font);
         PB_OFF->setCheckable(true);
@@ -252,13 +229,13 @@ public:
 
         horizontalLayout_2->addWidget(PB_OFF);
 
-        widget = new QWidget(centralwidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(410, 200, 171, 58));
-        horizontalLayout_3 = new QHBoxLayout(widget);
+        layoutWidget_3 = new QWidget(centralwidget);
+        layoutWidget_3->setObjectName(QStringLiteral("layoutWidget_3"));
+        layoutWidget_3->setGeometry(QRect(460, 240, 171, 58));
+        horizontalLayout_3 = new QHBoxLayout(layoutWidget_3);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-        PB_dB = new QPushButton(widget);
+        PB_dB = new QPushButton(layoutWidget_3);
         PB_dB->setObjectName(QStringLiteral("PB_dB"));
         PB_dB->setFont(font);
         PB_dB->setCheckable(true);
@@ -266,7 +243,7 @@ public:
 
         horizontalLayout_3->addWidget(PB_dB);
 
-        PB_dBm = new QPushButton(widget);
+        PB_dBm = new QPushButton(layoutWidget_3);
         PB_dBm->setObjectName(QStringLiteral("PB_dBm"));
         PB_dBm->setFont(font);
         PB_dBm->setCheckable(true);
@@ -275,69 +252,78 @@ public:
 
         horizontalLayout_3->addWidget(PB_dBm);
 
-        MainWindowOptocon->setCentralWidget(centralwidget);
-        menubar = new QMenuBar(MainWindowOptocon);
+        plainTextEdit = new QPlainTextEdit(centralwidget);
+        plainTextEdit->setObjectName(QStringLiteral("plainTextEdit"));
+        plainTextEdit->setGeometry(QRect(270, 40, 311, 91));
+        pushButton_2 = new QPushButton(centralwidget);
+        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
+        pushButton_2->setGeometry(QRect(50, 140, 281, 81));
+        pushButton_2->setFont(font);
+        pushButton_4 = new QPushButton(centralwidget);
+        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
+        pushButton_4->setGeometry(QRect(50, 230, 281, 81));
+        pushButton_4->setFont(font);
+        OptoconTargetLinuxView->setCentralWidget(centralwidget);
+        menubar = new QMenuBar(OptoconTargetLinuxView);
         menubar->setObjectName(QStringLiteral("menubar"));
-        menubar->setGeometry(QRect(0, 0, 969, 21));
+        menubar->setGeometry(QRect(0, 0, 800, 21));
         menuDevice = new QMenu(menubar);
         menuDevice->setObjectName(QStringLiteral("menuDevice"));
         menuOptions = new QMenu(menubar);
         menuOptions->setObjectName(QStringLiteral("menuOptions"));
-        MainWindowOptocon->setMenuBar(menubar);
-        statusbar = new QStatusBar(MainWindowOptocon);
+        OptoconTargetLinuxView->setMenuBar(menubar);
+        statusbar = new QStatusBar(OptoconTargetLinuxView);
         statusbar->setObjectName(QStringLiteral("statusbar"));
-        MainWindowOptocon->setStatusBar(statusbar);
+        OptoconTargetLinuxView->setStatusBar(statusbar);
 
         menubar->addAction(menuDevice->menuAction());
         menubar->addAction(menuOptions->menuAction());
         menuDevice->addAction(actionRefresh_Connection);
         menuDevice->addSeparator();
         menuDevice->addAction(actionExit);
-        menuOptions->addAction(actionSettings);
 
-        retranslateUi(MainWindowOptocon);
+        retranslateUi(OptoconTargetLinuxView);
 
-        QMetaObject::connectSlotsByName(MainWindowOptocon);
+        QMetaObject::connectSlotsByName(OptoconTargetLinuxView);
     } // setupUi
 
-    void retranslateUi(QMainWindow *MainWindowOptocon)
+    void retranslateUi(QMainWindow *OptoconTargetLinuxView)
     {
-        MainWindowOptocon->setWindowTitle(QApplication::translate("MainWindowOptocon", "MainWindow", 0));
-        actionRefresh_Connection->setText(QApplication::translate("MainWindowOptocon", "Refresh Connection", 0));
-        actionExit->setText(QApplication::translate("MainWindowOptocon", "Exit", 0));
-        actionSettings->setText(QApplication::translate("MainWindowOptocon", "Settings", 0));
-        pushButton->setText(QApplication::translate("MainWindowOptocon", "S/N", 0));
-        pushButton_2->setText(QApplication::translate("MainWindowOptocon", "wave length", 0));
-        groupBox->setTitle(QApplication::translate("MainWindowOptocon", "Channels", 0));
-        textEdit_Limit->setPlaceholderText(QApplication::translate("MainWindowOptocon", "2.00", 0));
-        checkBox_CheckLimit->setText(QApplication::translate("MainWindowOptocon", "check limit", 0));
-        PB_Set->setText(QApplication::translate("MainWindowOptocon", "SET", 0));
+        OptoconTargetLinuxView->setWindowTitle(QApplication::translate("OptoconTargetLinuxView", "MainWindow", 0));
+        actionRefresh_Connection->setText(QApplication::translate("OptoconTargetLinuxView", "Refresh Connection", 0));
+        actionExit->setText(QApplication::translate("OptoconTargetLinuxView", "Exit", 0));
+        RB_SM->setText(QApplication::translate("OptoconTargetLinuxView", "SM", 0));
+        RB_MM->setText(QApplication::translate("OptoconTargetLinuxView", "MM", 0));
+        groupBox->setTitle(QApplication::translate("OptoconTargetLinuxView", "Channels", 0));
+        textEdit_Limit->setPlaceholderText(QApplication::translate("OptoconTargetLinuxView", "2.00", 0));
+        checkBox_CheckLimit->setText(QApplication::translate("OptoconTargetLinuxView", "check limit", 0));
+        PB_Set->setText(QApplication::translate("OptoconTargetLinuxView", "SET", 0));
         groupBox_2->setTitle(QString());
-        checkBox_A1->setText(QApplication::translate("MainWindowOptocon", "A1", 0));
-        checkBox_A2->setText(QApplication::translate("MainWindowOptocon", "A2", 0));
-        checkBox_A3->setText(QApplication::translate("MainWindowOptocon", "A3", 0));
-        checkBox_A4->setText(QApplication::translate("MainWindowOptocon", "A4", 0));
-        btn_selectAll->setText(QApplication::translate("MainWindowOptocon", "select all", 0));
-        pushButton_4->setText(QApplication::translate("MainWindowOptocon", "reference", 0));
-        RB_SM->setText(QApplication::translate("MainWindowOptocon", "SM", 0));
-        RB_MM->setText(QApplication::translate("MainWindowOptocon", "MM", 0));
-        PB_850->setText(QApplication::translate("MainWindowOptocon", "850", 0));
-        PB_1300->setText(QApplication::translate("MainWindowOptocon", "1300", 0));
-        PB_1310->setText(QApplication::translate("MainWindowOptocon", "1310", 0));
-        PB_1550->setText(QApplication::translate("MainWindowOptocon", "1550", 0));
-        PB_OFF->setText(QApplication::translate("MainWindowOptocon", "OFF", 0));
-        PB_dB->setText(QApplication::translate("MainWindowOptocon", "dB", 0));
-        PB_dBm->setText(QApplication::translate("MainWindowOptocon", "dBm", 0));
-        menuDevice->setTitle(QApplication::translate("MainWindowOptocon", "Device", 0));
-        menuOptions->setTitle(QApplication::translate("MainWindowOptocon", "Options", 0));
+        checkBox_A1->setText(QApplication::translate("OptoconTargetLinuxView", "A1", 0));
+        checkBox_A2->setText(QApplication::translate("OptoconTargetLinuxView", "A2", 0));
+        checkBox_A3->setText(QApplication::translate("OptoconTargetLinuxView", "A3", 0));
+        checkBox_A4->setText(QApplication::translate("OptoconTargetLinuxView", "A4", 0));
+        btn_selectAll->setText(QApplication::translate("OptoconTargetLinuxView", "select all", 0));
+        pushButton->setText(QApplication::translate("OptoconTargetLinuxView", "S/N", 0));
+        PB_850->setText(QApplication::translate("OptoconTargetLinuxView", "850", 0));
+        PB_1300->setText(QApplication::translate("OptoconTargetLinuxView", "1300", 0));
+        PB_1310->setText(QApplication::translate("OptoconTargetLinuxView", "1310", 0));
+        PB_1550->setText(QApplication::translate("OptoconTargetLinuxView", "1550", 0));
+        PB_OFF->setText(QApplication::translate("OptoconTargetLinuxView", "OFF", 0));
+        PB_dB->setText(QApplication::translate("OptoconTargetLinuxView", "dB", 0));
+        PB_dBm->setText(QApplication::translate("OptoconTargetLinuxView", "dBm", 0));
+        pushButton_2->setText(QApplication::translate("OptoconTargetLinuxView", "wave length", 0));
+        pushButton_4->setText(QApplication::translate("OptoconTargetLinuxView", "reference", 0));
+        menuDevice->setTitle(QApplication::translate("OptoconTargetLinuxView", "Device", 0));
+        menuOptions->setTitle(QApplication::translate("OptoconTargetLinuxView", "Options", 0));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class MainWindowOptocon: public Ui_MainWindowOptocon {};
+    class OptoconTargetLinuxView: public Ui_OptoconTargetLinuxView {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_OPTOCON_BASE_VIEW_H
+#endif // UI_OPTOCONTARGETEMBEDEDVIEW_H
