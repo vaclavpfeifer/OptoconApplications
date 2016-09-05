@@ -23,6 +23,8 @@ public:
 // Handlers
 public slots:
 
+
+
 	// A-A4 set-up
 	void ViewAll();
 	void CheckedA1();
