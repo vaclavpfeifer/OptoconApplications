@@ -54,6 +54,13 @@ OptoconBasicVM::OptoconBasicVM(QWidget * parent) : QMainWindow(parent)
 	QMetaObject::connectSlotsByName(this);
 }
 
+OptoconBasicVM::OptoconBasicVM(AbstractViewModel* viewModel, int a) 
+{
+	OptoconBasicVM(nullptr);
+
+}
+
+
 OptoconBasicVM::~OptoconBasicVM() 
 {
 	

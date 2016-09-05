@@ -8,7 +8,7 @@
 #include "ui_setlimitwindow.h"
 #include "setlimitwindow.h"
 #include <vector>
-
+#include "ViewModels\AbstractViewModel.h"
 
 class OptoconBasicVM : public QMainWindow
 {
@@ -17,6 +17,8 @@ class OptoconBasicVM : public QMainWindow
 // Constructors/Desstructors
 public:
 	explicit OptoconBasicVM(QWidget * parent = Q_NULLPTR);
+
+	OptoconBasicVM(AbstractViewModel* viewModel, int a);
 	~OptoconBasicVM();
 
 
@@ -102,10 +104,42 @@ protected:
 		}
 	}
 
+public:
+	// TODO: make pure virtual...
+	inline virtual QTextEdit* GetTextEditA1()
+	{
+		return ui.textEdit_A1;
+	}
+
 private:
 	//Ui::MainWindowOptocon ui;
 
 	Ui::OptoconTargetLinuxView ui;
 };
+
+class OptoconBasicVMConcrete : public OptoconBasicVM
+{
+	Q_OBJECT
+
+public:
+	inline OptoconBasicVMConcrete() 
+	{
+		ui.setupUi(this);
+
+		// TODO: another initializtion (or use macros if its same...)
+
+	}
+
+	~OptoconBasicVMConcrete() {};
+
+	inline virtual QTextEdit* GetTextEditA1()
+	{
+		return ui.textEdit_A1;
+	}
+
+private:
+	Ui::OptoconTargetLinuxView ui;
+};
+
 
 #endif
