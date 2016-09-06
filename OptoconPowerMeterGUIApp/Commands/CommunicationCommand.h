@@ -2,21 +2,30 @@
 #define COMMUNICATION_COMMAND_H
 
 #include "Commands\AbstractCommand.h"
-
+#include "Helpers/AbstractCommunicationHelper.h"
+#include <memory>
 
 // TODO: create header files with possible Return values for execute method...
 
 class CommunicationCommand : public AbstractCommand
 {
 public:
-	CommunicationCommand();
-	CommunicationCommand(int a) {};
+
+	CommunicationCommand(AbstractCommunicationHelper& ioCommunicationHelper) : ioCommHelper(ioCommunicationHelper)
+	{
+		
+	}
+
 	virtual ~CommunicationCommand();
 
-	inline int execute() override
+
+	int execute() override
 	{
 		return 0;
 	}
+
+private:
+	AbstractCommunicationHelper& ioCommHelper;
 };
 
 #endif

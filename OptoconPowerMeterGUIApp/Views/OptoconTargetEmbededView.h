@@ -7,26 +7,26 @@
 class OptoconTargetEmbededView : public OptoconAbstractView
 {
 public:
-	OptoconTargetEmbededView();
+	OptoconTargetEmbededView(AbstractCommandFactory& cmdFactory);
 	virtual ~OptoconTargetEmbededView();
 
-private: 
+private slots: 
 	// Inherited via OptoconAbstractView
-	virtual void CheckedA1() override;
-	virtual void CheckedA2() override;
-	virtual void CheckedA3() override;
-	virtual void CheckedA4() override;
-	virtual void onWaveLength850Clicked() override;
-	virtual void onWaveLength1300Clicked() override;
-	virtual void onWaveLength1310Clicked() override;
-	virtual void onWaveLength1550Clicked() override;
-	virtual void onWaveLengthOFFClicked() override;
-	virtual void onReference_dBClicked() override;
-	virtual void onReference_dBMmClicked() override;	
-	virtual void CheckLimit() override;
-	virtual void onNewLimitSet(QString newLimit) override;
-	virtual void onBtnClick_SetLimit() override;
-	virtual void onRBStatusChanged(bool isChecked) override;
+	virtual void CheckedA1() ;
+	virtual void CheckedA2() ;
+	virtual void CheckedA3() ;
+	virtual void CheckedA4() ;
+	virtual void onWaveLength850Clicked() ;
+	virtual void onWaveLength1300Clicked() ;
+	virtual void onWaveLength1310Clicked() ;
+	virtual void onWaveLength1550Clicked() ;
+	virtual void onWaveLengthOFFClicked() ;
+	virtual void onReference_dBClicked() ;
+	virtual void onReference_dBMmClicked() ;	
+	virtual void CheckLimit() ;
+	virtual void onNewLimitSet(QString newLimit) ;
+	virtual void onBtnClick_SetLimit();
+	virtual void onRBStatusChanged(bool isChecked) ;
 	virtual void ViewAll();
 
 private:

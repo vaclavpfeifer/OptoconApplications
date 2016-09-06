@@ -3,33 +3,33 @@
 #include "Views\OptoconBasicDevelopmentView.h"
 #include "Views\OptoconTargetEmbededView.h"
 #include "ViewModels\BasicViewModel.h"
-#include "Commands\CommandFactory.h"
+#include "Commands\DefaultCommandFactory.h"
 
 int main(int argc, char *argv[])
-{
-	// TODO: move to reference counting 
+{	
 	// TODO: add some logger
-
+	// TODO: add builder pattern - for mocking / debugging / app release version...
 	// qApp->addLibraryPath("C:\\Qt\\Qt5.7.0\\5.7\\msvc2015\\bin");
+	
 
-	auto commandFactory = new CommandFactory();
-
-	auto cmd = commandFactory->CreateCommand2();
-
+	//auto commandFactory = std::make_shared<DefaultCommandFactory>();
 
 	QApplication a(argc, argv);
+	DefaultCommandFactory cmdFactory;
+
+	
 
 	// Create View Model
 	// VM is not used at this point
-	auto viewModel = new BasicViewModel();
+	auto viewModel = std::make_shared<BasicViewModel>();
 
 	//OptoconAbstractView w;
 	// Create View with proper ViewModel
-	auto view = new OptoconBasicDevelopmentView(viewModel);
-	// auto view = new OptoconTargetEmbededView();
+	auto view = std::make_unique<OptoconBasicDevelopmentView>(cmdFactory, viewModel.get());
+
+	//// auto view = new OptoconTargetEmbededView();
 
 
 	view->show();
 	return a.exec();
-	delete view;
 }

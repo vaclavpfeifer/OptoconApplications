@@ -1,7 +1,8 @@
 #include "OptoconBasicDevelopmentView.h"
 #include "setlimitwindow.h"
 
-OptoconBasicDevelopmentView::OptoconBasicDevelopmentView(AbstractViewModel* viewModel, QWidget * parent) : OptoconAbstractView(viewModel, parent)
+OptoconBasicDevelopmentView::OptoconBasicDevelopmentView(AbstractCommandFactory& cmdFactory, AbstractViewModel* viewModel, QWidget * parent)
+	: OptoconAbstractView(viewModel, cmdFactory, parent)
 {
 	ui.setupUi(this);
 
@@ -109,9 +110,15 @@ void OptoconBasicDevelopmentView::CheckedA4()
 
 void OptoconBasicDevelopmentView::onWaveLength850Clicked()
 {
+	// TODO: check whether already clicked
+
 	DisableWaveLengthButtons();
 	ui.PB_850->setChecked(true);
 	//emit WaveLengthChanged(ui.PB_850);
+
+	// QString* str = new QString("850");
+
+	emit CommandWaveLengthSent(QString("850"));
 }
 
 void OptoconBasicDevelopmentView::onWaveLength1300Clicked()

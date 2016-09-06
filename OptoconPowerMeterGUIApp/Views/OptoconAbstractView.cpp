@@ -2,10 +2,14 @@
 #include "setlimitwindow.h"
 #include "Views/OptoconBasicDevelopmentView.h"
 
-OptoconAbstractView::OptoconAbstractView(AbstractViewModel* viewModel, QWidget * parent) : QMainWindow(parent)
+OptoconAbstractView::OptoconAbstractView(AbstractViewModel* viewModel, AbstractCommandFactory& cmdFactory, QWidget * parent) : QMainWindow(parent),
+																						   viewModel(viewModel),
+																						   commandFactory(cmdFactory)
 {
 	QObject::connect(this, SIGNAL(CBStateChanged(QCheckBox*, QTextEdit*)), this, SLOT(CheckedHandler(QCheckBox*, QTextEdit*)));
 
+	// Cmd signal connect
+	QObject::connect(this, SIGNAL(CommandWaveLengthSent(QString)), this, SLOT(onWaveLengthSent(QString)));
 }
 
 
@@ -18,10 +22,7 @@ void OptoconAbstractView::CheckedHandler(QCheckBox* checkedBox, QTextEdit* textE
 {
 	if (checkedBox->isChecked())
 	{		
-		textEdit->setStyleSheet("QTextEdit { background-color: yellow }");
-
-		// TODO: style sheets are not working for inherited widgets - cutom edits
-		//textEdit->setStyleSheet("QTextEditCustom { background-color: yellow }");
+		textEdit->setStyleSheet("QTextEdit { background-color: yellow }");		
 	}
 	else
 	{		

@@ -38,9 +38,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\qrc_qttestapp1.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_mymodel.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
@@ -104,14 +101,23 @@
     <ClCompile Include="Commands\CommunicationCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Commands\CommandFactory.cpp">
+    <ClCompile Include="Commands\DefaultCommandFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Commands\AbstractCommandFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\AbstractCommunicationHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\SerialIOCommunicationHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\TCPIPCommunicationHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="qttestapp1.qrc">
-      <Filter>Resource Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="CustomWidgets\qtexteditcustom.hpp">
       <Filter>Header Files</Filter>
     </CustomBuild>
@@ -171,7 +177,22 @@
     <ClInclude Include="Commands\CommunicationCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Commands\CommandFactory.h">
+    <ClInclude Include="Commands\DefaultCommandFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Commands\AbstractCommandFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Helpers\AbstractCommunicationHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Helpers\SerialIOCommunicationHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Helpers\TCPIPCommunicationHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

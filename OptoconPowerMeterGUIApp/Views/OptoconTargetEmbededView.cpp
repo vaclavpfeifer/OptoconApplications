@@ -1,7 +1,7 @@
 #include "OptoconTargetEmbededView.h"
 #include "setlimitwindow.h"
 
-OptoconTargetEmbededView::OptoconTargetEmbededView() : OptoconAbstractView(nullptr)
+OptoconTargetEmbededView::OptoconTargetEmbededView(AbstractCommandFactory& cmdFactory) : OptoconAbstractView(nullptr, cmdFactory)
 {
 	ui.setupUi(this);
 
