@@ -1,9 +1,12 @@
-﻿#ifndef MAIN_WINDOW_OPTOCON_H
-#define MAIN_WINDOW_OPTOCON_H
+﻿#ifndef OPTOCON_ABSTRACT_VIEW_H
+#define OPTOCON_ABSTRACT_VIEW_H
 
 #include "ui_OptoconBasicDevelopmentView.h"
 #include "ui_OptoconTargetEmbededView.h"
 #include "ViewModels\AbstractViewModel.h"
+
+// TODO: 
+
 
 class OptoconAbstractView : public QMainWindow
 {
@@ -11,68 +14,57 @@ class OptoconAbstractView : public QMainWindow
 
 // Constructors/Desstructors
 public:
-	explicit OptoconAbstractView(QWidget * parent = Q_NULLPTR);
+	// explicit OptoconAbstractView();
 
-	explicit OptoconAbstractView(AbstractViewModel* viewModel, int a);
+	explicit OptoconAbstractView(AbstractViewModel* viewModel, QWidget * parent = Q_NULLPTR);
 	~OptoconAbstractView();
-
 
 // Handlers
 public slots:
+	
+	// TODO: here should goes common handlers for commands/ non-ui methods
+	// TODO: Gui-related methods should be probably removed from here and just moved to concrete impl class
 
+
+	// Virtual methods with default implementation
+	virtual void CheckedHandler(QCheckBox* checkedBox, QTextEdit* textEdit);
+
+	// Pure virtual methods -- must be implemented
 	// A-A4 set-up
-	void ViewAll();
-	void CheckedA1();
-	void CheckedA2();
-	void CheckedA3();
-	void CheckedA4();
+	virtual void ViewAll() = 0;
+	virtual void CheckedA1() = 0;
+	virtual void CheckedA2() = 0;
+	virtual void CheckedA3() = 0;
+	virtual void CheckedA4() = 0;
 
-	void onWaveLength850Clicked();
+	virtual void onWaveLength850Clicked() = 0;
 
-	void onWaveLength1300Clicked();
+	virtual void onWaveLength1300Clicked() = 0;
 
-	void onWaveLength1310Clicked();
+	virtual void onWaveLength1310Clicked() = 0;
 
-	void onWaveLength1550Clicked();
+	virtual void onWaveLength1550Clicked() = 0;
 
-	void onWaveLengthOFFClicked();
+	virtual void onWaveLengthOFFClicked() = 0;
 
-	void onReference_dBClicked() const;
+	virtual void onReference_dBClicked() = 0;
 
-	void onReference_dBMmClicked() const;
-
-	static void CheckedHandler(QCheckBox* checkedBox, QTextEdit* textEdit);
-
+	virtual void onReference_dBMmClicked() = 0;	
+	
 	// Limit Set-up
-	static void CheckLimit();
+	virtual void CheckLimit() = 0;
 
-	void onNewLimitSet(QString newLimit) const;
+	virtual void onNewLimitSet(QString newLimit) = 0;
 
-	void onBtnClick_SetLimit();
+	virtual void onBtnClick_SetLimit() = 0;
 
-	void onRBStatusChanged(bool isChecked);
+	virtual void onRBStatusChanged(bool isChecked) = 0;
 
 // Events
 signals:
 	void CBStateChanged(QCheckBox* checkedBox, QTextEdit* textEdit);
 	void WaveLengthChanged(QPushButton* clickedPB);
 
-protected:
-	std::list<QPushButton*> waveLengthButtons;
-
-	void DisableWaveLengthButtons();
-
-public:
-	// TODO: make pure virtual...
-	inline virtual QTextEdit* GetTextEditA1()
-	{
-		return ui.textEdit_A1;
-	}
-
-private:
-	Ui::MainWindowOptocon ui;
-
-	// Ui::OptoconTargetLinuxView ui;
 };
 
 

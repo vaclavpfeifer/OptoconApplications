@@ -95,6 +95,18 @@
     <ClCompile Include="Views\setlimitwindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Views\OptoconTargetEmbededView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Commands\AbstractCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Commands\CommunicationCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Commands\CommandFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="qttestapp1.qrc">
@@ -104,9 +116,6 @@
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="CustomWidgets\qtexteditcustom.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CustomWidgets\OptoconTargetEmbededView.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
     <CustomBuild Include="Views\OptoconBasicDevelopmentView.h">
@@ -126,6 +135,9 @@
     </CustomBuild>
     <CustomBuild Include="Views\setlimitwindow.h">
       <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Views\OptoconTargetEmbededView.ui">
+      <Filter>Form Files</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +161,18 @@
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_OptoconBasicDevelopmentView.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Views\OptoconTargetEmbededView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Commands\AbstractCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Commands\CommunicationCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Commands\CommandFactory.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

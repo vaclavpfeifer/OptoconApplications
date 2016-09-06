@@ -77,6 +77,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Commands\CommandFactory.cpp" />
+    <ClCompile Include="Commands\AbstractCommand.cpp" />
+    <ClCompile Include="Commands\CommunicationCommand.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_OptoconAbstractView.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -89,6 +92,7 @@
     <ClCompile Include="GeneratedFiles\Release\moc_OptoconBasicDevelopmentView.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Views\OptoconTargetEmbededView.cpp" />
     <ClCompile Include="Views\OptoconBasicDevelopmentView.cpp" />
     <ClCompile Include="ViewModels\AbstractViewModel.cpp" />
     <ClCompile Include="ViewModels\BasicViewModel.cpp" />
@@ -144,7 +148,11 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtWidgets" "-I.\CustomWidgets"</Command>
     </CustomBuild>
+    <ClInclude Include="Commands\CommandFactory.h" />
+    <ClInclude Include="Commands\AbstractCommand.h" />
+    <ClInclude Include="Commands\CommunicationCommand.h" />
     <ClInclude Include="GeneratedFiles\ui_OptoconBasicDevelopmentView.h" />
+    <ClInclude Include="Views\OptoconTargetEmbededView.h" />
     <ClInclude Include="ViewModels\AbstractViewModel.h" />
     <ClInclude Include="ViewModels\BasicViewModel.h" />
     <ClInclude Include="GeneratedFiles\ui_OptoconTargetEmbededView.h" />
@@ -232,7 +240,7 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="CustomWidgets\OptoconTargetEmbededView.ui">
+    <CustomBuild Include="Views\OptoconTargetEmbededView.ui">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Uic%27ing %(Identity)...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
@@ -248,7 +256,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties MocDir=".\GeneratedFiles\$(ConfigurationName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOptions="" lupdateOnBuild="0" lreleaseOptions="" Qt5Version_x0020_Win32="msvc2015" MocOptions="" />
+      <UserProperties MocDir=".\GeneratedFiles\$(ConfigurationName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOptions="" lupdateOnBuild="0" lreleaseOptions="" Qt5Version_x0020_Win32="msvc2015_test" MocOptions="" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

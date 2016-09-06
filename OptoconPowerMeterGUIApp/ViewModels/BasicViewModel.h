@@ -3,6 +3,7 @@
 #pragma once
 
 #include "AbstractViewModel.h"
+#include "ui_OptoconBasicDevelopmentView.h"
 
 class BasicViewModel : public AbstractViewModel
 {
@@ -15,6 +16,9 @@ public:
 	{
 
 	}
+
+protected:
+	Ui::MainWindowOptocon ui;
 
 };
 
