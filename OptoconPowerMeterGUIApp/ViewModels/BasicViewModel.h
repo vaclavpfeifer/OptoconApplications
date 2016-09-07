@@ -1,9 +1,7 @@
-// TODO: change to IFDEFINED!
-
-#pragma once
+#ifndef BASIC_VIEW_MODEL_H
+#define BASIC_VIEW_MODEL_H
 
 #include "AbstractViewModel.h"
-#include "ui_OptoconBasicDevelopmentView.h"
 
 class BasicViewModel : public AbstractViewModel
 {
@@ -17,8 +15,7 @@ public:
 
 	}
 
-protected:
-	Ui::MainWindowOptocon ui;
 
 };
 
+#endif

@@ -5,6 +5,7 @@
 #include "ui_OptoconTargetEmbededView.h"
 #include "ViewModels\AbstractViewModel.h"
 #include "Commands/AbstractCommandFactory.h"
+#include "Commands\CommunicationCommand.h"
 
 // TODO: 
 
@@ -36,10 +37,15 @@ public slots:
 			auto cmd = commandFactory.CreateSerialIOCommand();
 			auto retVal = cmd->execute();
 
+
+			viewModel->setActiveWaveLength(WaveLengthEnum::WAVELENGTH_1500);
+
 			// TODO: retVal of commands or command directly could infkluence just ViewModel and view could be updated through binding...
 
 		}
 	}
+
+
 
 signals:
 	void CBStateChanged(QCheckBox* checkedBox, QTextEdit* textEdit);

@@ -116,6 +116,15 @@
     <ClCompile Include="Helpers\TCPIPCommunicationHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Commands\GUICommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_AbstractViewModel.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_AbstractViewModel.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="CustomWidgets\qtexteditcustom.hpp">
@@ -145,6 +154,9 @@
     <CustomBuild Include="Views\OptoconTargetEmbededView.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="ViewModels\AbstractViewModel.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CustomWidgets\QPushButtonCustom.h">
@@ -160,9 +172,6 @@
       <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="ViewModels\BasicViewModel.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ViewModels\AbstractViewModel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_OptoconBasicDevelopmentView.h">
@@ -193,6 +202,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Helpers\TCPIPCommunicationHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Commands\GUICommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

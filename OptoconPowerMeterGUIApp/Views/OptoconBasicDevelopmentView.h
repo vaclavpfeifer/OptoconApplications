@@ -33,6 +33,9 @@ private slots:
 	void onBtnClick_SetLimit() ;
 	void onRBStatusChanged(bool isChecked) ;
 	
+	// binding 
+	void onWaveLengthChangedTest(WaveLengthEnum newWaveLength);
+
 	// Internal attributes
 private:
 	std::list<QPushButton*> waveLengthButtons;

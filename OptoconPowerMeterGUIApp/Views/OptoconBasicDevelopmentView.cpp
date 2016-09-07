@@ -50,9 +50,22 @@ OptoconBasicDevelopmentView::OptoconBasicDevelopmentView(AbstractCommandFactory&
 	QObject::connect(ui.PB_1550, SIGNAL(clicked()), this, SLOT(onWaveLength1550Clicked()));
 	QObject::connect(ui.PB_OFF, SIGNAL(clicked()), this, SLOT(onWaveLengthOFFClicked()));
 	
+	// SET BINDING
+	QObject::connect(viewModel, SIGNAL(waveLengthChanged(WaveLengthEnum)), this, SLOT(onWaveLengthChangedTest(WaveLengthEnum)));
+	
+	/*QObject::connect(ui.PB_1310, SIGNAL(clicked()), this, SLOT(onWaveLength1310Clicked()));
+	QObject::connect(ui.PB_1550, SIGNAL(clicked()), this, SLOT(onWaveLength1550Clicked()));
+	QObject::connect(ui.PB_OFF, SIGNAL(clicked()), this, SLOT(onWaveLengthOFFClicked()));*/
+
+
 	QObject::connect(ui.PB_dB, SIGNAL(clicked()), this, SLOT(onReference_dBClicked()));
 	QObject::connect(ui.PB_dBm, SIGNAL(clicked()), this, SLOT(onReference_dBMmClicked()));
 	
+
+
+
+
+
 	QMetaObject::connectSlotsByName(this);
 }
 
@@ -105,7 +118,11 @@ void OptoconBasicDevelopmentView::CheckedA3()
 
 void OptoconBasicDevelopmentView::CheckedA4()
 {
-	emit CBStateChanged(ui.checkBox_A4, ui.textEdit_A4);
+	// emit CBStateChanged(ui.checkBox_A4, ui.textEdit_A4);
+
+	CheckedHandler(ui.checkBox_A4, ui.textEdit_A4);
+
+	// vs. directly call CheckedHandler
 }
 
 void OptoconBasicDevelopmentView::onWaveLength850Clicked()
@@ -119,32 +136,48 @@ void OptoconBasicDevelopmentView::onWaveLength850Clicked()
 	// QString* str = new QString("850");
 
 	emit CommandWaveLengthSent(QString("850"));
+
+	// TODO: vs. directly call handler....
+
 }
 
 void OptoconBasicDevelopmentView::onWaveLength1300Clicked()
 {
 	DisableWaveLengthButtons();
 	ui.PB_1300->setChecked(true);
+
+	// TODO: checking binding....
+	//emit viewModel->waveLengthChanged(WaveLengthEnum::WAVELENGTH_1300);
 }
 
 void OptoconBasicDevelopmentView::onWaveLength1310Clicked()
 {
 	DisableWaveLengthButtons();
 	ui.PB_1310->setChecked(true);
+
+	//emit viewModel->waveLengthChanged(WaveLengthEnum::WAVELENGTH_1310);
 }
 
 void OptoconBasicDevelopmentView::onWaveLength1550Clicked()
 {
 	DisableWaveLengthButtons();
 	ui.PB_1550->setChecked(true);
+
+	//emit viewModel->waveLengthChanged(WaveLengthEnum::WAVELENGTH_1500);
 }
 
 void OptoconBasicDevelopmentView::onWaveLengthOFFClicked()
 {
 	DisableWaveLengthButtons();
 	ui.PB_OFF->setChecked(true);
+
+	//emit viewModel->waveLengthChanged(WaveLengthEnum::WAVELENGTH_OFF);
 }
 
+
+
+
+// TODO: 
 void OptoconBasicDevelopmentView::onReference_dBClicked()
 {
 	ui.PB_dB->setChecked(true);
@@ -191,6 +224,23 @@ void OptoconBasicDevelopmentView::onRBStatusChanged(bool isChecked)
 	}
 
 	// TODO: Here we should emit signal that status has been changed (to disable the previous state)
+}
+
+void OptoconBasicDevelopmentView::onWaveLengthChangedTest(WaveLengthEnum newWaveLength)
+{
+	switch (newWaveLength)
+	{
+	case WaveLengthEnum::WAVELENGTH_1300:
+		this->onWaveLength1300Clicked();
+		break;
+	case WaveLengthEnum::WAVELENGTH_1500:
+		this->onWaveLength1550Clicked();
+		break;
+	case WaveLengthEnum::WAVELENGTH_OFF:
+		this->onWaveLengthOFFClicked();
+		break;
+	}
+
 }
 
 void OptoconBasicDevelopmentView::DisableWaveLengthButtons()

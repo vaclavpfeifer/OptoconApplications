@@ -22,12 +22,12 @@ public:
 
 	virtual ~DefaultCommandFactory();
 
-	inline virtual std::shared_ptr<AbstractCommand> CreateSerialIOCommand() override	
+	inline virtual std::shared_ptr<CommunicationCommand> CreateSerialIOCommand() override
 	{		
 		return std::make_shared<CommunicationCommand>(ioHelperClass);
 	}
 	
-	inline virtual std::shared_ptr<AbstractCommand> CreateTCPIPCommand() override
+	inline virtual std::shared_ptr<CommunicationCommand> CreateTCPIPCommand() override
 	{
 		return std::make_shared<CommunicationCommand>(tcpIPHelperClass);
 	}
