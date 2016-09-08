@@ -32,9 +32,15 @@ public:
 		return std::make_shared<CommunicationCommand>(tcpIPHelperClass);
 	}
 
+	inline virtual std::shared_ptr<GUICommand> DefaultCommandFactory::CreateGUICommand()
+	{
+		return std::make_shared<GUICommand>();
+	}
+
+
 private:
 	SerialIOCommunicationHelper ioHelperClass;
-	TCPIPCommunicationHelper tcpIPHelperClass;
+	TCPIPCommunicationHelper tcpIPHelperClass;	
 };
 
 

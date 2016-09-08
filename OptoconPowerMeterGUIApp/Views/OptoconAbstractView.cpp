@@ -2,7 +2,7 @@
 #include "setlimitwindow.h"
 #include "Views/OptoconBasicDevelopmentView.h"
 
-OptoconAbstractView::OptoconAbstractView(AbstractViewModel* viewModel, AbstractCommandFactory& cmdFactory, QWidget * parent) : QMainWindow(parent),
+OptoconAbstractView::OptoconAbstractView(std::shared_ptr<AbstractViewModel> viewModel, AbstractCommandFactory& cmdFactory, QWidget * parent) : QMainWindow(parent),
 																						   viewModel(viewModel),
 																						   commandFactory(cmdFactory)
 {

@@ -9,7 +9,7 @@ class OptoconBasicDevelopmentView : public OptoconAbstractView
 	Q_OBJECT
 
 public:
-	OptoconBasicDevelopmentView(AbstractCommandFactory& cmdFactory, AbstractViewModel* viewModel = nullptr, QWidget * parent = Q_NULLPTR);
+	OptoconBasicDevelopmentView(AbstractCommandFactory& cmdFactory, std::shared_ptr<AbstractViewModel> viewModel = nullptr, QWidget * parent = Q_NULLPTR);
 
 	virtual ~OptoconBasicDevelopmentView();
 
@@ -35,6 +35,7 @@ private slots:
 	
 	// binding 
 	void onWaveLengthChangedTest(WaveLengthEnum newWaveLength);
+	void onButtonExecGUICmdClicked();
 
 	// Internal attributes
 private:

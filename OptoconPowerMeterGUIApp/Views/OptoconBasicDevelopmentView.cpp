@@ -1,7 +1,7 @@
-#include "OptoconBasicDevelopmentView.h"
+#include "Views\OptoconBasicDevelopmentView.h"
 #include "setlimitwindow.h"
 
-OptoconBasicDevelopmentView::OptoconBasicDevelopmentView(AbstractCommandFactory& cmdFactory, AbstractViewModel* viewModel, QWidget * parent)
+OptoconBasicDevelopmentView::OptoconBasicDevelopmentView(AbstractCommandFactory& cmdFactory, std::shared_ptr<AbstractViewModel> viewModel, QWidget * parent)
 	: OptoconAbstractView(viewModel, cmdFactory, parent)
 {
 	ui.setupUi(this);
@@ -51,20 +51,26 @@ OptoconBasicDevelopmentView::OptoconBasicDevelopmentView(AbstractCommandFactory&
 	QObject::connect(ui.PB_OFF, SIGNAL(clicked()), this, SLOT(onWaveLengthOFFClicked()));
 	
 	// SET BINDING
-	QObject::connect(viewModel, SIGNAL(waveLengthChanged(WaveLengthEnum)), this, SLOT(onWaveLengthChangedTest(WaveLengthEnum)));
+	QObject::connect(viewModel.get(), SIGNAL(waveLengthChanged(WaveLengthEnum)), this, SLOT(onWaveLengthChangedTest(WaveLengthEnum)));
+
+	//QObject::connect(viewModel.get(), SIGNAL(waveLengthChanged(WaveLengthEnum)), this, SLOT(onWaveLengthChangedTest(WaveLengthEnum)));
+
+	//QObject::connect(this, &viewModel->waveLengthChanged, viewModel.get(), );
 	
 	/*QObject::connect(ui.PB_1310, SIGNAL(clicked()), this, SLOT(onWaveLength1310Clicked()));
 	QObject::connect(ui.PB_1550, SIGNAL(clicked()), this, SLOT(onWaveLength1550Clicked()));
 	QObject::connect(ui.PB_OFF, SIGNAL(clicked()), this, SLOT(onWaveLengthOFFClicked()));*/
 
+	// Testing command buttons
+	QObject::connect(ui.PB_execGUICmd, SIGNAL(clicked()), this, SLOT(onButtonExecGUICmdClicked()));
+
+
+
+	// radio buttons
 
 	QObject::connect(ui.PB_dB, SIGNAL(clicked()), this, SLOT(onReference_dBClicked()));
 	QObject::connect(ui.PB_dBm, SIGNAL(clicked()), this, SLOT(onReference_dBMmClicked()));
 	
-
-
-
-
 
 	QMetaObject::connectSlotsByName(this);
 }
@@ -135,7 +141,7 @@ void OptoconBasicDevelopmentView::onWaveLength850Clicked()
 
 	// QString* str = new QString("850");
 
-	emit CommandWaveLengthSent(QString("850"));
+	// emit CommandWaveLengthSent(QString("850"));
 
 	// TODO: vs. directly call handler....
 
@@ -230,8 +236,14 @@ void OptoconBasicDevelopmentView::onWaveLengthChangedTest(WaveLengthEnum newWave
 {
 	switch (newWaveLength)
 	{
+	case WaveLengthEnum::WAVELENGTH_850:
+		this->onWaveLength850Clicked();
+		break;
 	case WaveLengthEnum::WAVELENGTH_1300:
 		this->onWaveLength1300Clicked();
+		break;
+	case WaveLengthEnum::WAVELENGTH_1310:
+		this->onWaveLength1310Clicked();
 		break;
 	case WaveLengthEnum::WAVELENGTH_1500:
 		this->onWaveLength1550Clicked();
@@ -242,6 +254,17 @@ void OptoconBasicDevelopmentView::onWaveLengthChangedTest(WaveLengthEnum newWave
 	}
 
 }
+
+void OptoconBasicDevelopmentView::onButtonExecGUICmdClicked()
+{
+	// Create and execute command
+	auto cmd = commandFactory.CreateGUICommand();
+	cmd->setViewModel(viewModel);
+	auto retVal = cmd->execute();
+
+}
+
+
 
 void OptoconBasicDevelopmentView::DisableWaveLengthButtons()
 {

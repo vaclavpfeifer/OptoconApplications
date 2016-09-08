@@ -18,7 +18,7 @@ class OptoconAbstractView : public QMainWindow
 public:
 	// explicit OptoconAbstractView();
 
-	explicit OptoconAbstractView(AbstractViewModel* viewModel, AbstractCommandFactory& cmdFactory, QWidget * parent = Q_NULLPTR);
+	explicit OptoconAbstractView(std::shared_ptr<AbstractViewModel> viewModel, AbstractCommandFactory& cmdFactory, QWidget * parent = Q_NULLPTR);
 	~OptoconAbstractView();
 
 // Handlers
@@ -55,7 +55,7 @@ signals:
 	void CommandWaveLengthSent(QString wl);
 
 protected:
-	AbstractViewModel* viewModel; // TODO: Move this to reference when started using!!!
+	std::shared_ptr<AbstractViewModel> viewModel; // TODO: Move this to reference when started using!!!
 	AbstractCommandFactory& commandFactory;
 };
 

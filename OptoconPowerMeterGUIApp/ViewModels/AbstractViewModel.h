@@ -35,9 +35,11 @@ public:
 signals:
 	void waveLengthChanged(WaveLengthEnum newWL);
 
+	// static void waveLengthChangedStatic(WaveLengthEnum newWL);
+
 	// Internal attributes
 protected:
-	WaveLengthEnum ActiveWaveLength;
+	WaveLengthEnum ActiveWaveLength = WaveLengthEnum::WAVELENGTH_850;
 
 };
 
