@@ -9,6 +9,10 @@ public:
 	virtual ~AbstractCommand();
 
 	virtual int execute() = 0;
+
+protected:
+	long id; // TODO: id for command type identification or for a number odintifying sequence	 
+
 };
 
 

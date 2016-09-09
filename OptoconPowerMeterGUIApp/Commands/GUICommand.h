@@ -20,23 +20,20 @@ public:
 	{
 		// Disable WaveLength
 		viewModel->setActiveWaveLength(WaveLengthEnum::WAVELENGTH_OFF);
-
-
 		// Call another commands? Or do this in some kind of composite command?
-
-
 		return 0;
 	}
 
 	// TODO: or better registry viewModel to factory/OR for gui commands we should have execute with parameter which is taking ViewModel?
+	// TODO: view model should be set through constructor for all gui based commands...
 	void setViewModel(std::shared_ptr<AbstractViewModel>& vm)
 	{
 		this->viewModel = vm;
 	}
 
-	void setCustomCode(std::function<int()> predicate)
+	int execute(std::function<int()> predicate)
 	{
-
+		return predicate();
 	}
 
 private:

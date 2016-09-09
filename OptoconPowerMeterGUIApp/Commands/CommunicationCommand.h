@@ -4,6 +4,7 @@
 #include "Commands\AbstractCommand.h"
 #include "Helpers/AbstractCommunicationHelper.h"
 #include <memory>
+#include <string>
 
 // TODO: create header files with possible Return values for execute method...
 
@@ -18,14 +19,15 @@ public:
 
 	virtual ~CommunicationCommand();
 
-
-	int execute() override
+	virtual int execute() override
 	{
 		return 0;
 	}
 
 private:
 	AbstractCommunicationHelper& ioCommHelper;
+	std::string execString; // TODO:  this should be set in concrete command constructor 
+
 };
 
 #endif
