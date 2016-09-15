@@ -2,7 +2,7 @@
 #include "setlimitwindow.h"
 #include "Views/OptoconBasicDevelopmentView.h"
 
-OptoconAbstractView::OptoconAbstractView(std::shared_ptr<AbstractViewModel> viewModel, AbstractCommandFactory& cmdFactory, QWidget * parent) : QMainWindow(parent),
+OptoconAbstractView::OptoconAbstractView(AbstractViewModel& viewModel, AbstractCommandFactory& cmdFactory, QWidget * parent) : QMainWindow(parent),
 																						   viewModel(viewModel),
 																						   commandFactory(cmdFactory)
 {
@@ -27,5 +27,13 @@ void OptoconAbstractView::CheckedHandler(QCheckBox* checkedBox, QTextEdit* textE
 	else
 	{		
 		textEdit->setStyleSheet("QTextEdit { background-color: white }");
+	}
+}
+
+void OptoconAbstractView::DisableWaveLengthButtons()
+{
+	for each (auto pb in waveLengthButtons)
+	{
+		pb->setChecked(false);
 	}
 }

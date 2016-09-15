@@ -5,16 +5,16 @@
 #include "Views\OptoconAbstractView.hpp"
 
 class OptoconBasicDevelopmentView : public OptoconAbstractView
-{
-	Q_OBJECT
+{	
+	  Q_OBJECT // Must be here in order to signals work
 
 public:
-	OptoconBasicDevelopmentView(AbstractCommandFactory& cmdFactory, std::shared_ptr<AbstractViewModel> viewModel = nullptr, QWidget * parent = Q_NULLPTR);
+	OptoconBasicDevelopmentView(AbstractCommandFactory& cmdFactory, AbstractViewModel& viewModel, QWidget * parent = Q_NULLPTR);
 
 	virtual ~OptoconBasicDevelopmentView();
 
 	// Handlers
-private slots:
+private:
 
 	void ViewAll() ;
 	void CheckedA1() ;
@@ -38,9 +38,9 @@ private slots:
 	void onButtonExecGUICmdClicked();
 
 	// Internal attributes
-private:
-	std::list<QPushButton*> waveLengthButtons;
-	void DisableWaveLengthButtons();
+//private:
+//	std::list<QPushButton*> waveLengthButtons;
+//	void DisableWaveLengthButtons();
 	
 	Ui::MainWindowOptocon ui;
 };

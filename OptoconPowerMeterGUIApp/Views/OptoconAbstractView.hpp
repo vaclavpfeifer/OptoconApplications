@@ -20,7 +20,7 @@ class OptoconAbstractView : public QMainWindow
 public:
 	// explicit OptoconAbstractView();
 
-	explicit OptoconAbstractView(std::shared_ptr<AbstractViewModel> viewModel, AbstractCommandFactory& cmdFactory, QWidget * parent = Q_NULLPTR);
+	explicit OptoconAbstractView(AbstractViewModel& viewModel, AbstractCommandFactory& cmdFactory, QWidget * parent = Q_NULLPTR);
 	~OptoconAbstractView();
 
 // Handlers
@@ -32,21 +32,21 @@ public slots:
 	virtual void CheckedHandler(QCheckBox* checkedBox, QTextEdit* textEdit);
 
 	// Cmd Handlers
-	void onWaveLengthSent(QString waveLength) const
-	{
-		if (waveLength == "850")
-		{
-			auto cmd = commandFactory.CreateSerialIOCommand();
-			auto retVal = cmd->execute();
+	//void onWaveLengthSent(QString waveLength) const
+	//{
+	//	if (waveLength == "850")
+	//	{
+	//		auto cmd = commandFactory.CreateSerialIOCommand();
+	//		auto retVal = cmd->execute();
 
 
-			viewModel->setActiveWaveLength(WaveLengthEnum::WAVELENGTH_1500);
+	//		viewModel.setActiveWaveLength(WaveLengthEnum::WAVELENGTH_1500);
 
-			// TODO: retVal of commands or command directly could infkluence just ViewModel and view could be updated through binding...
+	//		// TODO: retVal of commands or command directly could infkluence just ViewModel and view could be updated through binding...
 
-		}
-	}
-
+	//	}
+	//}
+	
 
 
 signals:
@@ -56,9 +56,15 @@ signals:
 	// Cmd Signals
 	void CommandWaveLengthSent(QString wl);
 
+	// Shared Methods
 protected:
-	std::shared_ptr<AbstractViewModel> viewModel; // TODO: Move this to reference when started using!!!
+	void DisableWaveLengthButtons();
+
+protected:
+	AbstractViewModel& viewModel; // TODO: Move this to reference when started using!!!
 	AbstractCommandFactory& commandFactory;
+
+	std::list<QPushButton*> waveLengthButtons;
 };
 
 

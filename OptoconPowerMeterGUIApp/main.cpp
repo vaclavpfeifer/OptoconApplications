@@ -15,23 +15,21 @@ int main(int argc, char *argv[])
 	//auto commandFactory = std::make_shared<DefaultCommandFactory>();
 
 	QApplication a(argc, argv);
-	DefaultCommandFactory cmdFactory;
-
 
 	// Create View Model
 	// VM is not used at this point
 
 	// TODO: switch viewModel to reference and update code accordinghly..
-	auto viewModel = std::make_shared<BasicViewModel>();
+	// auto viewModel = std::make_shared<BasicViewModel>();
+	BasicViewModel viewModel;
+
+
+	DefaultCommandFactory cmdFactory(viewModel);
 
 	//OptoconAbstractView w;
 	// Create View with proper ViewModel
-	auto view = std::make_unique<OptoconBasicDevelopmentView>(cmdFactory, viewModel);
-	//auto view = std::make_unique<OptoconTargetEmbededView>(cmdFactory);
-
-
-	//// auto view = new OptoconTargetEmbededView();
-
+	//auto view = std::make_unique<OptoconBasicDevelopmentView>(cmdFactory, viewModel);
+	auto view = std::make_unique<OptoconTargetEmbededView>(cmdFactory, viewModel);
 
 	view->show();
 	return a.exec();

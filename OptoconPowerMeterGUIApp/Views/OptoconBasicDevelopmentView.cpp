@@ -1,7 +1,7 @@
 #include "Views\OptoconBasicDevelopmentView.h"
 #include "setlimitwindow.h"
 
-OptoconBasicDevelopmentView::OptoconBasicDevelopmentView(AbstractCommandFactory& cmdFactory, std::shared_ptr<AbstractViewModel> viewModel, QWidget * parent)
+OptoconBasicDevelopmentView::OptoconBasicDevelopmentView(AbstractCommandFactory& cmdFactory, AbstractViewModel& viewModel, QWidget * parent)
 	: OptoconAbstractView(viewModel, cmdFactory, parent)
 {
 	ui.setupUi(this);
@@ -53,10 +53,13 @@ OptoconBasicDevelopmentView::OptoconBasicDevelopmentView(AbstractCommandFactory&
 
 
 
-	// SET BINDING
-	QObject::connect(viewModel.get(), SIGNAL(waveLengthChanged(WaveLengthEnum)), this, SLOT(onWaveLengthChangedTest(WaveLengthEnum)));
+	// SET BINDING (one way binding)
+	QObject::connect(&viewModel, SIGNAL(waveLengthChanged(WaveLengthEnum)), this, SLOT(onWaveLengthChangedTest(WaveLengthEnum)));
 	// QObject::connect(this, SIGNAL(waveLengthChanged(WaveLengthEnum)), viewModel.get(), SLOT(setActiveWaveLength(WaveLengthEnum))); // Not working
 	//QObject::connect(ui.PB_1300, SIGNAL(clicked()), this, SLOT(onWaveLength1300Clicked()));
+
+
+
 
 	// END BINDING
 
@@ -153,7 +156,7 @@ void OptoconBasicDevelopmentView::onWaveLength850Clicked()
 
 	// TODO: emit vs. directly call handler....
 
-	viewModel->setActiveWaveLength(WaveLengthEnum::WAVELENGTH_850, true);
+	viewModel.setActiveWaveLength(WaveLengthEnum::WAVELENGTH_850, true);
 
 
 }
@@ -163,7 +166,7 @@ void OptoconBasicDevelopmentView::onWaveLength1300Clicked()
 	//DisableWaveLengthButtons();
 	//ui.PB_1300->setChecked(true);
 	
-	viewModel->setActiveWaveLength(WaveLengthEnum::WAVELENGTH_1300, true);
+	viewModel.setActiveWaveLength(WaveLengthEnum::WAVELENGTH_1300, true);
 
 
 	// TODO: checking binding....
@@ -174,7 +177,7 @@ void OptoconBasicDevelopmentView::onWaveLength1310Clicked()
 {
 	//DisableWaveLengthButtons();
 	//ui.PB_1310->setChecked(true);
-	viewModel->setActiveWaveLength(WaveLengthEnum::WAVELENGTH_1310, true);
+	viewModel.setActiveWaveLength(WaveLengthEnum::WAVELENGTH_1310, true);
 
 	//emit viewModel->waveLengthChanged(WaveLengthEnum::WAVELENGTH_1310);
 }
@@ -183,7 +186,7 @@ void OptoconBasicDevelopmentView::onWaveLength1550Clicked()
 {
 	//DisableWaveLengthButtons();
 	//ui.PB_1550->setChecked(true);
-	viewModel->setActiveWaveLength(WaveLengthEnum::WAVELENGTH_1500, true);
+	viewModel.setActiveWaveLength(WaveLengthEnum::WAVELENGTH_1500, true);
 
 	//emit viewModel->waveLengthChanged(WaveLengthEnum::WAVELENGTH_1500);
 }
@@ -192,7 +195,7 @@ void OptoconBasicDevelopmentView::onWaveLengthOFFClicked()
 {
 	//DisableWaveLengthButtons();
 	//ui.PB_OFF->setChecked(true);
-	viewModel->setActiveWaveLength(WaveLengthEnum::WAVELENGTH_OFF, true);
+	viewModel.setActiveWaveLength(WaveLengthEnum::WAVELENGTH_OFF, true);
 	//emit viewModel->waveLengthChanged(WaveLengthEnum::WAVELENGTH_OFF);
 }
 
@@ -238,12 +241,12 @@ void OptoconBasicDevelopmentView::onRBStatusChanged(bool isChecked)
 	//DisableWaveLengthButtons();
 	if (isChecked)
 	{
-		viewModel->setActiveWaveLength(WaveLengthEnum::WAVELENGTH_1310, true);
+		viewModel.setActiveWaveLength(WaveLengthEnum::WAVELENGTH_1310, true);
 		//ui.PB_1310->setChecked(true);
 	}
 	else
 	{
-		viewModel->setActiveWaveLength(WaveLengthEnum::WAVELENGTH_850, true);
+		viewModel.setActiveWaveLength(WaveLengthEnum::WAVELENGTH_850, true);
 		//ui.PB_850->setChecked(true);
 	}
 
@@ -284,17 +287,21 @@ void OptoconBasicDevelopmentView::onButtonExecGUICmdClicked()
 {
 	// Create and execute command
 	auto cmd = commandFactory.CreateGUICommand();
-	cmd->setViewModel(viewModel);
+	//cmd.setViewModel(viewModel);
 	auto retVal = cmd->execute();
 
+
+	// TODO: Should we call some method on viewModel which returns AbstractCommand type and that type then will be executed here?? 
+	// vs. execute directly on viewModel...
+
 }
 
 
 
-void OptoconBasicDevelopmentView::DisableWaveLengthButtons()
-{
-	for each (auto pb in waveLengthButtons)
-	{
-		pb->setChecked(false);
-	}
-}
+//void OptoconBasicDevelopmentView::DisableWaveLengthButtons()
+//{
+//	for each (auto pb in waveLengthButtons)
+//	{
+//		pb->setChecked(false);
+//	}
+//}

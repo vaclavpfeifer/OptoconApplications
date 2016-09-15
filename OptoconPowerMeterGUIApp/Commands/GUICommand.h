@@ -9,7 +9,7 @@
 class GUICommand : public AbstractCommand
 {
 public:
-	GUICommand()
+	GUICommand(AbstractViewModel& viewModel) : viewModel(viewModel)
 	{
 
 	}
@@ -19,17 +19,17 @@ public:
 	virtual int execute() override
 	{
 		// Disable WaveLength
-		viewModel->setActiveWaveLength(WaveLengthEnum::WAVELENGTH_OFF);
+		viewModel.setActiveWaveLength(WaveLengthEnum::WAVELENGTH_OFF);
 		// Call another commands? Or do this in some kind of composite command?
 		return 0;
 	}
 
 	// TODO: or better registry viewModel to factory/OR for gui commands we should have execute with parameter which is taking ViewModel?
 	// TODO: view model should be set through constructor for all gui based commands...
-	void setViewModel(std::shared_ptr<AbstractViewModel>& vm)
+	/*void setViewModel(std::shared_ptr<AbstractViewModel>& vm)
 	{
 		this->viewModel = vm;
-	}
+	}*/
 
 	int execute(std::function<int()> predicate)
 	{
@@ -37,7 +37,7 @@ public:
 	}
 
 private:
-	std::shared_ptr<AbstractViewModel> viewModel;
+	AbstractViewModel& viewModel;
 };
 
 #endif

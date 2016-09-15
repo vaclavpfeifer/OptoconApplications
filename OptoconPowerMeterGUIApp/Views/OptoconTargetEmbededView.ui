@@ -6,26 +6,312 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1021</width>
-    <height>836</height>
+    <width>388</width>
+    <height>361</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>320</width>
+    <height>200</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1000</width>
+    <height>1000</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QGroupBox" name="groupBox">
+   <widget class="QWidget" name="layoutWidget2">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>320</y>
-      <width>961</width>
-      <height>501</height>
+      <x>80</x>
+      <y>30</y>
+      <width>201</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QPushButton" name="PB_850">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>850</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="PB_1300">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>1300</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="PB_1310">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>1310</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <property name="checked">
+        <bool>false</bool>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="PB_1550">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>1550</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <property name="autoDefault">
+        <bool>true</bool>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="PB_OFF">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>OFF</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget1">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>0</y>
+      <width>92</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_1">
+     <item>
+      <widget class="QRadioButton" name="RB_SM">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>SM</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="RB_MM">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>MM</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>50</width>
+      <height>30</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>S/N</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>60</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QPushButton" name="PB_dB">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>dB</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="PB_dBm">
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>dBm</string>
+       </property>
+       <property name="checkable">
+        <bool>true</bool>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>30</y>
+      <width>81</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>wave length</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_4">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>60</y>
+      <width>71</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>reference</string>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="plainTextEdit">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>0</y>
+      <width>90</width>
+      <height>30</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>90</y>
+      <width>321</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>8</pointsize>
      </font>
     </property>
     <property name="title">
@@ -34,15 +320,15 @@
     <widget class="QTextEdit" name="textEdit_Limit">
      <property name="geometry">
       <rect>
-       <x>470</x>
-       <y>20</y>
-       <width>151</width>
-       <height>91</height>
+       <x>130</x>
+       <y>10</y>
+       <width>41</width>
+       <height>30</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <pointsize>30</pointsize>
+       <pointsize>10</pointsize>
       </font>
      </property>
      <property name="readOnly">
@@ -55,15 +341,15 @@
     <widget class="QCheckBox" name="checkBox_CheckLimit">
      <property name="geometry">
       <rect>
-       <x>240</x>
-       <y>20</y>
-       <width>221</width>
-       <height>91</height>
+       <x>40</x>
+       <y>10</y>
+       <width>91</width>
+       <height>30</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <pointsize>30</pointsize>
+       <pointsize>10</pointsize>
       </font>
      </property>
      <property name="text">
@@ -79,15 +365,15 @@
     <widget class="QPushButton" name="PB_Set">
      <property name="geometry">
       <rect>
-       <x>640</x>
-       <y>20</y>
-       <width>111</width>
-       <height>91</height>
+       <x>180</x>
+       <y>10</y>
+       <width>41</width>
+       <height>30</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <pointsize>30</pointsize>
+       <pointsize>10</pointsize>
       </font>
      </property>
      <property name="text">
@@ -97,10 +383,10 @@
     <widget class="QGroupBox" name="groupBox_2">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>140</y>
-       <width>941</width>
-       <height>361</height>
+       <x>0</x>
+       <y>40</y>
+       <width>321</width>
+       <height>141</height>
       </rect>
      </property>
      <property name="title">
@@ -112,12 +398,12 @@
         <x>10</x>
         <y>10</y>
         <width>71</width>
-        <height>91</height>
+        <height>30</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>30</pointsize>
+        <pointsize>10</pointsize>
        </font>
       </property>
       <property name="text">
@@ -133,11 +419,16 @@
      <widget class="QTextEdit" name="textEdit_A1">
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>50</x>
         <y>10</y>
-        <width>261</width>
-        <height>91</height>
+        <width>50</width>
+        <height>30</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -146,11 +437,16 @@
      <widget class="QTextEdit" name="textEdit_A2">
       <property name="geometry">
        <rect>
-        <x>90</x>
-        <y>120</y>
-        <width>261</width>
-        <height>91</height>
+        <x>50</x>
+        <y>50</y>
+        <width>50</width>
+        <height>30</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -160,14 +456,14 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>120</y>
+        <y>50</y>
         <width>71</width>
-        <height>91</height>
+        <height>30</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>30</pointsize>
+        <pointsize>10</pointsize>
        </font>
       </property>
       <property name="text">
@@ -183,11 +479,16 @@
      <widget class="QTextEdit" name="textEdit_A3">
       <property name="geometry">
        <rect>
-        <x>610</x>
+        <x>200</x>
         <y>10</y>
-        <width>261</width>
-        <height>91</height>
+        <width>50</width>
+        <height>30</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -196,15 +497,15 @@
      <widget class="QCheckBox" name="checkBox_A3">
       <property name="geometry">
        <rect>
-        <x>530</x>
+        <x>160</x>
         <y>10</y>
         <width>71</width>
-        <height>91</height>
+        <height>30</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>30</pointsize>
+        <pointsize>10</pointsize>
        </font>
       </property>
       <property name="text">
@@ -220,11 +521,16 @@
      <widget class="QTextEdit" name="textEdit_A4">
       <property name="geometry">
        <rect>
-        <x>610</x>
-        <y>120</y>
-        <width>261</width>
-        <height>91</height>
+        <x>200</x>
+        <y>50</y>
+        <width>50</width>
+        <height>30</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
       </property>
       <property name="readOnly">
        <bool>true</bool>
@@ -233,15 +539,15 @@
      <widget class="QCheckBox" name="checkBox_A4">
       <property name="geometry">
        <rect>
-        <x>530</x>
-        <y>120</y>
+        <x>160</x>
+        <y>50</y>
         <width>71</width>
-        <height>91</height>
+        <height>30</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>30</pointsize>
+        <pointsize>10</pointsize>
        </font>
       </property>
       <property name="text">
@@ -257,15 +563,15 @@
      <widget class="QPushButton" name="btn_selectAll">
       <property name="geometry">
        <rect>
-        <x>310</x>
-        <y>230</y>
-        <width>281</width>
-        <height>91</height>
+        <x>100</x>
+        <y>90</y>
+        <width>71</width>
+        <height>30</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>30</pointsize>
+        <pointsize>10</pointsize>
        </font>
       </property>
       <property name="text">
@@ -286,7 +592,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1021</width>
+     <width>388</width>
      <height>21</height>
     </rect>
    </property>
