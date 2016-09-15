@@ -3,15 +3,18 @@
 
 //#include "Views\OptoconAbstractView.hpp"
 #include "qobject.h"
+// #include "CommonOptoconSignals.h"
+#include "CommonDeclarations.h"
 
-enum WaveLengthEnum
-{
-	WAVELENGTH_850,
-	WAVELENGTH_1300,
-	WAVELENGTH_1310,
-	WAVELENGTH_1500,
-	WAVELENGTH_OFF
-};
+// TODO: this enum should be moved to some specific classes consts/enums??
+//enum WaveLengthEnum
+//{
+//	WAVELENGTH_850,
+//	WAVELENGTH_1300,
+//	WAVELENGTH_1310,
+//	WAVELENGTH_1500,
+//	WAVELENGTH_OFF
+//};
 
 class AbstractViewModel : public QObject
 {
@@ -24,10 +27,11 @@ public:
 	// Testing method
 	virtual void ViewAll() = 0;
 
-	virtual void setActiveWaveLength(WaveLengthEnum newWaveLength)
+	virtual void setActiveWaveLength(WaveLengthEnum newWaveLength, bool shouldEmit = true)
 	{
 		ActiveWaveLength = newWaveLength;
-		emit waveLengthChanged(newWaveLength);
+		if(shouldEmit)
+			emit waveLengthChanged(newWaveLength);
 	}
 
 

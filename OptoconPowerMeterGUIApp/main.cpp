@@ -27,6 +27,8 @@ int main(int argc, char *argv[])
 	//OptoconAbstractView w;
 	// Create View with proper ViewModel
 	auto view = std::make_unique<OptoconBasicDevelopmentView>(cmdFactory, viewModel);
+	//auto view = std::make_unique<OptoconTargetEmbededView>(cmdFactory);
+
 
 	//// auto view = new OptoconTargetEmbededView();
 
