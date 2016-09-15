@@ -7,29 +7,46 @@
 message("You are running qmake on a generated .pro file. This may not work!")
 
 
-HEADERS += ./ViewModels/AbstractViewModel.h \
+HEADERS += ./CommonDeclarations.h \
+    ./Constants.h \
+    ./Commands/GUICommand.h \
+    ./Helpers/AbstractCommunicationHelper.h \
+    ./Commands/AbstractCommandFactory.h \
+    ./Commands/DefaultCommandFactory.h \
+    ./Commands/AbstractCommand.h \
+    ./Commands/CommunicationCommand.h \
+    ./Helpers/SerialIOCommunicationHelper.h \
+    ./Helpers/TCPIPCommunicationHelper.h \
     ./ViewModels/BasicViewModel.h \
     ./CustomWidgets/QPushButtonCustom.h \
-    ./qttestapp1.h \
     ./CustomWidgets/qtexteditcustom.hpp \
+    ./Views/OptoconBasicDevelopmentView.h \
+    ./CommonOptoconSignals.h \
+    ./Views/OptoconTargetEmbededView.h \
+    ./ViewModels/AbstractViewModel.h \
     ./Views/setlimitwindow.h \
     ./Views/OptoconAbstractView.hpp \
-    ./Models/mymodel.h \
-    ./Views/OptoconBasicDevelopmentView.h
-SOURCES += ./ViewModels/AbstractViewModel.cpp \
+    ./Models/mymodel.h
+SOURCES += ./Commands/GUICommand.cpp \
+    ./CommonOptoconSignals.cpp \
+    ./Helpers/AbstractCommunicationHelper.cpp \
+    ./Commands/AbstractCommandFactory.cpp \
+    ./Commands/DefaultCommandFactory.cpp \
+    ./Commands/AbstractCommand.cpp \
+    ./Commands/CommunicationCommand.cpp \
+    ./Helpers/SerialIOCommunicationHelper.cpp \
+    ./Helpers/TCPIPCommunicationHelper.cpp \
+    ./Views/OptoconTargetEmbededView.cpp \
+    ./Views/OptoconBasicDevelopmentView.cpp \
+    ./ViewModels/AbstractViewModel.cpp \
     ./ViewModels/BasicViewModel.cpp \
     ./CustomWidgets/qtexteditcustom.cpp \
     ./main.cpp \
     ./Models/mymodel.cpp \
     ./Views/OptoconAbstractView.cpp \
     ./CustomWidgets/QPushButtonCustom.cpp \
-    ./qttestapp1.cpp \
-    ./Views/setlimitwindow.cpp \
-    ./Views/OptoconBasicDevelopmentView.cpp
-FORMS += ./qttestapp1.ui \
-    ./secondView.ui \
-    ./Views/OptoconBasicDevelopmentView.ui \
+    ./Views/setlimitwindow.cpp
+FORMS += ./Views/OptoconBasicDevelopmentView.ui \
     ./Views/setlimitwindow.ui \
     ./CustomWidgets/qtexteditcustom.ui \
-    ./CustomWidgets/OptoconTargetEmbededView.ui
-RESOURCES += qttestapp1.qrc
+    ./Views/OptoconTargetEmbededView.ui
