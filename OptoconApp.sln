@@ -7,6 +7,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OptoconPowerMeterGUIApp", "
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OptoconPowerMeterUnitTests", "OptoconPowerMeterUnitTests\OptoconPowerMeterUnitTests.vcxproj", "{6872151D-4453-4595-94A9-E76F35A6BF76}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "General", "General", "{3C683BDF-9926-4940-AB39-B9561D5BD3E3}"
+	ProjectSection(SolutionItems) = preProject
+		_readme.txt = _readme.txt
+		_todo.txt = _todo.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

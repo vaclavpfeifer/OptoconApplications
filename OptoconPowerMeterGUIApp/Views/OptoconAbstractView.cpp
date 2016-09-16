@@ -27,24 +27,23 @@ OptoconAbstractView::~OptoconAbstractView()
 	
 }
 
-void OptoconAbstractView::CheckedHandler(QCheckBox* checkedBox, QTextEdit* textEdit)
-{
-	if (checkedBox->isChecked())
-	{		
-		textEdit->setStyleSheet("QTextEdit { background-color: yellow }");		
-	}
-	else
-	{		
-		textEdit->setStyleSheet("QTextEdit { background-color: white }");
-	}
-}
 
 void OptoconAbstractView::DisableWaveLengthButtons()
 {
+	// TODO: delete one of those when migrated all views to one option
+
+	// For list 
 	for each (auto pb in waveLengthButtons)
 	{
 		pb->setChecked(false);
 	}
+
+	// for map
+	for each (auto pb in waveLengthButtonsMap)
+	{
+		pb.second->setChecked(false);
+	}
+
 }
 
 void OptoconAbstractView::CheckedHandler(QCheckBox* checkedBox, QTextEdit* textEdit, bool isChecked)

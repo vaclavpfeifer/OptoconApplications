@@ -110,36 +110,36 @@ void OptoconBasicDevelopmentView::ViewAll()
 	}
 
 	// Emit signals about checked check box state
-	emit CBStateChanged(ui.checkBox_A1, ui.textEdit_A1);
+	/*emit CBStateChanged(ui.checkBox_A1, ui.textEdit_A1);
 	emit CBStateChanged(ui.checkBox_A2, ui.textEdit_A2);
 	emit CBStateChanged(ui.checkBox_A3, ui.textEdit_A3);
-	emit CBStateChanged(ui.checkBox_A4, ui.textEdit_A4);
+	emit CBStateChanged(ui.checkBox_A4, ui.textEdit_A4);*/
 
 }
 
-void OptoconBasicDevelopmentView::CheckedA1()
-{
-	emit CBStateChanged(ui.checkBox_A1, ui.textEdit_A1);
-}
-
-void OptoconBasicDevelopmentView::CheckedA2()
-{
-	emit CBStateChanged(ui.checkBox_A2, ui.textEdit_A2);
-}
-
-void OptoconBasicDevelopmentView::CheckedA3()
-{
-	emit CBStateChanged(ui.checkBox_A3, ui.textEdit_A3);
-}
-
-void OptoconBasicDevelopmentView::CheckedA4()
-{
-	// emit CBStateChanged(ui.checkBox_A4, ui.textEdit_A4);
-
-	CheckedHandler(ui.checkBox_A4, ui.textEdit_A4);
-
-	// vs. directly call CheckedHandler
-}
+//void OptoconBasicDevelopmentView::CheckedA1()
+//{
+//	emit CBStateChanged(ui.checkBox_A1, ui.textEdit_A1);
+//}
+//
+//void OptoconBasicDevelopmentView::CheckedA2()
+//{
+//	emit CBStateChanged(ui.checkBox_A2, ui.textEdit_A2);
+//}
+//
+//void OptoconBasicDevelopmentView::CheckedA3()
+//{
+//	emit CBStateChanged(ui.checkBox_A3, ui.textEdit_A3);
+//}
+//
+//void OptoconBasicDevelopmentView::CheckedA4()
+//{
+//	// emit CBStateChanged(ui.checkBox_A4, ui.textEdit_A4);
+//
+//	CheckedHandler(ui.checkBox_A4, ui.textEdit_A4);
+//
+//	// vs. directly call CheckedHandler
+//}
 
 void OptoconBasicDevelopmentView::onWaveLength850Clicked()
 {

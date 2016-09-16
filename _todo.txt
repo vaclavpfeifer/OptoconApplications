@@ -23,6 +23,7 @@
   ~ distribute source binary with only necessary QT libs?
   ~ 
 
+- Check wheteher for complex object creation (including signal/slot setup) is necessary to do disconect!!
 
 - Architecture:
   ~ create items in Abstract View for all items that could exists and do move the common logic to abstract class which should now work with local variables from abstract class.
@@ -30,3 +31,6 @@
     + make method virtual so they could be override in case of need
     
      ~ do the check that items exists at the beggining or on the fly? Or switch to std::map!!!
+
+
+-
