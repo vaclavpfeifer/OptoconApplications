@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
 	QApplication a(argc, argv);
 
 	// Create View Model
+
 	// VM is not used at this point
 
 	// TODO: switch viewModel to reference and update code accordinghly..

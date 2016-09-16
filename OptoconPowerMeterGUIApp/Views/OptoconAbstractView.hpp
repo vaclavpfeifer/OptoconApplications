@@ -3,11 +3,10 @@
 
 #include "ui_OptoconBasicDevelopmentView.h"
 #include "ui_OptoconTargetEmbededView.h"
-#include "ViewModels\AbstractViewModel.h"
+#include "ViewModels/AbstractViewModel.h"
 #include "Commands/AbstractCommandFactory.h"
-#include "Commands\CommunicationCommand.h"
+#include "Commands/CommunicationCommand.h"
 #include <vector>
-// #include "CommonOptoconSignals.h"
 
 // TODO: 
 
@@ -23,6 +22,8 @@ public:
 	explicit OptoconAbstractView(AbstractViewModel& viewModel, AbstractCommandFactory& cmdFactory, QWidget * parent = Q_NULLPTR);
 	~OptoconAbstractView();
 
+	virtual void InitializeConnections() = 0;
+
 // Handlers
 public slots:
 	
@@ -34,33 +35,20 @@ public slots:
 
 signals:
 	void CBStateChanged(QCheckBox* checkedBox, QTextEdit* textEdit);
-	void WaveLengthChanged(QPushButton* clickedPB);
+	// void WaveLengthChanged(QPushButton* clickedPB);
 
 	// Cmd Signals
-	void CommandWaveLengthSent(QString wl);
+	// void CommandWaveLengthSent(QString wl);
 
 	// Shared Methods
 protected:
 	void DisableWaveLengthButtons();
-	void CheckedHandler(QCheckBox* checkedBox, QTextEdit* textEdit, bool isChecked)
-	{
-		if (isChecked)
-		{
-			checkedBox->setChecked(true);
-			textEdit->setStyleSheet("QTextEdit { background-color: yellow }");
-		}
-		else
-		{
-			checkedBox->setChecked(false);
-			textEdit->setStyleSheet("QTextEdit { background-color: white }");
-		}
-	}
+	void CheckedHandler(QCheckBox* checkedBox, QTextEdit* textEdit, bool isChecked);
 
 
 protected:
-	AbstractViewModel& viewModel; // TODO: Move this to reference when started using!!!
+	AbstractViewModel& viewModel;
 	AbstractCommandFactory& commandFactory;
-
 	std::vector<QPushButton*> waveLengthButtons;
 };
 

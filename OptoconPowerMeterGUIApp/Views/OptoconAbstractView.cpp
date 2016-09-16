@@ -6,10 +6,19 @@ OptoconAbstractView::OptoconAbstractView(AbstractViewModel& viewModel, AbstractC
 																						   viewModel(viewModel),
 																						   commandFactory(cmdFactory)
 {
+	// Put common signal/slot initialization here
 	QObject::connect(this, SIGNAL(CBStateChanged(QCheckBox*, QTextEdit*)), this, SLOT(CheckedHandler(QCheckBox*, QTextEdit*)));
+	
+
+	// Call concrete initialization method
+	// InitializeConnections();
+
+
 
 	// Cmd signal connect
-	QObject::connect(this, SIGNAL(CommandWaveLengthSent(QString)), this, SLOT(onWaveLengthSent(QString)));
+	// QObject::connect(this, SIGNAL(CommandWaveLengthSent(QString)), this, SLOT(onWaveLengthSent(QString)));
+
+
 }
 
 
@@ -35,5 +44,19 @@ void OptoconAbstractView::DisableWaveLengthButtons()
 	for each (auto pb in waveLengthButtons)
 	{
 		pb->setChecked(false);
+	}
+}
+
+void OptoconAbstractView::CheckedHandler(QCheckBox* checkedBox, QTextEdit* textEdit, bool isChecked)
+{
+	if (isChecked)
+	{
+		checkedBox->setChecked(true);
+		textEdit->setStyleSheet("QTextEdit { background-color: yellow }");
+	}
+	else
+	{
+		checkedBox->setChecked(false);
+		textEdit->setStyleSheet("QTextEdit { background-color: white }");
 	}
 }

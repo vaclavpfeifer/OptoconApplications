@@ -31,10 +31,10 @@ OptoconBasicDevelopmentView::OptoconBasicDevelopmentView(AbstractCommandFactory&
 	QObject::connect(ui.checkBox_A4, SIGNAL(clicked()), this, SLOT(CheckedA4()));
 	
 	// TODO: this should be put on as soon as clicked on texedit works!!
-	/*QObject::connect(ui.textEdit_A1, SIGNAL(someSignal()), this, SLOT(CheckedA1()));
-	QObject::connect(ui.textEdit_A2, SIGNAL(clicked()), this, SLOT(CheckedA2()));
-	QObject::connect(ui.textEdit_A3, SIGNAL(clicked()), this, SLOT(CheckedA3()));
-	QObject::connect(ui.textEdit_A4, SIGNAL(clicked()), this, SLOT(CheckedA4()));*/
+	/*QObject::connect(ui.textEdit_A1, SIGNAL(someSignal()), this, SLOT(onCheckedA1Clicked()));
+	QObject::connect(ui.textEdit_A2, SIGNAL(clicked()), this, SLOT(onCheckedA2Clicked()));
+	QObject::connect(ui.textEdit_A3, SIGNAL(clicked()), this, SLOT(onCheckedA3Clicked()));
+	QObject::connect(ui.textEdit_A4, SIGNAL(clicked()), this, SLOT(onCheckedA4Clicked()));*/
 	
 	
 	QObject::connect(this, SIGNAL(CBStateChanged(QCheckBox*, QTextEdit*)), this, SLOT(CheckedHandler(QCheckBox*, QTextEdit*)));
