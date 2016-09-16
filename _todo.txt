@@ -24,3 +24,9 @@
   ~ 
 
 
+- Architecture:
+  ~ create items in Abstract View for all items that could exists and do move the common logic to abstract class which should now work with local variables from abstract class.
+    The only thing that must be done is registration in concrete view class + before setting/do some action test must be performed that concrete item has been set...
+    + make method virtual so they could be override in case of need
+    
+     ~ do the check that items exists at the beggining or on the fly? Or switch to std::map!!!

@@ -77,8 +77,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Common\AbstractLogger.cpp" />
     <ClCompile Include="Commands\GUICommand.cpp" />
-    <ClCompile Include="CommonOptoconSignals.cpp" />
+    <ClCompile Include="Common\CommonOptoconSignals.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_AbstractViewModel.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -166,7 +167,7 @@
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
     </CustomBuild>
-    <CustomBuild Include="CommonOptoconSignals.h">
+    <CustomBuild Include="Common\CommonOptoconSignals.h">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing CommonOptoconSignals.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
@@ -176,7 +177,8 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtWidgets" "-I.\CustomWidgets"</Command>
     </CustomBuild>
-    <ClInclude Include="CommonDeclarations.h" />
+    <ClInclude Include="Common\AbstractLogger.h" />
+    <ClInclude Include="Common\CommonDeclarations.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="Commands\GUICommand.h" />
     <ClInclude Include="Helpers\AbstractCommunicationHelper.h" />

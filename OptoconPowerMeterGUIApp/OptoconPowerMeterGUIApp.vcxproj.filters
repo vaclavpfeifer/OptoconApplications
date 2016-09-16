@@ -113,9 +113,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_AbstractViewModel.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="CommonOptoconSignals.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_CommonOptoconSignals.cpp">
       <Filter>Generated Files\Debug</Filter>
     </ClCompile>
@@ -139,6 +136,12 @@
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_OptoconBasicDevelopmentView.cpp">
       <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\AbstractLogger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\CommonOptoconSignals.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -172,10 +175,10 @@
     <CustomBuild Include="ViewModels\AbstractViewModel.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="CommonOptoconSignals.h">
+    <CustomBuild Include="Views\OptoconTargetEmbededView.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="Views\OptoconTargetEmbededView.h">
+    <CustomBuild Include="Common\CommonOptoconSignals.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>
@@ -225,7 +228,10 @@
     <ClInclude Include="Commands\GUICommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CommonDeclarations.h">
+    <ClInclude Include="Common\AbstractLogger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\CommonDeclarations.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -6,7 +6,7 @@
 #include "ViewModels\AbstractViewModel.h"
 #include "Commands/AbstractCommandFactory.h"
 #include "Commands\CommunicationCommand.h"
-
+#include <vector>
 // #include "CommonOptoconSignals.h"
 
 // TODO: 
@@ -29,24 +29,7 @@ public slots:
 	// TODO: here should goes common handlers for commands/ non-ui methods
 	// TODO: Gui-related methods should be probably removed from here and just moved to concrete impl class
 	
-	virtual void CheckedHandler(QCheckBox* checkedBox, QTextEdit* textEdit);
-
-	// Cmd Handlers
-	//void onWaveLengthSent(QString waveLength) const
-	//{
-	//	if (waveLength == "850")
-	//	{
-	//		auto cmd = commandFactory.CreateSerialIOCommand();
-	//		auto retVal = cmd->execute();
-
-
-	//		viewModel.setActiveWaveLength(WaveLengthEnum::WAVELENGTH_1500);
-
-	//		// TODO: retVal of commands or command directly could infkluence just ViewModel and view could be updated through binding...
-
-	//	}
-	//}
-	
+	virtual void CheckedHandler(QCheckBox* checkedBox, QTextEdit* textEdit); // THis should be removed whn updated in development view
 
 
 signals:
@@ -59,12 +42,26 @@ signals:
 	// Shared Methods
 protected:
 	void DisableWaveLengthButtons();
+	void CheckedHandler(QCheckBox* checkedBox, QTextEdit* textEdit, bool isChecked)
+	{
+		if (isChecked)
+		{
+			checkedBox->setChecked(true);
+			textEdit->setStyleSheet("QTextEdit { background-color: yellow }");
+		}
+		else
+		{
+			checkedBox->setChecked(false);
+			textEdit->setStyleSheet("QTextEdit { background-color: white }");
+		}
+	}
+
 
 protected:
 	AbstractViewModel& viewModel; // TODO: Move this to reference when started using!!!
 	AbstractCommandFactory& commandFactory;
 
-	std::list<QPushButton*> waveLengthButtons;
+	std::vector<QPushButton*> waveLengthButtons;
 };
 
 
