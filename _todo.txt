@@ -1,0 +1,26 @@
+- implement logging
+  ~ do wrapper over another engine so we can switch
+
+- convert project to makefile or QTproj file or Cmake?
+  ~ to have same basic settings (to not export qt proj every time some change to vcxproj is made)
+  
+
+- add architecture design 
+  ~ e.g. high level class diagram in EA?
+
+
+- testing solution
+  ~ unit vs. integration tests
+  ~ selection of testing engine (have previous experience with google test)
+  ~ define use cases
+
+
+- Migrate to cross-platfrom development
+  ~ ideally build for selected platform - directly on win, or indirectly by sending data and invoking compile & link on target platform
+
+
+- Deployment process
+  ~ distribute source binary with only necessary QT libs?
+  ~ 
+
+
