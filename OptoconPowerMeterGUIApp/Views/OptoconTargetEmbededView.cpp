@@ -50,7 +50,7 @@ void OptoconTargetEmbededView::InitializeConnections()
 	QObject::connect(ui.checkBox_A3, &QPushButton::clicked, [=](bool isChecked) {this->viewModel.setA3Checked(isChecked); });
 	QObject::connect(ui.checkBox_A4, &QPushButton::clicked, [=](bool isChecked) {this->viewModel.setA4Checked(isChecked); });*/
 
-	CommonSignalsInitialization();
+	InitializeCommonConnections();
 
 	/*QObject::connect(ui.PB_850, &QPushButton::clicked, [=]() {this->viewModel.setActiveWaveLength(WaveLengthEnum::WAVELENGTH_850); });
 	QObject::connect(ui.PB_1300, &QPushButton::clicked, [=]() {this->viewModel.setActiveWaveLength(WaveLengthEnum::WAVELENGTH_1300); });

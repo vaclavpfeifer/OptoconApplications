@@ -26,7 +26,7 @@ protected:
 	void DisableWaveLengthButtons();
 	static void CheckedHandler(QCheckBox* checkedBox, QTextEdit* textEdit, bool isChecked);
 
-	virtual void CommonSignalsInitialization()
+	virtual void InitializeCommonConnections()
 	{
 		// TODO:: first check that object exists && cast will be valid as well? (Use macro for that??) - preliminary tests shows that this is not necessary...
 
@@ -48,7 +48,7 @@ protected:
 	std::vector<QPushButton*> waveLengthButtons;
 
 	std::map<WaveLengthEnum, QPushButton*> waveLengthButtonsMap;
-	std::map<WidgetsCodeMap, QWidget*> allWidgetsCodeMap;
+	std::map<WidgetsCodeMap, QWidget*> allWidgetsCodeMap; // Or for specific widget type use specific map??
 };
 
 

@@ -7,7 +7,8 @@
 message("You are running qmake on a generated .pro file. This may not work!")
 
 
-HEADERS += ./CommonDeclarations.h \
+HEADERS += ./Common/AbstractLogger.h \
+    ./Common/CommonDeclarations.h \
     ./Constants.h \
     ./Commands/GUICommand.h \
     ./Helpers/AbstractCommunicationHelper.h \
@@ -21,14 +22,15 @@ HEADERS += ./CommonDeclarations.h \
     ./CustomWidgets/QPushButtonCustom.h \
     ./CustomWidgets/qtexteditcustom.hpp \
     ./Views/OptoconBasicDevelopmentView.h \
-    ./CommonOptoconSignals.h \
+    ./Common/CommonOptoconSignals.h \
     ./Views/OptoconTargetEmbededView.h \
     ./ViewModels/AbstractViewModel.h \
     ./Views/setlimitwindow.h \
     ./Views/OptoconAbstractView.hpp \
     ./Models/mymodel.h
-SOURCES += ./Commands/GUICommand.cpp \
-    ./CommonOptoconSignals.cpp \
+SOURCES += ./Common/AbstractLogger.cpp \
+    ./Commands/GUICommand.cpp \
+    ./Common/CommonOptoconSignals.cpp \
     ./Helpers/AbstractCommunicationHelper.cpp \
     ./Commands/AbstractCommandFactory.cpp \
     ./Commands/DefaultCommandFactory.cpp \
