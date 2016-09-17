@@ -16,13 +16,8 @@ private:
 	void InitializeConnections() override;
 
 private slots: 
-	void onNewLimitSet(QString newLimit) const; // Handler called when limitsetwindow exited & value set
+	void onNewLimitSet(QString newLimit) const; // Handler called when limitsetwindow exited & value set -- TODO: remove when in development window not necessary
 	
-	// Binding handlers (handlers raised in viewModel)
-	void onWaveLengthChanged(WaveLengthEnum newWaveLength);
-	void OnSingleOrMultiModeChanged(bool isSm) const;
-	void OnReferenceChanged(bool isDb) const;
-
 private:
 	Ui::OptoconTargetLinuxView ui;
 };

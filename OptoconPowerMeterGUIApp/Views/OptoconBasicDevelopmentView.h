@@ -6,7 +6,7 @@
 
 class OptoconBasicDevelopmentView : public OptoconAbstractView
 {	
-	  Q_OBJECT // Must be here in order to signals work
+	  Q_OBJECT
 
 public:
 	OptoconBasicDevelopmentView(AbstractCommandFactory& cmdFactory, AbstractViewModel& viewModel, QWidget * parent = Q_NULLPTR);
@@ -17,10 +17,6 @@ public:
 private:
 
 	void ViewAll() ;
-	void CheckedA1() ;
-	void CheckedA2() ;
-	void CheckedA3() ;
-	void CheckedA4() ;
 	void onWaveLength850Clicked() ;
 	void onWaveLength1300Clicked() ;
 	void onWaveLength1310Clicked() ;
@@ -36,11 +32,6 @@ private:
 	// binding 
 	void onWaveLengthChangedTest(WaveLengthEnum newWaveLength);
 	void onButtonExecGUICmdClicked();
-
-	// Internal attributes
-//private:
-//	std::list<QPushButton*> waveLengthButtons;
-//	void DisableWaveLengthButtons();
 	
 	Ui::MainWindowOptocon ui;
 };

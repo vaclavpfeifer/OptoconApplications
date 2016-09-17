@@ -143,6 +143,9 @@
     <ClCompile Include="Common\CommonOptoconSignals.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Common\QtLogger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="CustomWidgets\qtexteditcustom.hpp">
@@ -219,9 +222,6 @@
     <ClInclude Include="Helpers\SerialIOCommunicationHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Constants.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Helpers\TCPIPCommunicationHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -232,6 +232,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Common\CommonDeclarations.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\Constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\QtLogger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -12,9 +12,9 @@ SetLimitWindow::SetLimitWindow(QObject* caller) : QWidget(nullptr) // There is n
 	// TODO: find out how to set button action roles and then use those accept/reject signals
 	// QObject::connect(ui.btn_OKCancel, SIGNAL(accepted()), this, SLOT(onDialogBoxCancelClick()));
 
-	QObject::connect(this, SIGNAL(LimitChanged(QString)), caller, SLOT(onNewLimitSet(QString)));	
+	/*QObject::connect(this, SIGNAL(LimitChanged(QString)), caller, SLOT(onNewLimitSet(QString)));	
 
-	QMetaObject::connectSlotsByName(this);
+	QMetaObject::connectSlotsByName(this);*/
 }
 
 SetLimitWindow::~SetLimitWindow()

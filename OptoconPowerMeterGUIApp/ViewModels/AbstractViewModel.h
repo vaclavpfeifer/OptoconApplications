@@ -15,146 +15,20 @@ public:
 	AbstractViewModel();
 	virtual ~AbstractViewModel();
 
-	// Testing method
-	virtual void ViewAll() = 0;
-
-	virtual void setActiveWaveLength(WaveLengthEnum newWaveLength, bool shouldEmit = true)
-	{
-		if (this->ActiveWaveLength != newWaveLength)
-		{
-			this->ActiveWaveLength = newWaveLength;
-
-			
-		}
-
-		if (shouldEmit)
-			emit waveLengthChanged(newWaveLength);
-	}
-
-	virtual void setSingleOrMultiMode(bool isSM)
-	{
-		if (this->isSM != isSM)
-		{
-			this->isSM = isSM;
-			emit singleOrMultiModeChanged(isSM);
-		}
-	}
-
-	virtual void setSerialNumber(QString newSerialNumber)
-	{
-		if (this->serialNumber != newSerialNumber)
-		{
-			this->serialNumber = newSerialNumber;
-			emit serialNumberChanged(newSerialNumber);
-		}
-	}
-
-	virtual void setReference(bool isDb)
-	{
-		if (this->isDb != isDb)
-		{
-			this->isDb = isDb;
-			emit referenceChanged(isDb);
-		}
-	}
-
-	virtual void setLimitChecked(bool isLimitChecked)
-	{
-		if (this->isLimitChecked != isLimitChecked)
-		{
-			this->isLimitChecked = isLimitChecked;
-			emit checkLimitChanged(isLimitChecked);
-		}
-	}
-
-	virtual void setLimitValue(double newLimit)
-	{
-		if (this->limitValue != newLimit)
-		{
-			this->limitValue = newLimit;
-			emit limitChanged(newLimit);
-		}
-	}
-
-	virtual void setA1Checked(bool isChecked)
-	{
-		if (this->isA1Checked != isChecked)
-		{
-			this->isA1Checked = isChecked;
-			emit checkA1Changed(isChecked);
-
-			emit check_A_Changed(1, isChecked); // testing )not used ATM)
-		}
-	}
-
-	virtual void setA2Checked(bool isChecked)
-	{
-		if (this->isA2Checked != isChecked)
-		{
-			this->isA2Checked = isChecked;
-			emit checkA2Changed(isChecked);
-
-			emit check_A_Changed(2, isChecked); // testing )not used ATM)
-		}
-	}
-	
-	virtual void setA3Checked(bool isChecked)
-	{
-		if (this->isA3Checked != isChecked)
-		{
-			this->isA3Checked = isChecked;
-			emit checkA3Changed(isChecked);
-
-			emit check_A_Changed(3, isChecked); // testing )not used ATM)
-		}
-	}
-
-	virtual void setA4Checked(bool isChecked)
-	{
-		if (this->isA4Checked != isChecked)
-		{
-			this->isA4Checked = isChecked;
-			emit checkA4Changed(isChecked);
-
-			emit check_A_Changed(4, isChecked); // testing )not used ATM)
-		}
-	}
-
-	virtual void setA1Value(double newValue)
-	{
-		if (this->a1Value != newValue)
-		{
-			this->a1Value = newValue;
-			emit A1ValueChanged(newValue);
-		}
-	}
-
-	virtual void setA2Value(double newValue)
-	{
-		if (this->a2Value != newValue)
-		{
-			this->a2Value = newValue;
-			emit A2ValueChanged(newValue);
-		}
-	}
-
-	virtual void setA3Value(double newValue)
-	{
-		if (this->a3Value != newValue)
-		{
-			this->a3Value = newValue;
-			emit A3ValueChanged(newValue);
-		}
-	}
-
-	virtual void setA4Value(double newValue)
-	{
-		if (this->a4Value != newValue)
-		{
-			this->a4Value = newValue;
-			emit A4ValueChanged(newValue);
-		}
-	}
+	virtual void setActiveWaveLength(WaveLengthEnum newWaveLength, bool shouldEmit = true);
+	virtual void setSingleOrMultiMode(bool isSM);
+	virtual void setSerialNumber(QString newSerialNumber);
+	virtual void setReference(bool isDb);
+	virtual void setLimitChecked(bool isLimitChecked);
+	virtual void setLimitValue(double newLimit);
+	virtual void setA1Checked(bool isChecked);
+	virtual void setA2Checked(bool isChecked);
+	virtual void setA3Checked(bool isChecked);
+	virtual void setA4Checked(bool isChecked);
+	virtual void setA1Value(double newValue);
+	virtual void setA2Value(double newValue);
+	virtual void setA3Value(double newValue);
+	virtual void setA4Value(double newValue);
 
 
 signals:

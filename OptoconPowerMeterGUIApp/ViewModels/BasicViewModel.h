@@ -7,13 +7,7 @@ class BasicViewModel : public AbstractViewModel
 {
 public:
 	BasicViewModel();
-
 	virtual ~BasicViewModel();
-
-	virtual void ViewAll()
-	{
-
-	}
 
 
 };

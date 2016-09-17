@@ -11,7 +11,7 @@ class SetLimitWindow : public QWidget
 	Q_OBJECT
 
 public:
-	explicit SetLimitWindow(QObject* caller);
+	explicit SetLimitWindow(QObject* caller = nullptr);
 	~SetLimitWindow();
 
 public slots:

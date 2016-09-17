@@ -7,8 +7,7 @@
 #include "Commands/AbstractCommandFactory.h"
 #include "Commands/CommunicationCommand.h"
 #include <vector>
-
-// TODO: 
+#include "setlimitwindow.h"
 
 
 class OptoconAbstractView : public QMainWindow
@@ -25,22 +24,12 @@ public:
 protected:
 	void DisableWaveLengthButtons();
 	static void CheckedHandler(QCheckBox* checkedBox, QTextEdit* textEdit, bool isChecked);
+	virtual void InitializeCommonConnections();
 
-	virtual void InitializeCommonConnections()
-	{
-		// TODO:: first check that object exists && cast will be valid as well? (Use macro for that??) - preliminary tests shows that this is not necessary...
-
-		QObject::connect(qobject_cast<QCheckBox*>(allWidgetsCodeMap[WidgetsCodeMap::CHECKBOX_A1]), &QPushButton::clicked, [=](bool isChecked) {this->viewModel.setA1Checked(isChecked); });
-		QObject::connect(qobject_cast<QCheckBox*>(allWidgetsCodeMap[WidgetsCodeMap::CHECKBOX_A2]), &QPushButton::clicked, [=](bool isChecked) {this->viewModel.setA2Checked(isChecked); });
-		QObject::connect(qobject_cast<QCheckBox*>(allWidgetsCodeMap[WidgetsCodeMap::CHECKBOX_A3]), &QPushButton::clicked, [=](bool isChecked) {this->viewModel.setA3Checked(isChecked); });
-		QObject::connect(qobject_cast<QCheckBox*>(allWidgetsCodeMap[WidgetsCodeMap::CHECKBOX_A4]), &QPushButton::clicked, [=](bool isChecked) {this->viewModel.setA4Checked(isChecked); });
-
-		QObject::connect(waveLengthButtonsMap[WaveLengthEnum::WAVELENGTH_850], &QPushButton::clicked, [=]() {this->viewModel.setActiveWaveLength(WaveLengthEnum::WAVELENGTH_850); });
-		QObject::connect(waveLengthButtonsMap[WaveLengthEnum::WAVELENGTH_1300], &QPushButton::clicked, [=]() {this->viewModel.setActiveWaveLength(WaveLengthEnum::WAVELENGTH_1300); });
-		QObject::connect(waveLengthButtonsMap[WaveLengthEnum::WAVELENGTH_1310], &QPushButton::clicked, [=]() {this->viewModel.setActiveWaveLength(WaveLengthEnum::WAVELENGTH_1310); });
-		QObject::connect(waveLengthButtonsMap[WaveLengthEnum::WAVELENGTH_1500], &QPushButton::clicked, [=]() {this->viewModel.setActiveWaveLength(WaveLengthEnum::WAVELENGTH_1500); });
-		QObject::connect(waveLengthButtonsMap[WaveLengthEnum::WAVELENGTH_OFF], &QPushButton::clicked, [=]() {this->viewModel.setActiveWaveLength(WaveLengthEnum::WAVELENGTH_OFF); });
-	}
+// protected slots:
+	virtual void OnReferenceChanged(bool isDb);
+	virtual void onWaveLengthChanged(WaveLengthEnum newWaveLength);
+	virtual void OnSingleOrMultiModeChanged(bool isSm) const;
 
 protected:
 	AbstractViewModel& viewModel;
