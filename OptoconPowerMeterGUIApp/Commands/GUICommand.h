@@ -1,8 +1,8 @@
 #ifndef GUI_COMMAND_H
 #define GUI_COMMAND_H
 
-#include "Commands\AbstractCommand.h"
-#include "ViewModels\AbstractViewModel.h"
+#include "Commands/AbstractCommand.h"
+#include "ViewModels/AbstractViewModel.h"
 #include <functional>
 #include <memory>
 

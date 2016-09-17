@@ -1,7 +1,7 @@
 #ifndef COMMUNICATION_COMMAND_H
 #define COMMUNICATION_COMMAND_H
 
-#include "Commands\AbstractCommand.h"
+#include "Commands/AbstractCommand.h"
 #include "Helpers/AbstractCommunicationHelper.h"
 #include <memory>
 #include <string>

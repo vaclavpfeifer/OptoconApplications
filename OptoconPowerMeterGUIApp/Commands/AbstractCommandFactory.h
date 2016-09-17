@@ -1,7 +1,7 @@
 #ifndef ABSTRACT_COMMAND_FACTORY_H
 #define ABSTRACT_COMMAND_FACTORY_H
-#include "Commands\CommunicationCommand.h"
-#include "Commands\GUICommand.h"
+#include "Commands/CommunicationCommand.h"
+#include "Commands/GUICommand.h"
 #include <memory>
 
 class AbstractCommandFactory

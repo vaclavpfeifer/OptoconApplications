@@ -1,4 +1,4 @@
-#include "Commands\CommunicationCommand.h"
+#include "Commands/CommunicationCommand.h"
 
 
 CommunicationCommand::~CommunicationCommand()

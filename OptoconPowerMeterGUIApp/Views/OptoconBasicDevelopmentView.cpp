@@ -1,4 +1,4 @@
-#include "Views\OptoconBasicDevelopmentView.h"
+#include "Views/OptoconBasicDevelopmentView.h"
 #include "setlimitwindow.h"
 
 OptoconBasicDevelopmentView::OptoconBasicDevelopmentView(AbstractCommandFactory& cmdFactory, AbstractViewModel& viewModel, QWidget * parent)

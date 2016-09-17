@@ -33,13 +33,13 @@ void OptoconAbstractView::DisableWaveLengthButtons()
 	// TODO: delete one of those when migrated all views to one option
 
 	// For list 
-	for each (auto pb in waveLengthButtons)
+    for (auto pb : waveLengthButtons)
 	{
 		pb->setChecked(false);
 	}
 
 	// for map
-	for each (auto pb in waveLengthButtonsMap)
+    for (auto pb : waveLengthButtonsMap)
 	{
 		pb.second->setChecked(false);
 	}

@@ -2,7 +2,7 @@
 #define OPTOCON_BASIC_DEVELOPMENT_VIEW_H
 
 #include "ui_OptoconTargetEmbededView.h"
-#include "Views\OptoconAbstractView.hpp"
+#include "Views/OptoconAbstractView.hpp"
 
 class OptoconBasicDevelopmentView : public OptoconAbstractView
 {	

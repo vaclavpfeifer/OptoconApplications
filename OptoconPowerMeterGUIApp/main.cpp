@@ -1,9 +1,9 @@
 #include <QtWidgets/QApplication>
-#include "Views\OptoconAbstractView.hpp"
-#include "Views\OptoconBasicDevelopmentView.h"
-#include "Views\OptoconTargetEmbededView.h"
-#include "ViewModels\BasicViewModel.h"
-#include "Commands\DefaultCommandFactory.h"
+#include "Views/OptoconAbstractView.hpp"
+#include "Views/OptoconBasicDevelopmentView.h"
+#include "Views/OptoconTargetEmbededView.h"
+#include "ViewModels/BasicViewModel.h"
+#include "Commands/DefaultCommandFactory.h"
 
 int main(int argc, char *argv[])
 {	
@@ -29,8 +29,10 @@ int main(int argc, char *argv[])
 
 	//OptoconAbstractView w;
 	// Create View with proper ViewModel
-	//auto view = std::make_unique<OptoconBasicDevelopmentView>(cmdFactory, viewModel);
-	auto view = std::make_unique<OptoconTargetEmbededView>(cmdFactory, viewModel);
+    //auto view = std::make_unique<OptoconBasicDevelopmentView>(cmdFactory, viewModel);
+
+    //auto view = std::make_unique<OptoconTargetEmbededView>(cmdFactory, viewModel); // make_unique is c++14 feature
+    auto view = std::make_shared<OptoconTargetEmbededView>(cmdFactory, viewModel);
 
 	view->show();
 	return a.exec();

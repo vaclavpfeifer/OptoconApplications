@@ -2,7 +2,7 @@
 #define ABSTRACT_VIEW_MODEL_H
 
 #include "qobject.h"
-#include "Common\CommonDeclarations.h"
+#include "Common/CommonDeclarations.h"
 
 // TODO: Make method which will setUP viewModeles propery according to the default View Model settings
 

@@ -1,7 +1,7 @@
 #ifndef OPTOCON_TARGET_EMBEDED_VIEW_H
 #define OPTOCON_TARGET_EMBEDED_VIEW_H
 
-#include "Views\OptoconAbstractView.hpp"
+#include "Views/OptoconAbstractView.hpp"
 #include "ui_OptoconTargetEmbededView.h"
 
 class OptoconTargetEmbededView : public OptoconAbstractView

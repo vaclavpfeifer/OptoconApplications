@@ -4,7 +4,7 @@
 
 TEMPLATE = app
 TARGET = OptoconPowerMeterGUIApp
-DESTDIR = ../Win32/Debug
+DESTDIR = ../Linux/Debug
 QT += core widgets gui
 CONFIG += debug
 DEFINES += QT_DLL QT_WIDGETS_LIB

@@ -1,4 +1,4 @@
-#include "Commands\GUICommand.h"
+#include "Commands/GUICommand.h"
 
 
 GUICommand::~GUICommand()
