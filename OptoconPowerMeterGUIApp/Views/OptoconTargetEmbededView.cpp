@@ -6,6 +6,9 @@ OptoconTargetEmbededView::OptoconTargetEmbededView(AbstractCommandFactory& cmdFa
 {
 	ui.setupUi(this);
 
+	// Disable frame window
+	this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+
 	// Initialize internal members:
 	waveLengthButtonsMap.insert(std::make_pair(WAVELENGTH_850, ui.PB_850));
 	waveLengthButtonsMap.insert(std::make_pair(WAVELENGTH_1300, ui.PB_1300));
@@ -17,8 +20,7 @@ OptoconTargetEmbededView::OptoconTargetEmbededView(AbstractCommandFactory& cmdFa
 	allWidgetsCodeMap.insert(std::make_pair(WidgetsCodeMap::CHECKBOX_A2, ui.checkBox_A2));
 	allWidgetsCodeMap.insert(std::make_pair(WidgetsCodeMap::CHECKBOX_A3, ui.checkBox_A3));
 	allWidgetsCodeMap.insert(std::make_pair(WidgetsCodeMap::CHECKBOX_A4, ui.checkBox_A4));
-
-
+	
 
 	// TODO: Set either viewmodel or gui accordingly.
 	
