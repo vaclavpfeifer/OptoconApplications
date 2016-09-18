@@ -118,6 +118,7 @@
     <ClCompile Include="Helpers\SerialIOCommunicationHelper.cpp" />
     <ClCompile Include="Helpers\TCPIPCommunicationHelper.cpp" />
     <ClCompile Include="Common\QtLogger.cpp" />
+    <ClCompile Include="Helpers\LogHelper.cpp" />
     <ClCompile Include="Views\OptoconTargetEmbededView.cpp" />
     <ClCompile Include="Views\OptoconBasicDevelopmentView.cpp" />
     <ClCompile Include="ViewModels\AbstractViewModel.cpp" />
@@ -211,6 +212,7 @@
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
     </CustomBuild>
     <ClInclude Include="Common\QtLogger.h" />
+    <ClInclude Include="Helpers\LogHelper.h" />
     <ClInclude Include="ViewModels\BasicViewModel.h" />
     <ClInclude Include="GeneratedFiles\ui_OptoconTargetEmbededView.h" />
     <ClInclude Include="GeneratedFiles\ui_qtexteditcustom.h" />

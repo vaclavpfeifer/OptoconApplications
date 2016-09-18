@@ -9,80 +9,33 @@
 #include <stdio.h>
 #include <fstream>
 #include <mutex>
+#include "Helpers/LogHelper.h"
 
-std::mutex myMutex;
 
-void myMessageOutputToFile(QtMsgType type, const QMessageLogContext &context, const QString &msg)
-{
-	std::lock_guard<decltype(myMutex)> lock(std::mutex);
-	auto pFile = fopen("_myLogfile.txt", "a+");
-
-	QByteArray localMsg = msg.toLocal8Bit();
-	switch (type) {
-	case QtDebugMsg:		
-		fprintf(pFile, "Debug: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
-		break;
-	case QtInfoMsg:
-		fprintf(pFile, "Info: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
-		break;
-	case QtWarningMsg:
-		fprintf(pFile, "Warning: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
-		break;
-	case QtCriticalMsg:
-		fprintf(pFile, "Critical: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
-		break;
-	case QtFatalMsg:
-		fprintf(pFile, "Fatal: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
-		abort();
-	default:
-		break;
-	}
-
-	fflush(pFile);
-	fclose(pFile);
-}
 
 int main(int argc, char *argv[])
 {	
-
-	// TODO wrap this to my logger
-	qInstallMessageHandler(myMessageOutputToFile);
-
-
-	//auto pFile = fopen("_myLogfile.txt", "w");
-	//fprintf(pFile, "Started.....");
-	//fflush(pFile);
-	//fclose(pFile);
-
-	//std::ofstream myfile;
-	//myfile.open("_example.txt");
-	//myfile << "Writing this to a file.\n";
-	//myfile.close();
-
-
-	// TODO: add some logger
-	// TODO: add builder pattern - for mocking / debugging / app release version...
-	// qApp->addLibraryPath("C:\\Qt\\Qt5.7.0\\5.7\\msvc2015\\bin");
+	// TODO: problem if new logger is registered after some logger has already been taken then the original - need to destroy previous intance --> use reference counting
+	LogHelper::RegisterLogger(new QtLogger(AbstractLogger::INFORMATION));
+	auto logger = LogHelper::GetLogger();	
 	
-	qDebug() << "Application started...";
 
-	//auto commandFactory = std::make_shared<DefaultCommandFactory>();
+	logger->Log(AbstractLogger::DEBUG, "Debug started...");
+	logger->Log(AbstractLogger::INFORMATION, "Information entry...");
+	logger->Log(AbstractLogger::WARNING, "Warning entry...");	
+
 
 	QApplication a(argc, argv);
 
-	// Create View Model
-
-	// VM is not used at this point
-
-	// TODO: switch viewModel to reference and update code accordinghly..
+	// Create View Model	
 	// auto viewModel = std::make_shared<BasicViewModel>();
 	BasicViewModel viewModel;
 
-
+	// Create additional dependencies
 	DefaultCommandFactory cmdFactory(viewModel);
-
-	//OptoconAbstractView w;
+	
 	// Create View with proper ViewModel
+	//OptoconAbstractView w;
     //auto view = std::make_unique<OptoconBasicDevelopmentView>(cmdFactory, viewModel);
 
     //auto view = std::make_unique<OptoconTargetEmbededView>(cmdFactory, viewModel); // make_unique is c++14 feature

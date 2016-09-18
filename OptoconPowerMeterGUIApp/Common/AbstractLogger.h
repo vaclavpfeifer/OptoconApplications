@@ -6,16 +6,10 @@
 // Or leave abstract class here and make adapters platform dependent (different log library for different platform?)
 
 class AbstractLogger
-{
-protected:
-	AbstractLogger();
+{	
 public:	
+	AbstractLogger();
 	virtual ~AbstractLogger();
-
-	static AbstractLogger& GetLogger()
-	{
-		return INSTANCE;
-	}
 
 	enum LogLevel
 	{
@@ -25,14 +19,8 @@ public:
 		ERROR
 	};
 
-	void Log(LogLevel logLevel, QString msg)
-	{
-		
-	}
+	virtual void Log(LogLevel logLevel, QString msg) = 0;	
 
-
-protected:
-	static AbstractLogger INSTANCE;
 };
 
 #endif
