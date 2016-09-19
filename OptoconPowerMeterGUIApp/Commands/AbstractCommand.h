@@ -12,7 +12,7 @@ public:
 
 protected:
 	long id; // TODO: id for command type identification or for a number odintifying sequence	 
-
+	// TODO: add command Name??
 };
 
 

@@ -25,6 +25,7 @@
 
 - Check wheteher for complex object creation (including signal/slot setup) is necessary to do disconect!!
 
+- Check that there are no memory leaks -- valgrind?
 
 - Deployment process
   ~ create whole new qmake proj file (from which even vcxProj files can be generated - simmilar to cmake)

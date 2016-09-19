@@ -36,7 +36,7 @@ protected:
 	AbstractCommandFactory& commandFactory;
 	std::vector<QPushButton*> waveLengthButtons;
 
-	std::map<WaveLengthEnum, QPushButton*> waveLengthButtonsMap;
+	std::map<WaveLengthEnum, QPushButton*> waveLengthButtonsMap; // Move to reference_Counting objects?
 	std::map<WidgetsCodeMap, QWidget*> allWidgetsCodeMap; // Or for specific widget type use specific map??
 };
 

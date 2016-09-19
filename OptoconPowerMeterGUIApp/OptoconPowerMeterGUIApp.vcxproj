@@ -80,6 +80,7 @@
     <ClCompile Include="Common\AbstractLogger.cpp" />
     <ClCompile Include="Commands\GUICommand.cpp" />
     <ClCompile Include="Common\CommonOptoconSignals.cpp" />
+    <ClCompile Include="Commands\CompositeCommand.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_AbstractViewModel.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -147,8 +148,10 @@
     <ClCompile Include="Views\OptoconAbstractView.cpp" />
     <ClCompile Include="CustomWidgets\QPushButtonCustom.cpp" />
     <ClCompile Include="Views\setlimitwindow.cpp" />
+    <ClCompile Include="Commands\WaveLengthChangedCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Commands\WaveLengthChangedCommand.h" />
     <CustomBuild Include="CustomWidgets\qtexteditcustom.hpp">
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Moc%27ing qtexteditcustom.hpp...</Message>
@@ -183,6 +186,7 @@
     <ClInclude Include="Common\CommonDeclarations.h" />
     <ClInclude Include="Common\Constants.h" />
     <ClInclude Include="Commands\GUICommand.h" />
+    <ClInclude Include="Commands\CompositeCommand.h" />
     <ClInclude Include="Helpers\AbstractCommunicationHelper.h" />
     <ClInclude Include="Commands\AbstractCommandFactory.h" />
     <ClInclude Include="Commands\DefaultCommandFactory.h" />

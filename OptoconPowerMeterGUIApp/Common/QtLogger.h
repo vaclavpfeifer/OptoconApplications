@@ -13,12 +13,19 @@
 class QtLogger : public AbstractLogger
 {
 public:
-	QtLogger(LogLevel minLogLevel) //: minimumLogLevel(minLogLevel)
+	QtLogger(LogLevel minLogLevel, QString logFileName = "_ApplicationLog.txt") //: minimumLogLevel(minLogLevel)
 	{
-		// Do initialization here:
-		qInstallMessageHandler(myMessageOutputToFile);
-
 		minimumLogLevel = minLogLevel;
+		QtLogger::logFileName = logFileName;
+
+		// Do initialization here:
+		//qInstallMessageHandler(myMessageOutputToFile);		
+		
+		//QtMessageHandler ptr = &QtLogger::myMessageOutputToFileTest;
+
+		//void QtLogger::*ptr = &this->myMessageOutputToFileTest;
+
+		qInstallMessageHandler(myMessageOutputToFile);
 	}
 
 	virtual ~QtLogger();
@@ -46,21 +53,29 @@ public:
 			default: break;
 			}
 		}
+	}	
+
+	void SetLogFileName(QString newLogFileName) override
+	{
+		QtLogger::logFileName = newLogFileName;
 	}
 
 private:
 	std::mutex myMutex;
-
 	LogLevel minimumLogLevel = LogLevel::ERROR;
+	static QString logFileName;
+
+
 
 	static void myMessageOutputToFile(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 	{		
 		// TODO: move to c++ streams....
-		auto pFile = fopen("_myLogfile.txt", "a+");
+		// TODO: this piece of code is being initialized only once, in order to support different log file names, we need to change to local method
+		auto pFile = fopen(logFileName.toStdString().c_str(), "a+");
 
 		QByteArray localMsg = msg.toLocal8Bit();
 		switch (type) {
-		case QtDebugMsg:
+		case QtDebugMsg:			
 			fprintf(pFile, "Debug: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
 			break;
 		case QtInfoMsg:

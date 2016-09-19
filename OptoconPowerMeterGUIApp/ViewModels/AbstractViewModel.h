@@ -3,9 +3,11 @@
 
 #include "qobject.h"
 #include "Common/CommonDeclarations.h"
+#include "Commands/AbstractCommand.h"
+#include <memory>
 
 // TODO: Make method which will setUP viewModeles propery according to the default View Model settings
-
+// TODO: move wavelenght enum here??
 
 class AbstractViewModel : public QObject
 {
@@ -67,6 +69,12 @@ protected:
 	double a2Value = 0;
 	double a3Value = 0;
 	double a4Value = 0;
+
+
+	// Each command can be registered to some possible user action -- commands should be able to run another commands
+	std::map<WaveLengthEnum, std::shared_ptr<AbstractCommand>> registeredWaveLengthCommands;
+	std::map<WidgetsCodeMap, std::shared_ptr<AbstractCommand>> allRegisteredCommands;
+
 };
 
 #endif

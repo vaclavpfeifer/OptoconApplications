@@ -16,7 +16,9 @@
 int main(int argc, char *argv[])
 {	
 	// TODO: problem if new logger is registered after some logger has already been taken then the original - need to destroy previous intance --> use reference counting
-	LogHelper::RegisterLogger(new QtLogger(AbstractLogger::INFORMATION));
+	// TODO: The hardcoded file name is used instead of updated one
+	LogHelper::RegisterLogger(std::make_shared<QtLogger>(AbstractLogger::INFORMATION, "_NewLogFile.log"));
+	LogHelper::SetQtLogFileName("_AnotherLogFileName.log");
 	auto logger = LogHelper::GetLogger();	
 	
 

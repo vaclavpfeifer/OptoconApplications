@@ -8,7 +8,8 @@ class LogHelper
 private:
 	LogHelper() 
 	{		
-		defaultLoggerImpl = new QtLogger(AbstractLogger::LogLevel::DEBUG);
+		//defaultLoggerImpl = new QtLogger(AbstractLogger::LogLevel::DEBUG);
+		defaultLoggerImpl = std::make_shared<QtLogger>(AbstractLogger::LogLevel::DEBUG);
 		registeredLoggerImpl = defaultLoggerImpl;
 	}
 	virtual ~LogHelper()
@@ -17,7 +18,7 @@ private:
 	}
 
 public:
-	static AbstractLogger* GetLogger()
+	static std::shared_ptr<AbstractLogger> GetLogger()
 	{
 		return LogHelper::INSTANCE().registeredLoggerImpl;		
 	}	
@@ -25,11 +26,14 @@ public:
 	LogHelper(LogHelper const&) = delete;
 	void operator=(LogHelper const&) = delete;
 	
-	static void RegisterLogger(AbstractLogger* loggerImpl)
-	{
-		// TODO: remove previous instance --> move to reference counting objects...
-
+	static void RegisterLogger(std::shared_ptr<AbstractLogger> loggerImpl)
+	{		
 		LogHelper::INSTANCE().registeredLoggerImpl = loggerImpl;
+	}
+
+	static void SetQtLogFileName(QString newFileName)
+	{
+		LogHelper::INSTANCE().registeredLoggerImpl->SetLogFileName(newFileName);
 	}
 
 protected:
@@ -40,9 +44,9 @@ protected:
 	}
 
 private:
-	AbstractLogger* registeredLoggerImpl;
+	std::shared_ptr<AbstractLogger> registeredLoggerImpl;
 
-	AbstractLogger* defaultLoggerImpl;
+	std::shared_ptr<AbstractLogger> defaultLoggerImpl;
 };
 
 #endif

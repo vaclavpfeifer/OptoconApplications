@@ -9,6 +9,8 @@ class SerialIOCommunicationHelper : public AbstractCommunicationHelper
 public:
 	SerialIOCommunicationHelper();
 	virtual ~SerialIOCommunicationHelper();
+
+
 };
 
 #endif

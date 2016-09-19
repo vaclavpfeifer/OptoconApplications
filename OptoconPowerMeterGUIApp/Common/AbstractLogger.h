@@ -21,6 +21,7 @@ public:
 
 	virtual void Log(LogLevel logLevel, QString msg) = 0;	
 
+	virtual void SetLogFileName(QString newLogFileName) = 0;
 };
 
 #endif
