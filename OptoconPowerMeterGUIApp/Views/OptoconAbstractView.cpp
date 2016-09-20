@@ -2,10 +2,9 @@
 #include "setlimitwindow.h"
 #include "Views/OptoconBasicDevelopmentView.h"
 
-OptoconAbstractView::OptoconAbstractView(AbstractViewModel& viewModel, AbstractCommandFactory& cmdFactory, QWidget * parent) :
+OptoconAbstractView::OptoconAbstractView(AbstractViewModel& viewModel, QWidget * parent) :
 	QMainWindow(parent),
-	viewModel(viewModel),
-	commandFactory(cmdFactory)
+	viewModel(viewModel)
 {
 	// Put common signal/slot initialization here
 	QObject::connect(this, SIGNAL(CBStateChanged(QCheckBox*, QTextEdit*)), this, SLOT(CheckedHandler(QCheckBox*, QTextEdit*)));

@@ -3,11 +3,6 @@
 #include "Helpers/LogHelper.h"
 
 
-AbstractViewModel::AbstractViewModel()
-{
-}
-
-
 AbstractViewModel::~AbstractViewModel()
 {
 }
@@ -19,7 +14,7 @@ void AbstractViewModel::setActiveWaveLength(WaveLengthEnum newWaveLength, bool s
 		this->ActiveWaveLength = newWaveLength;
 	}
 
-	// Execute CMD
+	// Execute CMD -- TODO: move execution to some CommandExecutor/Scheduler class!!-- there can be implemented sync/async logic as well...
 	// TODO: execute directly here, or rather return Abstract cmd and execution will be done on UI side??
 	auto cmd = this->registeredWaveLengthCommands[newWaveLength];
 

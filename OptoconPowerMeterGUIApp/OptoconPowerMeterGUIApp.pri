@@ -7,10 +7,12 @@
 message("You are running qmake on a generated .pro file. This may not work!")
 
 
-HEADERS += ./Common/AbstractLogger.h \
+HEADERS += ./Commands/WaveLengthChangedCommand.h \
+    ./Common/AbstractLogger.h \
     ./Common/CommonDeclarations.h \
-    ./Constants.h \
+    ./Common/Constants.h \
     ./Commands/GUICommand.h \
+    ./Commands/CompositeCommand.h \
     ./Helpers/AbstractCommunicationHelper.h \
     ./Commands/AbstractCommandFactory.h \
     ./Commands/DefaultCommandFactory.h \
@@ -18,6 +20,8 @@ HEADERS += ./Common/AbstractLogger.h \
     ./Commands/CommunicationCommand.h \
     ./Helpers/SerialIOCommunicationHelper.h \
     ./Helpers/TCPIPCommunicationHelper.h \
+    ./Common/QtLogger.h \
+    ./Helpers/LogHelper.h \
     ./ViewModels/BasicViewModel.h \
     ./CustomWidgets/QPushButtonCustom.h \
     ./CustomWidgets/qtexteditcustom.hpp \
@@ -31,6 +35,7 @@ HEADERS += ./Common/AbstractLogger.h \
 SOURCES += ./Common/AbstractLogger.cpp \
     ./Commands/GUICommand.cpp \
     ./Common/CommonOptoconSignals.cpp \
+    ./Commands/CompositeCommand.cpp \
     ./Helpers/AbstractCommunicationHelper.cpp \
     ./Commands/AbstractCommandFactory.cpp \
     ./Commands/DefaultCommandFactory.cpp \
@@ -38,6 +43,8 @@ SOURCES += ./Common/AbstractLogger.cpp \
     ./Commands/CommunicationCommand.cpp \
     ./Helpers/SerialIOCommunicationHelper.cpp \
     ./Helpers/TCPIPCommunicationHelper.cpp \
+    ./Common/QtLogger.cpp \
+    ./Helpers/LogHelper.cpp \
     ./Views/OptoconTargetEmbededView.cpp \
     ./Views/OptoconBasicDevelopmentView.cpp \
     ./ViewModels/AbstractViewModel.cpp \
@@ -47,7 +54,8 @@ SOURCES += ./Common/AbstractLogger.cpp \
     ./Models/mymodel.cpp \
     ./Views/OptoconAbstractView.cpp \
     ./CustomWidgets/QPushButtonCustom.cpp \
-    ./Views/setlimitwindow.cpp
+    ./Views/setlimitwindow.cpp \
+    ./Commands/WaveLengthChangedCommand.cpp
 FORMS += ./Views/OptoconBasicDevelopmentView.ui \
     ./Views/setlimitwindow.ui \
     ./CustomWidgets/qtexteditcustom.ui \

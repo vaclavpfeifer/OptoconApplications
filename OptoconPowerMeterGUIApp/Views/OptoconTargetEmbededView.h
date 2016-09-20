@@ -9,7 +9,7 @@ class OptoconTargetEmbededView : public OptoconAbstractView
 	Q_OBJECT
 
 public:
-	OptoconTargetEmbededView(AbstractCommandFactory& cmdFactory, AbstractViewModel& viewModel, QWidget * parent = Q_NULLPTR);
+	OptoconTargetEmbededView(AbstractViewModel& viewModel, QWidget * parent = Q_NULLPTR);
 	virtual ~OptoconTargetEmbededView();
 
 private:

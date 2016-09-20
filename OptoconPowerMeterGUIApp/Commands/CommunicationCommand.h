@@ -14,7 +14,8 @@ class CommunicationCommand : public AbstractCommand
 {
 public:
 
-	CommunicationCommand(AbstractCommunicationHelper& ioCommunicationHelper) : ioCommHelper(ioCommunicationHelper)
+	CommunicationCommand(const AbstractCommunicationHelper& ioCommunicationHelper) 
+		: ioCommHelper(ioCommunicationHelper)
 	{
 		
 	}
@@ -29,9 +30,9 @@ public:
 	}
 
 protected:
-	AbstractCommunicationHelper& ioCommHelper;
-	std::string execString = "COMM COMMAND DEFAULT  "; // TODO:  this should be set in concrete command constructor 
+	const AbstractCommunicationHelper& ioCommHelper;
 
+	std::string execString = "COMM COMMAND DEFAULT  "; // TODO:  this should be set in concrete command constructor 
 	std::shared_ptr<AbstractLogger> logger = LogHelper::GetLogger();// TODO: do we want to have logger here? if the command will be called multiple times then it could save some time...
 };
 

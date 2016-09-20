@@ -1,8 +1,8 @@
 #include "Views/OptoconBasicDevelopmentView.h"
 #include "setlimitwindow.h"
 
-OptoconBasicDevelopmentView::OptoconBasicDevelopmentView(AbstractCommandFactory& cmdFactory, AbstractViewModel& viewModel, QWidget * parent)
-	: OptoconAbstractView(viewModel, cmdFactory, parent)
+OptoconBasicDevelopmentView::OptoconBasicDevelopmentView(AbstractViewModel& viewModel, QWidget * parent)
+	: OptoconAbstractView(viewModel, parent)
 {
 	ui.setupUi(this);
 
@@ -286,9 +286,9 @@ void OptoconBasicDevelopmentView::onWaveLengthChangedTest(WaveLengthEnum newWave
 void OptoconBasicDevelopmentView::onButtonExecGUICmdClicked()
 {
 	// Create and execute command
-	auto cmd = commandFactory.CreateGUICommand();
+	//auto cmd = commandFactory.CreateGUICommand();
 	//cmd.setViewModel(viewModel);
-	auto retVal = cmd->execute();
+	//auto retVal = cmd->execute();
 
 
 	// TODO: Should we call some method on viewModel which returns AbstractCommand type and that type then will be executed here?? 

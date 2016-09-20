@@ -2,7 +2,8 @@
 #include "Views/OptoconAbstractView.hpp"
 #include "Views/OptoconBasicDevelopmentView.h"
 #include "Views/OptoconTargetEmbededView.h"
-#include "ViewModels/BasicViewModel.h"
+//#include "ViewModels/BasicViewModel.h"
+#include "ViewModels/AbstractViewModel.h"
 #include "Commands/DefaultCommandFactory.h"
 
 #include <QtDebug>
@@ -29,21 +30,20 @@ int main(int argc, char *argv[])
 
 	QApplication a(argc, argv);
 
-	// Create View Model	
+	// Create View Model & factory (circular dependency on each other) -- Or factory could be singleton and referenced statically???
 	// auto viewModel = std::make_shared<BasicViewModel>();
-	BasicViewModel viewModel;
+	//BasicViewModel viewModel;
+	std::shared_ptr<BasicViewModel> viewModel;
+	std::shared_ptr<DefaultCommandFactory> cmdFactory;
 
-	// Create additional dependencies
-	DefaultCommandFactory cmdFactory(viewModel);
+	cmdFactory = std::make_shared<DefaultCommandFactory>(*viewModel.get());
+	viewModel = std::make_shared<BasicViewModel>(*cmdFactory.get());	
 	
-	// Create View with proper ViewModel
-	//OptoconAbstractView w;
-    //auto view = std::make_unique<OptoconBasicDevelopmentView>(cmdFactory, viewModel);
-
-    //auto view = std::make_unique<OptoconTargetEmbededView>(cmdFactory, viewModel); // make_unique is c++14 feature
-    auto view = std::make_shared<OptoconTargetEmbededView>(cmdFactory, viewModel);
-
+   
+	// TODO: when circular references solved update to shared pointer inside the View....
+	auto view = std::make_shared<OptoconTargetEmbededView>(*viewModel.get());
 	view->show();
+
 	return a.exec();
 }
 

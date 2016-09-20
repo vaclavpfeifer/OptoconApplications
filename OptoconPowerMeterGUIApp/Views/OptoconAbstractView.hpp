@@ -15,7 +15,7 @@ class OptoconAbstractView : public QMainWindow
 	Q_OBJECT
 
 public:
-	explicit OptoconAbstractView(AbstractViewModel& viewModel, AbstractCommandFactory& cmdFactory, QWidget * parent = Q_NULLPTR);
+	explicit OptoconAbstractView(AbstractViewModel& viewModel, QWidget * parent = Q_NULLPTR);
 	~OptoconAbstractView();
 
 	virtual void InitializeConnections() = 0;
@@ -32,8 +32,7 @@ protected:
 	virtual void OnSingleOrMultiModeChanged(bool isSm) const;
 
 protected:
-	AbstractViewModel& viewModel;
-	AbstractCommandFactory& commandFactory;
+	AbstractViewModel& viewModel;	
 	std::vector<QPushButton*> waveLengthButtons;
 
 	std::map<WaveLengthEnum, QPushButton*> waveLengthButtonsMap; // Move to reference_Counting objects?

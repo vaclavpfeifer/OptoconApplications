@@ -4,17 +4,26 @@
 #include "qobject.h"
 #include "Common/CommonDeclarations.h"
 #include "Commands/AbstractCommand.h"
+// #include "Commands/AbstractCommandFactory.h" 
 #include <memory>
 
 // TODO: Make method which will setUP viewModeles propery according to the default View Model settings
 // TODO: move wavelenght enum here??
+
+class AbstractCommandFactory; // --rather use forward declaration in order to avoid compile problems...
+
 
 class AbstractViewModel : public QObject
 {
 	Q_OBJECT
 
 public:
-	AbstractViewModel();
+	AbstractViewModel(const AbstractCommandFactory& cmdFact)
+		: commandFactory(cmdFact)
+	{
+
+	}
+
 	virtual ~AbstractViewModel();
 
 	virtual void setActiveWaveLength(WaveLengthEnum newWaveLength, bool shouldEmit = true);
@@ -74,6 +83,8 @@ protected:
 	// Each command can be registered to some possible user action -- commands should be able to run another commands
 	std::map<WaveLengthEnum, std::shared_ptr<AbstractCommand>> registeredWaveLengthCommands;
 	std::map<WidgetsCodeMap, std::shared_ptr<AbstractCommand>> allRegisteredCommands;
+		
+	const AbstractCommandFactory& commandFactory; // TODO: delete when not used elsewhere except ctor...
 
 };
 

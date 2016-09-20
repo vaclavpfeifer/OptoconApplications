@@ -1,8 +1,8 @@
 #include "OptoconTargetEmbededView.h"
 #include "setlimitwindow.h"
 
-OptoconTargetEmbededView::OptoconTargetEmbededView(AbstractCommandFactory& cmdFactory, AbstractViewModel& viewModel, QWidget * parent) 
-	: OptoconAbstractView(viewModel, cmdFactory, parent)
+OptoconTargetEmbededView::OptoconTargetEmbededView(AbstractViewModel& viewModel, QWidget * parent) 
+	: OptoconAbstractView(viewModel, parent)
 {
 	ui.setupUi(this);
 

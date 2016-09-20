@@ -9,7 +9,7 @@ class OptoconBasicDevelopmentView : public OptoconAbstractView
 	  Q_OBJECT
 
 public:
-	OptoconBasicDevelopmentView(AbstractCommandFactory& cmdFactory, AbstractViewModel& viewModel, QWidget * parent = Q_NULLPTR);
+	OptoconBasicDevelopmentView(AbstractViewModel& viewModel, QWidget * parent = Q_NULLPTR);
 
 	virtual ~OptoconBasicDevelopmentView();
 

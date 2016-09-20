@@ -3,30 +3,27 @@
 
 #include "AbstractViewModel.h"
 #include "Helpers/SerialIOCommunicationHelper.h"
-#include "Commands/DefaultCommandFactory.h"
 #include "Commands/CommunicationCommand.h"
 #include "Commands/WaveLengthChangedCommand.h"
+#include "Commands/AbstractCommandFactory.h"
+
 
 class BasicViewModel : public AbstractViewModel
 {
 public:
-	BasicViewModel()
+	BasicViewModel(const AbstractCommandFactory& cmdFact)
+		: AbstractViewModel(cmdFact)
 	{
-		// auto fact = new DefaultCommandFactory(*this);
+		auto cmd = commandFactory.CreateGUICommand();
 
-		// register commands here
-
-		// This is only test!!!!!
-		//registeredWaveLengthCommands.insert(std::make_pair(0, new CommunicationCommand(*(new SerialIOCommunicationHelper()))));
+		registeredWaveLengthCommands.insert(std::make_pair(WaveLengthEnum::WAVELENGTH_850, commandFactory.CreateWLChangedCmd(WaveLengthEnum::WAVELENGTH_850)));
+		registeredWaveLengthCommands.insert(std::make_pair(WaveLengthEnum::WAVELENGTH_1310, commandFactory.CreateWLChangedCmd(WaveLengthEnum::WAVELENGTH_1310)));
+		registeredWaveLengthCommands.insert(std::make_pair(WaveLengthEnum::WAVELENGTH_1310, commandFactory.CreateWLChangedCmd(WaveLengthEnum::WAVELENGTH_1310)));
+		registeredWaveLengthCommands.insert(std::make_pair(WaveLengthEnum::WAVELENGTH_1500, commandFactory.CreateWLChangedCmd(WaveLengthEnum::WAVELENGTH_1500)));
+		registeredWaveLengthCommands.insert(std::make_pair(WaveLengthEnum::WAVELENGTH_OFF, commandFactory.CreateWLChangedCmd(WaveLengthEnum::WAVELENGTH_OFF)));
 
 		// Some default commands registration can be done as well!! -- TODO: do default registration in base class and allow overwriting of values when registering
-
-		registeredWaveLengthCommands.insert(std::make_pair(WaveLengthEnum::WAVELENGTH_850, new WaveLengthChangedCommand(*(new SerialIOCommunicationHelper()), WaveLengthEnum::WAVELENGTH_850  )));
-		registeredWaveLengthCommands.insert(std::make_pair(WaveLengthEnum::WAVELENGTH_1300, new WaveLengthChangedCommand(*(new SerialIOCommunicationHelper()), WaveLengthEnum::WAVELENGTH_1300)));
-		registeredWaveLengthCommands.insert(std::make_pair(WaveLengthEnum::WAVELENGTH_1310, new WaveLengthChangedCommand(*(new SerialIOCommunicationHelper()), WaveLengthEnum::WAVELENGTH_1310)));
-		registeredWaveLengthCommands.insert(std::make_pair(WaveLengthEnum::WAVELENGTH_1500, new WaveLengthChangedCommand(*(new SerialIOCommunicationHelper()), WaveLengthEnum::WAVELENGTH_1500)));
-		// registeredWaveLengthCommands.insert(std::make_pair(WaveLengthEnum::WAVELENGTH_OFF, new WaveLengthChangedCommand(*(new SerialIOCommunicationHelper()), WaveLengthEnum::WAVELENGTH_OFF)));
-
+		
 	}
 
 	virtual ~BasicViewModel();
