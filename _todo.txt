@@ -23,7 +23,7 @@
   ~ distribute source binary with only necessary QT libs?
   ~ 
 
-- Check wheteher for complex object creation (including signal/slot setup) is necessary to do disconect!!
+DONE (disconect is not necessary):- Check wheteher for complex object creation (including signal/slot setup) is necessary to do disconect!!
 
 - Check that there are no memory leaks -- valgrind?
 
@@ -31,7 +31,9 @@
   ~ create whole new qmake proj file (from which even vcxProj files can be generated - simmilar to cmake)
   ~ qmake is able to do deployment/install as well
 
-- Disable main frame on window leave only content - i.e. disable frame with X button
+DONE : - Disable main frame on window leave only content - i.e. disable frame with X button  
+
+- Commands should return some enum status instead of pure INT
 
 - Architecture:
   ~ create items in Abstract View for all items that could exists and do move the common logic to abstract class which should now work with local variables from abstract class.

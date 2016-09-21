@@ -4,7 +4,7 @@
 #include "Views/OptoconTargetEmbededView.h"
 //#include "ViewModels/BasicViewModel.h"
 #include "ViewModels/AbstractViewModel.h"
-#include "Commands/DefaultCommandFactory.h"
+#include "Commands/DefaultCommandFactory.h" // Note: use slash rather than backslash because of win/linux compatibility!
 
 #include <QtDebug>
 #include <stdio.h>

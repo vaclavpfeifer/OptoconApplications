@@ -1,7 +1,7 @@
 #include "ViewModels/AbstractViewModel.h"
 #include "Common/AbstractLogger.h"
 #include "Helpers/LogHelper.h"
-
+#include "Helpers/CommandExecHelper.h"
 
 AbstractViewModel::~AbstractViewModel()
 {
@@ -18,7 +18,7 @@ void AbstractViewModel::setActiveWaveLength(WaveLengthEnum newWaveLength, bool s
 	// TODO: execute directly here, or rather return Abstract cmd and execution will be done on UI side??
 	auto cmd = this->registeredWaveLengthCommands[newWaveLength];
 
-	if (cmd != nullptr)
+	/*if (cmd != nullptr)
 	{
 		cmd->execute();
 	}
@@ -28,7 +28,11 @@ void AbstractViewModel::setActiveWaveLength(WaveLengthEnum newWaveLength, bool s
 
 		logger->Log(AbstractLogger::WARNING, "Unable to execute, command is not registered....");
 
-	}
+	}*/
+
+	const CommandExecHelper cmdExecutor;
+
+	cmdExecutor.ExecuteCommand(cmd);
 
 	// Update GUI accordingly
 	if (shouldEmit)

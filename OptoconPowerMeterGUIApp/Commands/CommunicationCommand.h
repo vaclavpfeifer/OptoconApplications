@@ -22,7 +22,7 @@ public:
 
 	virtual ~CommunicationCommand();
 
-	virtual int execute() override
+	virtual int execute() const override
 	{
 		logger->Log(AbstractLogger::LogLevel::INFORMATION, "Communication commands sucesfully executed....");
 

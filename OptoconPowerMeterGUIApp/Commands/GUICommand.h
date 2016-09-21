@@ -16,10 +16,13 @@ public:
 	{
 
 	}
-	virtual ~GUICommand();
+	virtual ~GUICommand()
+	{
+		int a = 5;
+	}
 
 	// Inherited via AbstractCommand
-	virtual int execute() override
+	virtual int execute() const override
 	{
 		// Disable WaveLength
 		viewModel.setActiveWaveLength(WaveLengthEnum::WAVELENGTH_OFF);		

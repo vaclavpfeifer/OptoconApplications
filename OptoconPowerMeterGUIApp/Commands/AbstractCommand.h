@@ -5,10 +5,16 @@
 class AbstractCommand
 {
 public:
-	AbstractCommand();
-	virtual ~AbstractCommand();
+	AbstractCommand()
+	{
+		int a = 5;
+	}
+	virtual ~AbstractCommand()
+	{
+		int a = 5;
+	}
 
-	virtual int execute() = 0;
+	virtual int execute() const = 0;
 
 protected:
 	long id; // TODO: id for command type identification or for a number odintifying sequence	 

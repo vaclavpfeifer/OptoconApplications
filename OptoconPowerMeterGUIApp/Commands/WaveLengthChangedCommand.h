@@ -15,9 +15,12 @@ public:
 		execString = "WAVE LENGTH CHANGED exec string..."; // or move to initialization for better performance
 	}
 
-	virtual ~WaveLengthChangedCommand();
+	virtual ~WaveLengthChangedCommand()
+	{
+		int a = 5;
+	}
 
-	int execute() override
+	int execute() const override
 	{
 		auto logger = LogHelper::GetLogger();
 

@@ -20,7 +20,7 @@ public:
 
 	virtual ~CompositeCommand();
 
-	virtual int execute() override
+	virtual int execute() const override
 	{
 		for each (auto cmd in registeredCommands)
 		{
