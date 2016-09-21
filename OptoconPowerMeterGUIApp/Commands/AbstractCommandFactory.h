@@ -15,10 +15,18 @@ public:
 	AbstractCommandFactory();
 	virtual ~AbstractCommandFactory();
 
-	virtual std::shared_ptr<CommunicationCommand> CreateSerialIOCommand() = 0;
-	virtual std::shared_ptr<CommunicationCommand> CreateTCPIPCommand() = 0;	
+	// Or command factory should always return AbstractCommand?
+
+
+	virtual std::shared_ptr<CommunicationCommand> CreateSerialIOCommand() const = 0;
+	virtual std::shared_ptr<CommunicationCommand> CreateTCPIPCommand() const = 0;	
 	virtual std::shared_ptr<GUICommand> CreateGUICommand() const = 0;
-	virtual std::shared_ptr<WaveLengthChangedCommand> CreateWLChangedCmd(WaveLengthEnum waveLength) const = 0;
+
+
+	virtual std::shared_ptr<AbstractCommand> CreateWLChangedCmd(WaveLengthEnum waveLength) const = 0;
+
+
+
 };
 
 #endif

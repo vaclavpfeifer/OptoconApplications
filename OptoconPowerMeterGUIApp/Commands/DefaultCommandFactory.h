@@ -40,12 +40,12 @@ public:
 
 	virtual ~DefaultCommandFactory();
 
-    virtual std::shared_ptr<CommunicationCommand> CreateSerialIOCommand() override
+    virtual std::shared_ptr<CommunicationCommand> CreateSerialIOCommand() const override
 	{		
-		return std::make_shared<CommunicationCommand>(ioHelperClass);
+		return std::make_shared<CommunicationCommand>(serialComHelperClass);
 	}
 	
-    virtual std::shared_ptr<CommunicationCommand> CreateTCPIPCommand() override
+    virtual std::shared_ptr<CommunicationCommand> CreateTCPIPCommand() const override
 	{
 		return std::make_shared<CommunicationCommand>(tcpIPHelperClass);
 	}
@@ -55,15 +55,15 @@ public:
 		return std::make_shared<GUICommand>(viewModel);
 	}
 
-	virtual std::shared_ptr<WaveLengthChangedCommand> CreateWLChangedCmd(WaveLengthEnum waveLength) const override
+	virtual std::shared_ptr<AbstractCommand> CreateWLChangedCmd(WaveLengthEnum waveLength) const override
 	{
-		return std::make_shared<WaveLengthChangedCommand>(ioHelperClass, waveLength);
+		return std::make_shared<WaveLengthChangedCommand>(serialComHelperClass, waveLength);
 	}
 
 
 private:
 	AbstractViewModel& viewModel;
-	const SerialIOCommunicationHelper ioHelperClass;
+	const SerialIOCommunicationHelper serialComHelperClass;
 	const TCPIPCommunicationHelper tcpIPHelperClass;
 };
 
