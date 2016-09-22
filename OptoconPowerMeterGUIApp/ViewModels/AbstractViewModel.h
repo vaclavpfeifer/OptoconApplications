@@ -5,10 +5,13 @@
 #include "Common/CommonDeclarations.h"
 #include "Commands/AbstractCommand.h"
 // #include "Commands/AbstractCommandFactory.h" 
+#include "Helpers/CommandExecHelper.h"
 #include <memory>
 
 // TODO: Make method which will setUP viewModeles propery according to the default View Model settings
 // TODO: move wavelenght enum here??
+
+//TODO: should i first emit and then execute cmd, or in other way?
 
 class AbstractCommandFactory; // --rather use forward declaration in order to avoid compile problems...
 
@@ -43,6 +46,8 @@ public:
 
 
 signals:
+	// TODO: idea - commands could be send as a parameter when signal is sent and receiver could decide whether to to run the signal...
+
 	void waveLengthChanged(WaveLengthEnum newWL);
 	void singleOrMultiModeChanged(bool isSM);
 	void serialNumberChanged(QString newSerialNumber);
@@ -82,10 +87,10 @@ protected:
 
 	// Each command can be registered to some possible user action -- commands should be able to run another commands
 	std::map<WaveLengthEnum, std::shared_ptr<AbstractCommand>> registeredWaveLengthCommands;
-	std::map<WidgetsCodeMap, std::shared_ptr<AbstractCommand>> allRegisteredCommands;
+	std::map<WidgetsCodeMap, std::shared_ptr<AbstractCommand>> registeredAllCommands;
 		
 	const AbstractCommandFactory& commandFactory; // TODO: delete when not used elsewhere except ctor...
-
+	const CommandExecHelper cmdExecutor;
 };
 
 #endif

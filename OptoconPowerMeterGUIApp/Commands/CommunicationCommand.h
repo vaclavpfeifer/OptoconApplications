@@ -8,7 +8,10 @@
 #include "Common/AbstractLogger.h"
 #include "Helpers/LogHelper.h"
 
-// TODO: create header files with possible Return values for execute method...
+#include <chrono>
+#include <thread>
+
+// TODO: create header files with possible Return values for execute method... And use domains and XORS 
 
 class CommunicationCommand : public AbstractCommand
 {
@@ -24,7 +27,13 @@ public:
 
 	virtual int execute() const override
 	{
-		logger->Log(AbstractLogger::LogLevel::INFORMATION, "Communication commands sucesfully executed....");
+		logger->Log(AbstractLogger::LogLevel::INFORMATION, "Communication command execution sucesfully started....");
+
+		//_sleep(10);
+
+		std::this_thread::sleep_for(std::chrono::seconds(10));
+
+		logger->Log(AbstractLogger::LogLevel::INFORMATION, "Communication command execution sucesfully finished....");
 
 		return 0;
 	}

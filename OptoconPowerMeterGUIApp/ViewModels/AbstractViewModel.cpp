@@ -7,36 +7,19 @@ AbstractViewModel::~AbstractViewModel()
 {
 }
 
+// TODO: remove should emit as its not used anymore
 void AbstractViewModel::setActiveWaveLength(WaveLengthEnum newWaveLength, bool shouldEmit)
 {
 	if (this->ActiveWaveLength != newWaveLength)
 	{
 		this->ActiveWaveLength = newWaveLength;
-	}
 
-	// Execute CMD -- TODO: move execution to some CommandExecutor/Scheduler class!!-- there can be implemented sync/async logic as well...
-	// TODO: execute directly here, or rather return Abstract cmd and execution will be done on UI side??
-	auto cmd = this->registeredWaveLengthCommands[newWaveLength];
+		//auto cmd = this->registeredWaveLengthCommands[newWaveLength];
+		///const CommandExecHelper cmdExecutor;
+		//cmdExecutor.ExecuteCommand(cmd);
 
-	/*if (cmd != nullptr)
-	{
-		cmd->execute();
-	}
-	else
-	{
-		auto logger = LogHelper::GetLogger();
-
-		logger->Log(AbstractLogger::WARNING, "Unable to execute, command is not registered....");
-
-	}*/
-
-	const CommandExecHelper cmdExecutor;
-
-	cmdExecutor.ExecuteCommand(cmd);
-
-	// Update GUI accordingly
-	if (shouldEmit)
 		emit waveLengthChanged(newWaveLength);
+	}	
 }
 
 void AbstractViewModel::setSingleOrMultiMode(bool isSM)
@@ -88,10 +71,21 @@ void AbstractViewModel::setA1Checked(bool isChecked)
 {
 	if (this->isA1Checked != isChecked)
 	{
-		this->isA1Checked = isChecked;
+		this->isA1Checked = isChecked;		
+
+		//auto cmd = this->registeredAllCommands[WidgetsCodeMap::CHECKBOX_A1];
+		//cmdExecutor.ExecuteCommandAsync(cmd);
+
+		// Update UI accordingly
 		emit checkA1Changed(isChecked);
 
-		emit check_A_Changed(1, isChecked); // testing )not used ATM)
+		//auto cmd = this->registeredWaveLengthCommands[newWaveLength];		
+		//cmdExecutor.ExecuteCommand(cmd);
+
+		/*auto cmd = this->registeredAllCommands[WidgetsCodeMap::CHECKBOX_A1];
+		cmdExecutor.ExecuteCommandAsync(cmd);*/
+
+		//emit check_A_Changed(1, isChecked); // testing )not used ATM)
 	}
 }
 
@@ -102,7 +96,7 @@ void AbstractViewModel::setA2Checked(bool isChecked)
 		this->isA2Checked = isChecked;
 		emit checkA2Changed(isChecked);
 
-		emit check_A_Changed(2, isChecked); // testing )not used ATM)
+		//emit check_A_Changed(2, isChecked); // testing )not used ATM)
 	}
 }
 
@@ -113,7 +107,7 @@ void AbstractViewModel::setA3Checked(bool isChecked)
 		this->isA3Checked = isChecked;
 		emit checkA3Changed(isChecked);
 
-		emit check_A_Changed(3, isChecked); // testing )not used ATM)
+		//emit check_A_Changed(3, isChecked); // testing )not used ATM)
 	}
 }
 
@@ -124,7 +118,7 @@ void AbstractViewModel::setA4Checked(bool isChecked)
 		this->isA4Checked = isChecked;
 		emit checkA4Changed(isChecked);
 
-		emit check_A_Changed(4, isChecked); // testing )not used ATM)
+		//emit check_A_Changed(4, isChecked); // testing )not used ATM)
 	}
 }
 

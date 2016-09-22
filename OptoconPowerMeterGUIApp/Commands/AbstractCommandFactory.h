@@ -23,9 +23,9 @@ public:
 	virtual std::shared_ptr<GUICommand> CreateGUICommand() const = 0;
 
 
-	virtual std::shared_ptr<AbstractCommand> CreateWLChangedCmd(WaveLengthEnum waveLength) const = 0;
+	virtual std::shared_ptr<AbstractCommand> CreateWLChangedCmd(WaveLengthEnum waveLength) const = 0;	
 
-
+	//virtual std::shared_ptr<AbstractCommand> CreateTestCommCmd() const = 0;
 
 };
 
