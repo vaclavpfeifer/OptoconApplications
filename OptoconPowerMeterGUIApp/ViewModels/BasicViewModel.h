@@ -24,6 +24,7 @@ public:
 
 		// Some default commands registration can be done as well!! -- TODO: do default registration in base class and allow overwriting of values when registering
 		
+		registeredAllCommands.insert(std::make_pair(WidgetsCodeMap::CHECKBOX_A1, commandFactory.CreateSerialIOCommand()));
 	}
 
 	virtual ~BasicViewModel();

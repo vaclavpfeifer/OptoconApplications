@@ -33,7 +33,17 @@ DONE (disconect is not necessary):- Check wheteher for complex object creation (
 
 DONE : - Disable main frame on window leave only content - i.e. disable frame with X button  
 
-- Commands should return some enum status instead of pure INT
+
+## COMANDS - TODO & PROBLEMS
+- COMMANDS should return some enum status instead of pure INT
+ - Should we return AbstractCommand by parameter instead? and execute on View??
+ -- Or execure after signal for UI update is done? If i will have command which will do some UI setup that could be a poblem!!
+
+ - If command is still executing and i will triger/click same button? should I wait until the previous one is completed and dismiss the command? or what should be the default behaviour??
+	~ I should keep some sort of mapping whether thread finished before new thread is spammed? 
+	
+	~ !!! Or assign executer directly / either sync/async and those informations can be set-up directly
+
 
 - Architecture:
   ~ create items in Abstract View for all items that could exists and do move the common logic to abstract class which should now work with local variables from abstract class.

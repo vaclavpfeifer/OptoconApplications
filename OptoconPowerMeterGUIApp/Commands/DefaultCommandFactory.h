@@ -60,6 +60,10 @@ public:
 		return std::make_shared<WaveLengthChangedCommand>(serialComHelperClass, waveLength);
 	}
 
+	//std::shared_ptr<AbstractCommand> CreateTestCommCmd() const override
+	//{
+	//	return std::make_shared<WaveLengthChangedCommand>(serialComHelperClass, waveLength);
+	//}
 
 private:
 	AbstractViewModel& viewModel;
