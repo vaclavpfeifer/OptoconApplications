@@ -24,7 +24,17 @@ public:
 
 		// Some default commands registration can be done as well!! -- TODO: do default registration in base class and allow overwriting of values when registering
 		
-		registeredAllCommands.insert(std::make_pair(WidgetsCodeMap::CHECKBOX_A1, commandFactory.CreateSerialIOCommand()));
+		registeredCommands.insert(std::make_pair(WidgetsCodeMap::CHECKBOX_A1, 
+			std::make_shared<CommandExecHelper>(commandFactory.CreateSerialIOCommand(), false, 3 ))); // This should set up command that should not be retried
+
+		registeredCommands.insert(std::make_pair(WidgetsCodeMap::CHECKBOX_A2,
+			std::make_shared<CommandExecHelper>(commandFactory.CreateSerialIOCommand(), true, 3))); // This should set up command that should be retried 3-times
+
+		registeredCommands.insert(std::make_pair(WidgetsCodeMap::CHECKBOX_A3,
+			std::make_shared<CommandExecHelper>(commandFactory.CreateSerialIOCommand()))); // This should set up command that should not be retried
+
+		registeredCommands.insert(std::make_pair(WidgetsCodeMap::CHECKBOX_A4,
+			std::make_shared<CommandExecHelper>(commandFactory.CreateSerialIOCommand(), true, 5))); // This should set up command that should  be retried 5 times
 	}
 
 	virtual ~BasicViewModel();

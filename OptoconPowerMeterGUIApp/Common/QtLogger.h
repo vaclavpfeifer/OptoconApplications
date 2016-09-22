@@ -16,7 +16,7 @@ public:
 	QtLogger(LogLevel minLogLevel, QString logFileName = "_ApplicationLog.txt") //: minimumLogLevel(minLogLevel)
 	{
 		minimumLogLevel = minLogLevel;
-		QtLogger::logFileName = logFileName;
+		//QtLogger::logFileName = logFileName;
 
 		// Do initialization here:
 		//qInstallMessageHandler(myMessageOutputToFile);		

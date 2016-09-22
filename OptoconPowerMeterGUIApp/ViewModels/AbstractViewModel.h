@@ -69,6 +69,7 @@ signals:
 
 	// Internal attributes
 protected:
+	const std::shared_ptr<AbstractLogger> logger = LogHelper::GetLogger();
 	QString serialNumber;	
 	WaveLengthEnum ActiveWaveLength = WaveLengthEnum::WAVELENGTH_850;
 	bool isSM = true;
@@ -87,10 +88,10 @@ protected:
 
 	// Each command can be registered to some possible user action -- commands should be able to run another commands
 	std::map<WaveLengthEnum, std::shared_ptr<AbstractCommand>> registeredWaveLengthCommands;
-	std::map<WidgetsCodeMap, std::shared_ptr<AbstractCommand>> registeredAllCommands;
+	std::map<WidgetsCodeMap, std::shared_ptr<CommandExecHelper>> registeredCommands;
 		
-	const AbstractCommandFactory& commandFactory; // TODO: delete when not used elsewhere except ctor...
-	const CommandExecHelper cmdExecutor;
+	const AbstractCommandFactory& commandFactory; // TODO: delete when not used elsewhere except ctor...		
+
 };
 
 #endif

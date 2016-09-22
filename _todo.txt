@@ -1,5 +1,6 @@
 - implement logging
-  ~ do wrapper over another engine so we can switch
+  ~DONE do wrapper over another engine so we can switch
+  ~ default logger behaviour needs to be consolidated!!!
 
 - convert project to makefile or QTproj file or Cmake?
   ~ to have same basic settings (to not export qt proj every time some change to vcxproj is made)

@@ -1,6 +1,8 @@
 #include "Common/QtLogger.h"
 
-QString QtLogger::logFileName = "_ApplicationLog.txt";
+
+
+QString QtLogger::logFileName = "__ApplicationLog.txt";
 
 QtLogger::~QtLogger()
 {

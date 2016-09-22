@@ -17,10 +17,12 @@
 #include <iostream>
 
 
+// TODO: ctors should accept interfaces for IO comm helpers so we can inject only mocked helper and not create a whole new factory!!!
 
 class DefaultCommandFactory : public AbstractCommandFactory
 {
 public:
+	
 	DefaultCommandFactory(AbstractViewModel& viewModel)
 		: viewModel(viewModel)
 	{

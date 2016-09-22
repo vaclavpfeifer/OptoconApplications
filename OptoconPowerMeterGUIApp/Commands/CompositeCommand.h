@@ -10,7 +10,7 @@
 class CompositeCommand : public AbstractCommand
 {
 public:
-	CompositeCommand(std::vector<std::shared_ptr<AbstractCommand>>& commandsToExecute)
+	CompositeCommand(const std::vector<std::shared_ptr<AbstractCommand>>& commandsToExecute)
 		: registeredCommands(commandsToExecute)
 	{
 
@@ -22,18 +22,20 @@ public:
 
 	virtual int execute() const override
 	{
+		int res = -1;
+
 		for each (auto cmd in registeredCommands)
 		{
-			auto result = cmd->execute();
+			res = cmd->execute();
 
 			// TODO: log/do smth with result --> e.g. do not run another command if the previous one failed???
 		}
 		
-		return 0;
+		return res;
 	}
 
 protected:
-	std::vector<std::shared_ptr<AbstractCommand>> registeredCommands;
+	const std::vector<std::shared_ptr<AbstractCommand>> registeredCommands;
 };
 
 #endif

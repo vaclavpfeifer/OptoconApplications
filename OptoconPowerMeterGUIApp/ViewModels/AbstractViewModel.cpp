@@ -73,19 +73,14 @@ void AbstractViewModel::setA1Checked(bool isChecked)
 	{
 		this->isA1Checked = isChecked;		
 
-		//auto cmd = this->registeredAllCommands[WidgetsCodeMap::CHECKBOX_A1];
+		//auto cmd = this->registeredCommands[WidgetsCodeMap::CHECKBOX_A1];
 		//cmdExecutor.ExecuteCommandAsync(cmd);
 
 		// Update UI accordingly
 		emit checkA1Changed(isChecked);
 
-		//auto cmd = this->registeredWaveLengthCommands[newWaveLength];		
-		//cmdExecutor.ExecuteCommand(cmd);
-
-		/*auto cmd = this->registeredAllCommands[WidgetsCodeMap::CHECKBOX_A1];
-		cmdExecutor.ExecuteCommandAsync(cmd);*/
-
-		//emit check_A_Changed(1, isChecked); // testing )not used ATM)
+		// Execute command synchronously		
+		this->registeredCommands[WidgetsCodeMap::CHECKBOX_A1]->ExecCommand();		
 	}
 }
 
@@ -96,7 +91,8 @@ void AbstractViewModel::setA2Checked(bool isChecked)
 		this->isA2Checked = isChecked;
 		emit checkA2Changed(isChecked);
 
-		//emit check_A_Changed(2, isChecked); // testing )not used ATM)
+		// Execute command asynchronously		
+		this->registeredCommands[WidgetsCodeMap::CHECKBOX_A2]->ExecCommandAsync();
 	}
 }
 
@@ -107,7 +103,11 @@ void AbstractViewModel::setA3Checked(bool isChecked)
 		this->isA3Checked = isChecked;
 		emit checkA3Changed(isChecked);
 
-		//emit check_A_Changed(3, isChecked); // testing )not used ATM)
+		// Execute command asynchronously		
+		this->registeredCommands[WidgetsCodeMap::CHECKBOX_A3]->ExecCommandAsync([=](int result) -> void 
+		{
+			logger->Log(AbstractLogger::INFORMATION, "Successfully executed my callback handler...");
+		});
 	}
 }
 
