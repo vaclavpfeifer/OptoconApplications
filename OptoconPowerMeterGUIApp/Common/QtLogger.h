@@ -4,7 +4,7 @@
 #include "Common/AbstractLogger.h"
 #include <mutex>
 #include <QtDebug>
-
+#include <QDateTime>
 
 //typedef void(*QtMessageHandler)(QtMsgType, const QMessageLogContext &, const QString &);
 //
@@ -16,14 +16,7 @@ public:
 	QtLogger(LogLevel minLogLevel, QString logFileName = "_ApplicationLog.txt") //: minimumLogLevel(minLogLevel)
 	{
 		minimumLogLevel = minLogLevel;
-		//QtLogger::logFileName = logFileName;
-
-		// Do initialization here:
-		//qInstallMessageHandler(myMessageOutputToFile);		
-		
-		//QtMessageHandler ptr = &QtLogger::myMessageOutputToFileTest;
-
-		//void QtLogger::*ptr = &this->myMessageOutputToFileTest;
+		QtLogger::logFileName = logFileName;
 
 		qInstallMessageHandler(myMessageOutputToFile);
 	}
@@ -55,40 +48,44 @@ public:
 		}
 	}	
 
-	void SetLogFileName(QString newLogFileName) override
-	{
-		QtLogger::logFileName = newLogFileName;
-	}
-
 private:
 	std::mutex myMutex;
 	LogLevel minimumLogLevel = LogLevel::ERROR;
 	static QString logFileName;
 
-
-
 	static void myMessageOutputToFile(QtMsgType type, const QMessageLogContext &context, const QString &msg)
 	{		
 		// TODO: move to c++ streams....
 		// TODO: this piece of code is being initialized only once, in order to support different log file names, we need to change to local method
+		// , context.file, context.line, context.function
+
 		auto pFile = fopen(logFileName.toStdString().c_str(), "a+");
 
+
+		// TODO: CHAR SET PROBLEM!!!
+		auto dateTimeStr = QDateTime::currentDateTime().toString(Qt::ISODate).toStdString().c_str();
+
+		auto now = QDateTime::currentDateTime().toString(Qt::LocalDate);
+		auto nowStd = now.toStdString();
+
+
 		QByteArray localMsg = msg.toLocal8Bit();
-		switch (type) {
+		switch (type) 
+		{
 		case QtDebugMsg:			
-			fprintf(pFile, "Debug: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
+			fprintf(pFile, "%s DEBUG: %s\n", dateTimeStr, localMsg.constData());
 			break;
 		case QtInfoMsg:
-			fprintf(pFile, "Info: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
+			fprintf(pFile, "%s INFO: %s\n", dateTimeStr, localMsg.constData());
 			break;
 		case QtWarningMsg:
-			fprintf(pFile, "Warning: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
+			fprintf(pFile, "%s WARNING: %s\n", dateTimeStr, localMsg.constData());
 			break;
 		case QtCriticalMsg:
-			fprintf(pFile, "Critical: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
+			fprintf(pFile, "%s ERROR: %s\n", dateTimeStr, localMsg.constData());
 			break;
 		case QtFatalMsg:
-			fprintf(pFile, "Fatal: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
+			fprintf(pFile, "%s FATAL: %s\n", dateTimeStr, localMsg.constData());
 			abort();
 		default:
 			break;

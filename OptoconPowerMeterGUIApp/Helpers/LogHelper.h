@@ -3,13 +3,16 @@
 #include "Common/AbstractLogger.h"
 #include "Common/QtLogger.h"
 
+// TODO: should keep map of registered loggers and tog to ALL!!!
+
+
 class LogHelper
 {
 private:
 	LogHelper() 
 	{		
 		//defaultLoggerImpl = new QtLogger(AbstractLogger::LogLevel::DEBUG);
-		defaultLoggerImpl = std::make_shared<QtLogger>(AbstractLogger::LogLevel::DEBUG);
+		defaultLoggerImpl = std::make_shared<QtLogger>(AbstractLogger::LogLevel::DEBUG, "annn_log.txt");
 		registeredLoggerImpl = defaultLoggerImpl;
 	}
 	virtual ~LogHelper()
@@ -29,11 +32,6 @@ public:
 	static void RegisterLogger(std::shared_ptr<AbstractLogger> loggerImpl)
 	{		
 		LogHelper::INSTANCE().registeredLoggerImpl = loggerImpl;
-	}
-
-	static void SetQtLogFileName(QString newFileName)
-	{
-		LogHelper::INSTANCE().registeredLoggerImpl->SetLogFileName(newFileName);
 	}
 
 protected:

@@ -12,10 +12,19 @@ public:
 	
 	QSerialPort::SerialPortError SendCommand(const QString& request, QString& response) override
 	{
-
-
-		return QSerialPort::NoError;
+		throw new std::exception("Not Implemented Exception");
 	}
+
+	QString readData() const override
+	{
+		throw new std::exception("Not Implemented Exception");
+	}
+
+	void writeData(const QString& data) const override
+	{
+		throw new std::exception("Not Implemented Exception");
+	}
+
 };
 
 #endif

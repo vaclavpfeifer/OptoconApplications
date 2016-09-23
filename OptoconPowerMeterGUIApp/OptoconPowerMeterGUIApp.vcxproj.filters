@@ -158,6 +158,15 @@
     <ClCompile Include="Helpers\CommandExecHelper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Common\SimpleLogger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_AbstractLogger.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_AbstractLogger.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="CustomWidgets\qtexteditcustom.hpp">
@@ -194,6 +203,9 @@
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="Common\CommonOptoconSignals.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Common\AbstractLogger.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>
@@ -240,9 +252,6 @@
     <ClInclude Include="Commands\GUICommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Common\AbstractLogger.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Common\CommonDeclarations.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -262,6 +271,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Helpers\CommandExecHelper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\SimpleLogger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

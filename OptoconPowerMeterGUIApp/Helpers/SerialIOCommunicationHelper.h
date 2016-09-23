@@ -22,7 +22,7 @@ public:
 	// TODO: should thsi class be singleton / or should be separate request processed sycnhonously (to access serial port one at a time?)
 
 
-	QString readData()
+	QString readData() const
 	{
 		QMutexLocker locker(&mutex); // Lock
 
@@ -56,7 +56,7 @@ public:
 		return dataToReturn;
 	}
 
-	void writeData(QString data)
+	void writeData(const QString& data) const
 	{
 		QMutexLocker locker(&mutex); // Lock
 
@@ -135,7 +135,7 @@ public:
 
 private:
 	std::shared_ptr<AbstractLogger> logger = LogHelper::GetLogger();
-	QMutex mutex;
+	static QMutex mutex; // Qmutex should be almost 3times faster than stD::mutex due to the internal usage of spin-lock
 
 	QString serial_port_name_;
 	int serial_port_baud_rate_;

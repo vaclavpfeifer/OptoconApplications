@@ -1,12 +1,6 @@
-#include "AbstractLogger.h"
-
-
-
-AbstractLogger::AbstractLogger()
-{
-}
-
+#include "Common/AbstractLogger.h"
 
 AbstractLogger::~AbstractLogger()
 {
 }
+
