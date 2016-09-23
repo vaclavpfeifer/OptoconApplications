@@ -69,6 +69,8 @@ public:
 
 private:
 	AbstractViewModel& viewModel;
+
+	// Those should be changed/removed...
 	const SerialIOCommunicationHelper serialComHelperClass;
 	const TCPIPCommunicationHelper tcpIPHelperClass;
 };

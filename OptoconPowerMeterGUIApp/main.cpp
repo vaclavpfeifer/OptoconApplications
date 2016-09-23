@@ -12,8 +12,6 @@
 #include <mutex>
 #include "Helpers/LogHelper.h"
 
-
-
 int main(int argc, char *argv[])
 {	
 	// TODO: problem if new logger is registered after some logger has already been taken then the original - need to destroy previous intance --> use reference counting
@@ -26,6 +24,9 @@ int main(int argc, char *argv[])
 	logger->Log(AbstractLogger::DEBUG, "Debug started...");
 	logger->Log(AbstractLogger::INFORMATION, "Information entry...");
 	logger->Log(AbstractLogger::WARNING, "Warning entry...");	
+
+
+
 
 
 	QApplication a(argc, argv);

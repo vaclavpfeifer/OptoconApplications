@@ -8,6 +8,14 @@ class TCPIPCommunicationHelper : public AbstractCommunicationHelper
 public:
 	TCPIPCommunicationHelper();
 	virtual ~TCPIPCommunicationHelper();
+	
+	
+	QSerialPort::SerialPortError SendCommand(const QString& request, QString& response) override
+	{
+
+
+		return QSerialPort::NoError;
+	}
 };
 
 #endif
