@@ -15,9 +15,6 @@ public:
 private:
 	void InitializeConnections() override;
 
-private slots: 
-	void onNewLimitSet(QString newLimit) const; // Handler called when limitsetwindow exited & value set -- TODO: remove when in development window not necessary
-	
 private:
 	Ui::OptoconTargetLinuxView ui;
 };

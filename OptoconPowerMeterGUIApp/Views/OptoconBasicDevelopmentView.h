@@ -13,26 +13,10 @@ public:
 
 	virtual ~OptoconBasicDevelopmentView();
 
-	// Handlers
 private:
+	void InitializeConnections() override;
 
-	void ViewAll() ;
-	void onWaveLength850Clicked() ;
-	void onWaveLength1300Clicked() ;
-	void onWaveLength1310Clicked() ;
-	void onWaveLength1550Clicked() ;
-	void onWaveLengthOFFClicked() ;
-	void onReference_dBClicked() ;
-	void onReference_dBMmClicked() ;	
-	void CheckLimit() ;
-	void onNewLimitSet(QString newLimit) ;
-	void onBtnClick_SetLimit() ;
-	void onRBStatusChanged(bool isChecked) ;
-	
-	// binding 
-	void onWaveLengthChangedTest(WaveLengthEnum newWaveLength);
-	void onButtonExecGUICmdClicked();
-	
+private:	
 	Ui::MainWindowOptocon ui;
 };
 

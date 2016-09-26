@@ -4,6 +4,8 @@
 #include <QMutex>
 #include <QMetaEnum>
 #include <iostream>
+#include <fstream>
+#include <qdatetime.h>
 
 class SimpleLogger : public AbstractLogger
 {
@@ -26,7 +28,15 @@ public:
 
 		if (logLevel >= minimum_log_level_)
 		{
-			std::cout << logLevelEnumMap[logLevel] << "\t" << msg.toStdString() << std::endl;
+			auto dateTime = QDateTime::currentDateTime();
+			auto ddd = dateTime.toString(Qt::TextDate).toStdString();
+
+			std::ofstream myfile;
+			myfile.open(log_file_name_.toStdString(), std::ios::app);
+
+			myfile << ddd << "\t" << logLevelEnumMap[logLevel] << "\t" << msg.toStdString() << std::endl;
+
+			myfile.close();
 		}
 	}
 

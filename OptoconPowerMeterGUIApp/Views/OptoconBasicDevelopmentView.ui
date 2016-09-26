@@ -56,7 +56,7 @@
      <string>S/N</string>
     </property>
    </widget>
-   <widget class="QPlainTextEdit" name="plainTextEdit">
+   <widget class="QPlainTextEdit" name="textEdit_SN">
     <property name="geometry">
      <rect>
       <x>220</x>
@@ -387,7 +387,7 @@
       <x>580</x>
       <y>10</y>
       <width>181</width>
-      <height>54</height>
+      <height>55</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_1">
@@ -425,8 +425,8 @@
      <rect>
       <x>290</x>
       <y>110</y>
-      <width>471</width>
-      <height>58</height>
+      <width>478</width>
+      <height>62</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -539,8 +539,8 @@
      <rect>
       <x>410</x>
       <y>200</y>
-      <width>171</width>
-      <height>58</height>
+      <width>173</width>
+      <height>60</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -592,7 +592,7 @@
      <x>0</x>
      <y>0</y>
      <width>969</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuDevice">

@@ -248,3 +248,4 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+OptoconPowerMeterGUIApp/default_simple_log.txt

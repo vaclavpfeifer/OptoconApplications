@@ -5,17 +5,22 @@
 //#include "ViewModels/BasicViewModel.h"
 #include "ViewModels/AbstractViewModel.h"
 #include "Commands/DefaultCommandFactory.h" // Note: use slash rather than backslash because of win/linux compatibility!
+#include "Helpers/LogHelper.h"
+#include "Common/SimpleLogger.h"
 
 #include <QtDebug>
 #include <stdio.h>
 #include <fstream>
 #include <mutex>
-#include "Helpers/LogHelper.h"
+
 
 int main(int argc, char *argv[])
 {		
 	// TODO: The hardcoded file name is used instead of updated one
-	LogHelper::RegisterLogger(std::make_shared<QtLogger>(AbstractLogger::INFORMATION, "_NewLogFile.log"));
+	// LogHelper::RegisterLogger(std::make_shared<QtLogger>(AbstractLogger::INFORMATION, "_NewLogFile.log"));
+	LogHelper::RegisterLogger(std::make_shared<SimpleLogger>(AbstractLogger::INFORMATION, "_MyLog_Simple.log"));
+
+
 	// LogHelper::SetQtLogFileName("_AnotherLogFileName.log");
 	auto logger = LogHelper::GetLogger();	
 	
@@ -44,7 +49,8 @@ int main(int argc, char *argv[])
 
 
 	// TODO: when circular references solved update to shared pointer inside the View....
-	auto view = std::make_shared<OptoconTargetEmbededView>(*viewModel);
+	//auto view = std::make_shared<OptoconTargetEmbededView>(*viewModel);
+	auto view = std::make_shared<OptoconBasicDevelopmentView>(*viewModel);
 	view->show();
 
 	return a.exec();

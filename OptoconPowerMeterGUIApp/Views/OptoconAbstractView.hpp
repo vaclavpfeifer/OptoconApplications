@@ -26,10 +26,16 @@ protected:
 	static void CheckedHandler(QCheckBox* checkedBox, QTextEdit* textEdit, bool isChecked);
 	virtual void InitializeCommonConnections();
 
-// protected slots:
+protected slots:
 	virtual void OnReferenceChanged(bool isDb);
 	virtual void onWaveLengthChanged(WaveLengthEnum newWaveLength);
 	virtual void OnSingleOrMultiModeChanged(bool isSm) const;
+
+	void OptoconAbstractView::showEvent(QShowEvent* event) override
+	{
+		InitializeCommonConnections();
+		InitializeConnections();		
+	}
 
 protected:
 	AbstractViewModel& viewModel;	

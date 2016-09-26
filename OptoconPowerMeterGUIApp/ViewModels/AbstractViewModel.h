@@ -87,7 +87,9 @@ protected:
 
 
 	// Each command can be registered to some possible user action -- commands should be able to run another commands
-	std::map<WaveLengthEnum, std::shared_ptr<AbstractCommand>> registeredWaveLengthCommands;
+	std::map<WaveLengthEnum, std::shared_ptr<CommandExecHelper>> registeredWaveLengthCommands;
+
+
 	std::map<WidgetsCodeMap, std::shared_ptr<CommandExecHelper>> registeredCommands;
 		
 	const AbstractCommandFactory& commandFactory; // TODO: delete when not used elsewhere except ctor...		

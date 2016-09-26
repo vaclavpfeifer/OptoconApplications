@@ -14,7 +14,7 @@ void AbstractViewModel::setActiveWaveLength(WaveLengthEnum newWaveLength, bool s
 	{
 		this->ActiveWaveLength = newWaveLength;
 
-		//auto cmd = this->registeredWaveLengthCommands[newWaveLength];
+		this->registeredWaveLengthCommands[newWaveLength]->ExecCommand();
 		///const CommandExecHelper cmdExecutor;
 		//cmdExecutor.ExecuteCommand(cmd);
 

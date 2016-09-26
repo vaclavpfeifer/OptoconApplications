@@ -44,7 +44,7 @@ OptoconTargetEmbededView::OptoconTargetEmbededView(AbstractViewModel& viewModel,
 	// TODO: Set either viewmodel or gui accordingly.
 	
 	// Set up signal/slot connections	
-	OptoconTargetEmbededView::InitializeConnections();
+	//OptoconTargetEmbededView::InitializeConnections();
 }
 
 
@@ -56,7 +56,7 @@ void OptoconTargetEmbededView::InitializeConnections()
 {
 	// Note that usage of Variadic form (c++11 - i.e. not using SIGNAL/SLOT macros) is better when later doing refactoring....
 	// Set up signal/slot connections		
-	InitializeCommonConnections();
+	//InitializeCommonConnections();
 
 
 	// Additional binding set-up -- TODO: those should be moved to abstract class as well
@@ -66,9 +66,3 @@ void OptoconTargetEmbededView::InitializeConnections()
 	QObject::connect(&viewModel, &AbstractViewModel::checkA4Changed, [=](bool isChecked) {this->CheckedHandler(ui.checkBox_A4, ui.textEdit_A4, isChecked); });
 	// END BINDING
 }
-
-void OptoconTargetEmbededView::onNewLimitSet(QString newLimit) const
-{
-	viewModel.setLimitValue(newLimit.toDouble());
-}
-
