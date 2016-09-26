@@ -15,8 +15,8 @@ public:
 	~SetLimitWindow();
 
 public slots:
-	void onDialogBoxClick(QAbstractButton* btn);
-	void onDialogBoxCancelClick(QAbstractButton* btn);
+	void OnDialogBoxOKClicked();
+	void OnDialogBoxCancelClicked();
 
 signals:
 	void LimitChanged(QString newLimit);

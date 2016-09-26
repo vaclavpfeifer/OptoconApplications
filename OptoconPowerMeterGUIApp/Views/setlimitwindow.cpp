@@ -6,35 +6,22 @@
 SetLimitWindow::SetLimitWindow(QObject* caller) : QWidget(nullptr) // There is no parrent and thus new window is rendered
 {
 	ui.setupUi(this);
-
-	QObject::connect(ui.btn_OKCancel, SIGNAL(clicked(QAbstractButton*)), this, SLOT(onDialogBoxClick(QAbstractButton*)));
-
-	// TODO: find out how to set button action roles and then use those accept/reject signals
-	// QObject::connect(ui.btn_OKCancel, SIGNAL(accepted()), this, SLOT(onDialogBoxCancelClick()));
-
-	/*QObject::connect(this, SIGNAL(LimitChanged(QString)), caller, SLOT(onNewLimitSet(QString)));	
-
-	QMetaObject::connectSlotsByName(this);*/
+	QObject::connect(ui.btn_OKCancel, &QDialogButtonBox::accepted, this, &SetLimitWindow::OnDialogBoxOKClicked);
+	QObject::connect(ui.btn_OKCancel, &QDialogButtonBox::rejected, this, &SetLimitWindow::OnDialogBoxCancelClicked);
 }
 
 SetLimitWindow::~SetLimitWindow()
 {
-
 }
 
-void SetLimitWindow::onDialogBoxClick(QAbstractButton* clickedBtn)
-{	
-	// TODO: add some form validations (to enable only valid number)
-
-	if(clickedBtn->text() == "OK")
-	{		
-		QString str = ui.lineEdit->text();
-		emit LimitChanged(str);
-	}
-	this->close();	
+void SetLimitWindow::OnDialogBoxOKClicked()
+{
+	QString str = ui.lineEdit->text();
+	emit LimitChanged(str);
+	this->close();
 }
 
-void SetLimitWindow::onDialogBoxCancelClick(QAbstractButton* btn)
+void SetLimitWindow::OnDialogBoxCancelClicked()
 {
 	this->close();
 }
