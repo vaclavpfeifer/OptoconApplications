@@ -3,7 +3,10 @@
 #include "Common/AbstractLogger.h"
 #include "Common/QtLogger.h"
 #include "Common/SimpleLogger.h"
+#include <iostream>
+#include <memory>
 // TODO: should keep map of registered loggers and tog to ALL!!!
+
 
 
 class LogHelper

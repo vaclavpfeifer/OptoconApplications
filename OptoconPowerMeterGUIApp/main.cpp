@@ -49,8 +49,8 @@ int main(int argc, char *argv[])
 
 
 	// TODO: when circular references solved update to shared pointer inside the View....
-	//auto view = std::make_shared<OptoconTargetEmbededView>(*viewModel);
-	auto view = std::make_shared<OptoconBasicDevelopmentView>(*viewModel);
+    auto view = std::make_shared<OptoconTargetEmbededView>(*viewModel);
+    //auto view = std::make_shared<OptoconBasicDevelopmentView>(*viewModel);
 	view->show();
 
 	return a.exec();

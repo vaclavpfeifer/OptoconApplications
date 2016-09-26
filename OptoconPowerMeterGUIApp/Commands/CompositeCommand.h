@@ -24,12 +24,14 @@ public:
 	{
 		int res = -1;
 
-		for each (auto cmd in registeredCommands)
-		{
-			res = cmd->execute();
 
-			// TODO: log/do smth with result --> e.g. do not run another command if the previous one failed???
-		}
+        // TODO not working under linux!!
+//		for each (auto cmd in registeredCommands)
+//		{
+//			res = cmd->execute();
+
+//			// TODO: log/do smth with result --> e.g. do not run another command if the previous one failed???
+//		}
 		
 		return res;
 	}

@@ -31,7 +31,7 @@ protected slots:
 	virtual void onWaveLengthChanged(WaveLengthEnum newWaveLength);
 	virtual void OnSingleOrMultiModeChanged(bool isSm) const;
 
-	void OptoconAbstractView::showEvent(QShowEvent* event) override
+    void showEvent(QShowEvent* ev) override
 	{
 		InitializeCommonConnections();
 		InitializeConnections();		
