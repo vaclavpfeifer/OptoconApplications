@@ -5,7 +5,7 @@
 TEMPLATE = app
 TARGET = OptoconPowerMeterGUIApp
 DESTDIR = ../Win32/Debug
-QT += core widgets serialport gui
+QT += core widgets gui serialport
 CONFIG += debug
 DEFINES += QT_DLL QT_WIDGETS_LIB QT_SERIALPORT_LIB
 INCLUDEPATH += ./GeneratedFiles \

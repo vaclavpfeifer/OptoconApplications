@@ -7,8 +7,8 @@
 message("You are running qmake on a generated .pro file. This may not work!")
 
 
-HEADERS += ./Commands/WaveLengthChangedCommand.h \
-    ./Common/AbstractLogger.h \
+HEADERS += ./Helpers/CommandExecHelper.h \
+    ./Commands/WaveLengthChangedCommand.h \
     ./Common/CommonDeclarations.h \
     ./Common/Constants.h \
     ./Commands/GUICommand.h \
@@ -22,17 +22,20 @@ HEADERS += ./Commands/WaveLengthChangedCommand.h \
     ./Helpers/TCPIPCommunicationHelper.h \
     ./Common/QtLogger.h \
     ./Helpers/LogHelper.h \
+    ./Common/SimpleLogger.h \
     ./ViewModels/BasicViewModel.h \
     ./CustomWidgets/QPushButtonCustom.h \
     ./CustomWidgets/qtexteditcustom.hpp \
     ./Views/OptoconBasicDevelopmentView.h \
     ./Common/CommonOptoconSignals.h \
+    ./Common/AbstractLogger.h \
     ./Views/OptoconTargetEmbededView.h \
     ./ViewModels/AbstractViewModel.h \
     ./Views/setlimitwindow.h \
     ./Views/OptoconAbstractView.hpp \
     ./Models/mymodel.h
-SOURCES += ./Common/AbstractLogger.cpp \
+SOURCES += ./Helpers/CommandExecHelper.cpp \
+    ./Common/AbstractLogger.cpp \
     ./Commands/GUICommand.cpp \
     ./Common/CommonOptoconSignals.cpp \
     ./Commands/CompositeCommand.cpp \
@@ -45,6 +48,7 @@ SOURCES += ./Common/AbstractLogger.cpp \
     ./Helpers/TCPIPCommunicationHelper.cpp \
     ./Common/QtLogger.cpp \
     ./Helpers/LogHelper.cpp \
+    ./Common/SimpleLogger.cpp \
     ./Views/OptoconTargetEmbededView.cpp \
     ./Views/OptoconBasicDevelopmentView.cpp \
     ./ViewModels/AbstractViewModel.cpp \
