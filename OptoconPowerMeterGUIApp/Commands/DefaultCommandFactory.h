@@ -24,32 +24,24 @@ class DefaultCommandFactory : public AbstractCommandFactory
 public:
 	
 	DefaultCommandFactory(AbstractViewModel& viewModel)
-		: viewModel(viewModel)
+		: viewModel(viewModel), 
+		  serialComHelperClass(SerialIOCommunicationHelper("COM3", QSerialPort::BaudRate::Baud19200, 6000)) // Initialize Serial COM helper class
 	{
 
 	}
 
-	// Test that provides example how to implement inheritance when using shared_ptr (cannot be done for ctors)
-	/*template <typename T>
-	auto DefaultCommandFactory(std::shared_ptr<T>& viewModel) -> decltype(DefaultCommandFactory( std::shared_ptr<AbstractViewModel>(viewModel) ) ) 
-	{ 
-		return DefaultCommandFactory(std::shared_ptr<AbstractViewModel>(viewModel));
-	}*/
-	
-	//: viewModel(viewModel)
-	/*{			
-	}*/
-
 	virtual ~DefaultCommandFactory();
+
+	// -- TODO: Only testing and should return AbstractCommand instead
 
     virtual std::shared_ptr<CommunicationCommand> CreateSerialIOCommand() const override
 	{		
-		return std::make_shared<CommunicationCommand>(serialComHelperClass);
+		return std::make_shared<CommunicationCommand>(serialComHelperClass, "");
 	}
 	
     virtual std::shared_ptr<CommunicationCommand> CreateTCPIPCommand() const override
 	{
-		return std::make_shared<CommunicationCommand>(tcpIPHelperClass);
+		return std::make_shared<CommunicationCommand>(tcpIPHelperClass, "");
 	}
 
     virtual std::shared_ptr<GUICommand> CreateGUICommand() const override
@@ -57,15 +49,34 @@ public:
 		return std::make_shared<GUICommand>(viewModel);
 	}
 
+
+	// -----
+
 	virtual std::shared_ptr<AbstractCommand> CreateWLChangedCmd(WaveLengthEnum waveLength) const override
 	{
 		return std::make_shared<WaveLengthChangedCommand>(serialComHelperClass, waveLength);
 	}
 
-	//std::shared_ptr<AbstractCommand> CreateTestCommCmd() const override
-	//{
-	//	return std::make_shared<WaveLengthChangedCommand>(serialComHelperClass, waveLength);
-	//}
+	virtual std::shared_ptr<AbstractCommand> CreateReferenceRequestedCmd() const override
+	{
+		return std::make_shared<CommunicationCommand>(serialComHelperClass, "r");
+	}
+
+	virtual std::shared_ptr<AbstractCommand> CreateWavelengthRequestedCmd() const override
+	{
+		return std::make_shared<CommunicationCommand>(serialComHelperClass, "l");
+	}
+
+	std::shared_ptr<AbstractCommand> CreateSerialNumberRequestedCmd() const override
+	{
+		return std::make_shared<CommunicationCommand>(serialComHelperClass, "n");
+	}
+
+	std::shared_ptr<AbstractCommand> CreateActualShownValueRequestedCmd() const override
+	{
+		return std::make_shared<CommunicationCommand>(serialComHelperClass, "v");
+	}
+
 
 private:
 	AbstractViewModel& viewModel;

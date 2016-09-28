@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>348</width>
-    <height>330</height>
+    <width>358</width>
+    <height>329</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -40,7 +40,7 @@
      <rect>
       <x>80</x>
       <y>30</y>
-      <width>191</width>
+      <width>201</width>
       <height>31</height>
      </rect>
     </property>
@@ -188,7 +188,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="PB_SerialNumber">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -211,7 +211,7 @@
      <rect>
       <x>120</x>
       <y>60</y>
-      <width>81</width>
+      <width>101</width>
       <height>31</height>
      </rect>
     </property>
@@ -257,7 +257,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="PB_WaveLength">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -275,7 +275,7 @@
      <string>wave length</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="PB_reference">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -595,7 +595,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>348</width>
+     <width>358</width>
      <height>21</height>
     </rect>
    </property>

@@ -40,12 +40,12 @@ void AbstractViewModel::setSerialNumber(QString newSerialNumber)
 	}
 }
 
-void AbstractViewModel::setReference(bool isDb)
+void AbstractViewModel::setReferenceUnits(bool isDb)
 {
 	if (this->isDb != isDb)
 	{
 		this->isDb = isDb;
-		emit referenceChanged(isDb);
+		emit referenceUnitsChanged(isDb);
 	}
 }
 
@@ -80,7 +80,13 @@ void AbstractViewModel::setA1Checked(bool isChecked)
 		emit checkA1Changed(isChecked);
 
 		// Execute command synchronously		
-		this->registeredCommands[WidgetsCodeMap::CHECKBOX_A1]->ExecCommand();		
+		
+		//this->registeredCommands[WidgetsCodeMap::CHECKBOX_A1]->ExecCommand();		
+
+		// TODO: how to solve start/stop already executing command?? Should I cancel thread directly?
+
+
+
 	}
 }
 

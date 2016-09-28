@@ -11,7 +11,7 @@
 class SerialIOCommunicationHelper : public AbstractCommunicationHelper
 {
 public:
-	SerialIOCommunicationHelper(QString serialPortName = "DEF_SERIAL_PORT_NAME", int serialPortBaudRate = QSerialPort::Baud9600, int readTimeout = 5000)
+	SerialIOCommunicationHelper(QString serialPortName = "DEF_SERIAL_PORT_NAME", int serialPortBaudRate = QSerialPort::Baud19200, int readTimeout = 5000)
 		: serial_port_name_(serialPortName), serial_port_baud_rate_(serialPortBaudRate), readTimeout(readTimeout)
 	{
 	}
@@ -91,7 +91,7 @@ public:
 
 	// This should simulate request/response 
 	// TODO: create new ERROR ENUM and wrap to this one (in order to use common interface)
-	QSerialPort::SerialPortError SendCommand(const QString& request, QString& response) override
+	QSerialPort::SerialPortError SendCommand(const QString& request, QString& response) const override
 	{
 		QMutexLocker locker(&mutex); // Lock
 
@@ -99,6 +99,11 @@ public:
 
 		serial.setBaudRate(serial_port_baud_rate_);
 		serial.setPortName(serial_port_name_);
+		serial.setDataBits(QSerialPort::Data8);
+		serial.setParity(QSerialPort::NoParity);
+		serial.setStopBits(QSerialPort::OneStop);
+		serial.setFlowControl(QSerialPort::SoftwareControl);
+
 
 		if (!serial.open(QIODevice::ReadWrite)) 
 		{
@@ -115,19 +120,19 @@ public:
 			if (serial.waitForReadyRead(readTimeout)) 
 			{
 				QByteArray responseData = serial.readAll();
-				while (serial.waitForReadyRead(10))
+				while (serial.waitForReadyRead(waitForRead))
 					responseData += serial.readAll();
 
 				response = QString(responseData);
 			}
 			else 
 			{
-				logger->Log(AbstractLogger::WARNING, QString("No data was currently available for reading from %1 port: %2").arg(serial_port_name_).arg(serial_port_name_));
+				logger->Log(AbstractLogger::WARNING, QString("No data was currently available for reading from port: %1").arg(serial_port_name_));
 			}
 		}
 		else 
 		{
-			logger->Log(AbstractLogger::WARNING, QString("Unable to write data within defined time frame port_name: %1 port: %2").arg(serial_port_name_).arg(serial_port_name_));			
+			logger->Log(AbstractLogger::WARNING, QString("Unable to write data within defined time frame port_name: port: %1").arg(serial_port_name_));			
 		}
 
 		return serial.error();
@@ -141,6 +146,8 @@ private:
 	int serial_port_baud_rate_;
 	int readTimeout = 5000; //[ms]
 	int writeTimeout = 5000; //[ms]
+
+	int waitForRead = 10; //[ms]
 };
 
 #endif

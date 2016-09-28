@@ -6,13 +6,12 @@ OptoconTargetEmbededView::OptoconTargetEmbededView(AbstractViewModel& viewModel,
 {
 	ui.setupUi(this);
 
-// TODO: 
-#if RELEASE
+#if !_DEBUG	
 	// Disable frame window
 	this->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
 #endif
 
-	// Initialize internal members:
+	// Register internal windgets/components
 	waveLengthButtonsMap.insert(std::make_pair(WAVELENGTH_850, ui.PB_850));
 	waveLengthButtonsMap.insert(std::make_pair(WAVELENGTH_1300, ui.PB_1300));
 	waveLengthButtonsMap.insert(std::make_pair(WAVELENGTH_1310, ui.PB_1310));
@@ -24,11 +23,15 @@ OptoconTargetEmbededView::OptoconTargetEmbededView(AbstractViewModel& viewModel,
 	allWidgetsCodeMap.insert(std::make_pair(WidgetsCodeMap::CHECKBOX_A3, ui.checkBox_A3));
 	allWidgetsCodeMap.insert(std::make_pair(WidgetsCodeMap::CHECKBOX_A4, ui.checkBox_A4));
 	allWidgetsCodeMap.insert(std::make_pair(WidgetsCodeMap::CHECKBOX_CHECK_LIMIT, ui.checkBox_CheckLimit));
-
+	
 	allWidgetsCodeMap.insert(std::make_pair(WidgetsCodeMap::PUSHBUTTON_CHECK_ALL, ui.btn_selectAll));
 	allWidgetsCodeMap.insert(std::make_pair(WidgetsCodeMap::PUSHBUTTON_DB, ui.PB_dB));
 	allWidgetsCodeMap.insert(std::make_pair(WidgetsCodeMap::PUSHBUTTON_DBM, ui.PB_dBm));
 	allWidgetsCodeMap.insert(std::make_pair(WidgetsCodeMap::PUSHBUTTON_SET_LIMIT, ui.PB_Set));
+	allWidgetsCodeMap.insert(std::make_pair(WidgetsCodeMap::PUSHBUTTON_REFERENCE, ui.PB_reference));
+	allWidgetsCodeMap.insert(std::make_pair(WidgetsCodeMap::PUSHBUTTON_WAVELENGTH, ui.PB_WaveLength));
+	allWidgetsCodeMap.insert(std::make_pair(WidgetsCodeMap::PUSHBUTTON_SERIALNUMBER, ui.PB_SerialNumber));
+
 
 	allWidgetsCodeMap.insert(std::make_pair(WidgetsCodeMap::RADIO_BUTTON_SM, ui.RB_SM));
 	allWidgetsCodeMap.insert(std::make_pair(WidgetsCodeMap::RADIO_BUTTON_MM, ui.RB_MM));
@@ -39,6 +42,7 @@ OptoconTargetEmbededView::OptoconTargetEmbededView(AbstractViewModel& viewModel,
 	allWidgetsCodeMap.insert(std::make_pair(WidgetsCodeMap::TEXTBOX_A4, ui.textEdit_A4));
 	allWidgetsCodeMap.insert(std::make_pair(WidgetsCodeMap::TEXTBOX_LIMIT, ui.textEdit_Limit));
 	allWidgetsCodeMap.insert(std::make_pair(WidgetsCodeMap::TEXTBOX_SERIAL_NUMBER, ui.textEdit_SN));
+
 
 
 	// TODO: Set either viewmodel or gui accordingly.

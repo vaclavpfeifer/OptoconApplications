@@ -128,6 +128,7 @@
     <ClCompile Include="Common\QtLogger.cpp" />
     <ClCompile Include="Helpers\LogHelper.cpp" />
     <ClCompile Include="Common\SimpleLogger.cpp" />
+    <ClCompile Include="Commands\PollingCommand.cpp" />
     <ClCompile Include="Views\OptoconTargetEmbededView.cpp" />
     <ClCompile Include="Views\OptoconBasicDevelopmentView.cpp" />
     <ClCompile Include="ViewModels\AbstractViewModel.cpp" />
@@ -236,6 +237,7 @@
     <ClInclude Include="Common\QtLogger.h" />
     <ClInclude Include="Helpers\LogHelper.h" />
     <ClInclude Include="Common\SimpleLogger.h" />
+    <ClInclude Include="Commands\PollingCommand.h" />
     <ClInclude Include="ViewModels\BasicViewModel.h" />
     <ClInclude Include="GeneratedFiles\ui_OptoconTargetEmbededView.h" />
     <ClInclude Include="GeneratedFiles\ui_qtexteditcustom.h" />

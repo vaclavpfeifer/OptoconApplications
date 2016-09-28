@@ -22,8 +22,12 @@ public:
 	virtual std::shared_ptr<CommunicationCommand> CreateTCPIPCommand() const = 0;	
 	virtual std::shared_ptr<GUICommand> CreateGUICommand() const = 0;
 
-
 	virtual std::shared_ptr<AbstractCommand> CreateWLChangedCmd(WaveLengthEnum waveLength) const = 0;	
+	virtual std::shared_ptr<AbstractCommand> CreateReferenceRequestedCmd() const = 0;
+	virtual std::shared_ptr<AbstractCommand> CreateWavelengthRequestedCmd() const = 0;
+	virtual std::shared_ptr<AbstractCommand> CreateSerialNumberRequestedCmd() const = 0;
+	virtual std::shared_ptr<AbstractCommand> CreateActualShownValueRequestedCmd() const = 0;
+
 
 	//virtual std::shared_ptr<AbstractCommand> CreateTestCommCmd() const = 0;
 

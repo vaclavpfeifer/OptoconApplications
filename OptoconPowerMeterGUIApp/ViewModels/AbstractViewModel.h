@@ -32,7 +32,7 @@ public:
 	virtual void setActiveWaveLength(WaveLengthEnum newWaveLength, bool shouldEmit = true);
 	virtual void setSingleOrMultiMode(bool isSM);
 	virtual void setSerialNumber(QString newSerialNumber);
-	virtual void setReference(bool isDb);
+	virtual void setReferenceUnits(bool isDb);
 	virtual void setLimitChecked(bool isLimitChecked);
 	virtual void setLimitValue(double newLimit);
 	virtual void setA1Checked(bool isChecked);
@@ -44,6 +44,38 @@ public:
 	virtual void setA3Value(double newValue);
 	virtual void setA4Value(double newValue);
 
+	virtual void RequestNewReferenceValue()
+	{
+		// Execute Command
+		this->registeredCommands[WidgetsCodeMap::PUSHBUTTON_REFERENCE]->ExecCommand();
+
+
+		// TODO:Should we set reference value to viewModel for later use??
+
+
+		/*if (this->referenceValue != newValue)
+		{
+			this->referenceValue = newValue;
+			emit referenceRequested(newValue);
+		}*/
+	}
+
+	virtual void RequestWaveLengthValue()
+	{
+		// Execute Command
+		this->registeredCommands[WidgetsCodeMap::PUSHBUTTON_WAVELENGTH]->ExecCommand();
+
+	}
+
+	virtual void RequestSerialNumberValue()
+	{
+		// Execute Command
+		this->registeredCommands[WidgetsCodeMap::PUSHBUTTON_SERIALNUMBER]->ExecCommand();
+
+	}
+
+
+
 
 signals:
 	// TODO: idea - commands could be send as a parameter when signal is sent and receiver could decide whether to to run the signal...
@@ -51,7 +83,11 @@ signals:
 	void waveLengthChanged(WaveLengthEnum newWL);
 	void singleOrMultiModeChanged(bool isSM);
 	void serialNumberChanged(QString newSerialNumber);
-	void referenceChanged(bool isDb);
+	void referenceUnitsChanged(bool isDb);
+
+
+	void referenceRequested(double newValue); // TODO: is this necessary?:?
+
 	void checkLimitChanged(bool isChecked);
 	void limitChanged(double newLimit);
 	
@@ -85,13 +121,12 @@ protected:
 	double a3Value = 0;
 	double a4Value = 0;
 
+	double referenceValue = 0; // TODO: is this necessary??
+
 
 	// Each command can be registered to some possible user action -- commands should be able to run another commands
 	std::map<WaveLengthEnum, std::shared_ptr<CommandExecHelper>> registeredWaveLengthCommands;
-
-
-	std::map<WidgetsCodeMap, std::shared_ptr<CommandExecHelper>> registeredCommands;
-		
+	std::map<WidgetsCodeMap, std::shared_ptr<CommandExecHelper>> registeredCommands;		
 	const AbstractCommandFactory& commandFactory; // TODO: delete when not used elsewhere except ctor...		
 
 };

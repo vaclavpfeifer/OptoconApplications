@@ -32,7 +32,8 @@ public:
 	{
 		NOT_STARTED = 0x0, // Default state
 		IN_PROGRESS = 0x1,
-		CANCELED	= 0x2
+		CANCELED	= 0x2,
+		FINISHED	= 0x3
 	};
 
 	enum CommandStatus
@@ -131,8 +132,11 @@ public:
 		}
 		else
 		{
+			commandExecStatus = CommandExecStatus::IN_PROGRESS;
+
 			// Need to use this lambda to get retVal and after that execute user-defined (if any) callback
-			ExecuteCommandAsync(commandToExecute, this->isRetryingEnabled, this->maxAttempts, [=](int retVal) -> void { 
+			ExecuteCommandAsync(commandToExecute, this->isRetryingEnabled, this->maxAttempts, [=](int retVal) -> void 
+			{ 
 				logger->Log(AbstractLogger::INFORMATION, "Executing inner callback handler to get internal information...");
 
 				this->commandRetVal = retVal; 
@@ -142,7 +146,9 @@ public:
 				{
 					callback(this->commandRetVal);
 				}
-			});						
+			});			
+			
+			commandExecStatus = CommandExecStatus::FINISHED;
 		}
 	}
 

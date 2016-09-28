@@ -14,22 +14,20 @@ public:
 	virtual ~TCPIPCommunicationHelper();
 	
 	
-	QSerialPort::SerialPortError SendCommand(const QString& request, QString& response) override
+	QSerialPort::SerialPortError SendCommand(const QString& request, QString& response) const override
 	{
-
         //return QSerialPort::SerialPortError::NoError;
         throw new std::runtime_error("Not Implemented Exception");
 	}
 
 	QString readData() const override
 	{
-        return "TEST_DATA";
-        //throw new std::exception("Not Implemented Exception");
+        throw new std::runtime_error("Not Implemented Exception");
 	}
 
 	void writeData(const QString& data) const override
 	{
-        //throw new std::exception("Not Implemented Exception");
+        throw new std::runtime_error("Not Implemented Exception");
 	}
 
 };

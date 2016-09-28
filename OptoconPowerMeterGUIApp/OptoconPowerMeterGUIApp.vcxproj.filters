@@ -167,6 +167,9 @@
     <ClCompile Include="GeneratedFiles\Release\moc_AbstractLogger.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
+    <ClCompile Include="Commands\PollingCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="CustomWidgets\qtexteditcustom.hpp">
@@ -274,6 +277,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Common\SimpleLogger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Commands\PollingCommand.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

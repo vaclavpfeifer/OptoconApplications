@@ -77,8 +77,8 @@ void OptoconAbstractView::InitializeCommonConnections()
 		                 this->viewModel.setSingleOrMultiMode(!toggledValue);
 	                 });
 
-	QObject::connect(qobject_cast<QPushButton*>(allWidgetsCodeMap[WidgetsCodeMap::PUSHBUTTON_DB]), &QPushButton::clicked, [=]() { this->viewModel.setReference(true); });
-	QObject::connect(qobject_cast<QPushButton*>(allWidgetsCodeMap[WidgetsCodeMap::PUSHBUTTON_DBM]), &QPushButton::clicked, [=]() { this->viewModel.setReference(false); });
+	QObject::connect(qobject_cast<QPushButton*>(allWidgetsCodeMap[WidgetsCodeMap::PUSHBUTTON_DB]), &QPushButton::clicked, [=]() { this->viewModel.setReferenceUnits(true); });
+	QObject::connect(qobject_cast<QPushButton*>(allWidgetsCodeMap[WidgetsCodeMap::PUSHBUTTON_DBM]), &QPushButton::clicked, [=]() { this->viewModel.setReferenceUnits(false); });
 
 	QObject::connect(qobject_cast<QCheckBox*>(allWidgetsCodeMap[WidgetsCodeMap::CHECKBOX_CHECK_LIMIT]), &QPushButton::clicked, [=](bool isChecked) { this->viewModel.setLimitChecked(isChecked); }); // Example of using lambdas	
 	QObject::connect(qobject_cast<QPushButton*>(allWidgetsCodeMap[WidgetsCodeMap::PUSHBUTTON_SET_LIMIT]), &QPushButton::clicked, [=]()
@@ -92,12 +92,27 @@ void OptoconAbstractView::InitializeCommonConnections()
 		                 QObject::connect(limitWindow, &SetLimitWindow::LimitChanged, [=](QString newLimit) { viewModel.setLimitValue(newLimit.toDouble()); });
 	                 });
 
-	//BINDING
+	QObject::connect(qobject_cast<QPushButton*>(allWidgetsCodeMap[WidgetsCodeMap::PUSHBUTTON_REFERENCE]), &QPushButton::clicked, [=]()
+					{
+						this->viewModel.RequestNewReferenceValue();
+					});
+
+	QObject::connect(qobject_cast<QPushButton*>(allWidgetsCodeMap[WidgetsCodeMap::PUSHBUTTON_WAVELENGTH]), &QPushButton::clicked, [=]()
+	{
+		this->viewModel.RequestWaveLengthValue();
+	});
+
+	QObject::connect(qobject_cast<QPushButton*>(allWidgetsCodeMap[WidgetsCodeMap::PUSHBUTTON_SERIALNUMBER]), &QPushButton::clicked, [=]()
+	{
+		this->viewModel.RequestSerialNumberValue();
+	});
+
+	//BINDING -- handlers for signals emited from viewModel
 
 	QObject::connect(&viewModel, &AbstractViewModel::waveLengthChanged, this, &OptoconAbstractView::onWaveLengthChanged);
 	QObject::connect(&viewModel, &AbstractViewModel::singleOrMultiModeChanged, this, &OptoconAbstractView::OnSingleOrMultiModeChanged);
 
-	QObject::connect(&viewModel, &AbstractViewModel::referenceChanged, this, &OptoconAbstractView::OnReferenceChanged);
+	QObject::connect(&viewModel, &AbstractViewModel::referenceUnitsChanged, this, &OptoconAbstractView::OnReferenceChanged);
 
 	QObject::connect(&viewModel, &AbstractViewModel::checkLimitChanged, [=](bool isChecked) { /*TODO: impl*/ });
 

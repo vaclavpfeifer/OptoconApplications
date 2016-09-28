@@ -29,10 +29,10 @@ public:
 		return 0;
 	}
 
-	int execute(std::function<int()> predicate)
+	/*int execute(std::function<int()> predicate)
 	{
 		return predicate();
-	}
+	}*/
 
 private:
 	AbstractViewModel& viewModel;

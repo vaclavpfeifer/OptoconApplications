@@ -10,7 +10,7 @@ public:
 	virtual ~AbstractCommunicationHelper();
 
 	// TODO: Wrap to some Common error type (for all type of comm)
-	virtual QSerialPort::SerialPortError SendCommand(const QString& request, QString& response) = 0;
+	virtual QSerialPort::SerialPortError SendCommand(const QString& request, QString& response) const = 0;
 
 	virtual QString readData() const = 0;
 

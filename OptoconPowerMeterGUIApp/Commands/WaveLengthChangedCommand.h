@@ -10,9 +10,9 @@ class WaveLengthChangedCommand : public CommunicationCommand
 {
 public:
 	WaveLengthChangedCommand(const AbstractCommunicationHelper& ioCommunicationHelper, WaveLengthEnum waveLength) 
-		: CommunicationCommand(ioCommunicationHelper), waveLength(waveLength)
+		: CommunicationCommand(ioCommunicationHelper, "DEFAULT_WAVE_LENGTH_CHANGED"), waveLength(waveLength)
 	{
-		execString = "WAVE LENGTH CHANGED exec string..."; // or move to initialization for better performance
+		// execString = "WAVE LENGTH CHANGED exec string..."; // or move to initialization for better performance
 	}
 
 	virtual ~WaveLengthChangedCommand()
