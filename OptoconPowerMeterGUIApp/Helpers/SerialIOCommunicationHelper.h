@@ -116,8 +116,19 @@ public:
 		serial.write(requestData);
 		if (serial.waitForBytesWritten(writeTimeout)) {
 			
+
+			// DEBUG!!!
+			QByteArray responseData = QByteArrayLiteral("");
+			while (serial.waitForReadyRead(waitForRead))
+			{
+				responseData += serial.readAll();
+			}
+
+			response = QString(responseData);
+
+
 			// read response
-			if (serial.waitForReadyRead(readTimeout)) 
+			/*if (serial.waitForReadyRead(readTimeout)) 
 			{
 				QByteArray responseData = serial.readAll();
 				while (serial.waitForReadyRead(waitForRead))
@@ -128,7 +139,7 @@ public:
 			else 
 			{
 				logger->Log(AbstractLogger::WARNING, QString("No data was currently available for reading from port: %1").arg(serial_port_name_));
-			}
+			}*/
 		}
 		else 
 		{
@@ -144,10 +155,10 @@ private:
 
 	QString serial_port_name_;
 	int serial_port_baud_rate_;
-	int readTimeout = 5000; //[ms]
-	int writeTimeout = 5000; //[ms]
+	int readTimeout = 1000; //[ms]
+	int writeTimeout = 1000; //[ms]
 
-	int waitForRead = 10; //[ms]
+	int waitForRead = 50; //[ms]
 };
 
 #endif

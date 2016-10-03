@@ -3,6 +3,7 @@
 #include "CommunicationCommand.h"
 #include <functional>
 #include <chrono>
+#include <atomic>
 
 class PollingCommand : public CommunicationCommand
 {
@@ -19,7 +20,7 @@ public:
 
 	int execute() const override
 	{
-		while(shouldExit)
+		while(this->shouldExit)
 		{
 			auto rv = CommunicationCommand::execute(); // call base class execute
 
@@ -31,8 +32,15 @@ public:
 			//					
 		}
 
+		// we cant do this because its const method!! --> We should rather emit signals...
+		// this->shouldExit = false;
+
 		return 0;
 	}
+
+	// TODO: We could make this Qobject and put here signals like finished/in_progress and slots in executor could handle this and vice-versa
+	// We could pass caller in ctor and create a link to enable command canceling...
+
 
 public slots:
 
@@ -43,14 +51,21 @@ public slots:
 	}
 
 
+public:
+	void SetShouldExit(bool val)
+	{
+		// Put mutex here
+
+		shouldExit = val;
+
+	}
+
 
 private:
 	int pollingInterval = 1000; // [ms]
-	volatile bool shouldExit = false;
+	std::atomic<bool> shouldExit = false;
 
-	const std::function<void(double)> updateViewModelCallback;
-
-	// TODO: register callback which can be updated? Or register member to update??
+	const std::function<void(double)> updateViewModelCallback;	
 
 };
 

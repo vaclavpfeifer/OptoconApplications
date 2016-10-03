@@ -81,10 +81,23 @@ void AbstractViewModel::setA1Checked(bool isChecked)
 
 		// Execute command synchronously		
 		
-		//this->registeredCommands[WidgetsCodeMap::CHECKBOX_A1]->ExecCommand();		
+		//his->registeredCommands[WidgetsCodeMap::CHECKBOX_A1]->ExecCommand();		
 
 		// TODO: how to solve start/stop already executing command?? Should I cancel thread directly?
 
+		auto cmd = this->registeredCommands[WidgetsCodeMap::CHECKBOX_A1];
+		
+		if (!this->isA1Checked && cmd->GetCommandExecutionStatus() == CommandExecHelper::IN_PROGRESS)
+		{
+			cmd->StopPollingCommandExecution();
+		}
+		else
+		{
+			cmd->DisableShouldStopFlag();
+
+			// Start polling command
+			cmd->ExecCommandAsync();
+		}
 
 
 	}

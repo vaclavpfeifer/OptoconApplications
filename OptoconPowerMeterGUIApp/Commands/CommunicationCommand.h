@@ -29,7 +29,7 @@ public:
 	{
 		logger->Log(AbstractLogger::LogLevel::INFORMATION, "Communication command execution sucesfully started....");
 			
-		//std::this_thread::sleep_for(std::chrono::seconds(10));
+		// std::this_thread::sleep_for(std::chrono::seconds(2)); // DEBUG ONLY!!
 
 		QString response;
 		auto rv = ioCommHelper.SendCommand(execString, response);

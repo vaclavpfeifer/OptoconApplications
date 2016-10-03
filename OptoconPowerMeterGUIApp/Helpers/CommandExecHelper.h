@@ -6,6 +6,7 @@
 
 #include <functional>
 #include <thread>
+#include "Commands/PollingCommand.h"
 
 
 // TODO: Should add only one Execution methos and pass by constructor whether to run sync/async??
@@ -101,7 +102,7 @@ public:
 			// When finished run callback
 			if(callback != nullptr)
 				callback(result);
-		});		
+		});				
 	}
 	
 	static void ExecuteCommandAsync(const std::shared_ptr<AbstractCommand> cmd, std::function<void(int)> callback = nullptr)
@@ -145,12 +146,38 @@ public:
 				if (callback != nullptr)
 				{
 					callback(this->commandRetVal);
-				}
+				}				
+
+					// TODO: this does not work for polling commands!!! , we need to use signal emiting instead
+				commandExecStatus = CommandExecStatus::FINISHED;
+
+
 			});			
-			
-			commandExecStatus = CommandExecStatus::FINISHED;
+						
 		}
 	}
+
+	// Bellow methods are for DEBUG ONLY!!!!
+
+	void StopPollingCommandExecution() const
+	{		
+		const auto pollCommand = std::static_pointer_cast<PollingCommand>(commandToExecute);
+		pollCommand->exitPollingCommand();
+	}
+
+	void DisableShouldStopFlag() const
+	{
+		const auto pollCommand = std::static_pointer_cast<PollingCommand>(commandToExecute);
+		pollCommand->SetShouldExit(false);
+	}
+
+
+
+	CommandExecStatus GetCommandExecutionStatus() const
+	{
+		return this->commandExecStatus;
+	}
+
 
 
 
